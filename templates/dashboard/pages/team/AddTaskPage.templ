@@ -1,0 +1,55 @@
+package team
+
+import (
+	"nextgen/templates/components"
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+type AddTaskPageProp struct {
+	LayoutProp               dashboardcomponents.LayoutProp
+	AddTaskPageContentsProps AddTaskPageContentsProps
+}
+
+type AddTaskPageContentsProps struct {
+	TeamPageHeaderProps  []TeamPageHeaderProp
+	AddTaskPageFormProp  AddTaskPageFormProps
+	FormLayoutSimpleProp components.FormLayoutSimpleProp
+}
+
+type AddTaskPageFormProps struct {
+	InputsProps      []components.InputFloatingProps
+	InputSelectProps []components.InputSelectProp
+	FormProps        components.FormLayoutSimpleProp
+	DatePickerProps  []components.DatepickerForUserProps
+}
+
+templ AddTaskPage(addTaskPageProp AddTaskPageProp) {
+	@dashboardcomponents.Layout(AddTaskPageContents(addTaskPageProp.AddTaskPageContentsProps), addTaskPageProp.LayoutProp)
+}
+
+templ AddTaskPageContents(addTaskPageContentsProps AddTaskPageContentsProps) {
+	@TeamPageHeader(addTaskPageContentsProps.TeamPageHeaderProps)
+	@components.FormLayoutSimple(AddTaskPageForm(addTaskPageContentsProps.AddTaskPageFormProp), addTaskPageContentsProps.FormLayoutSimpleProp)
+}
+
+templ AddTaskPageForm(addTaskPageFormProps AddTaskPageFormProps) {
+	<div class="mt-2 w-full">
+		<div class=" border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center ">
+			<div class="p-12 m-4 bg-gray-200 dark:bg-gray-200 rounded-2xl">
+				<div class="space-y-7  m-2 pl-4  bg-gray-200 rounded-lg justify-center">
+					<div class=" grid gap-4 sm:grid-cols-2 sm:gap-6 ">
+						for _, i := range addTaskPageFormProps.InputsProps {
+							@components.InputForUser(i)
+						}
+						for _, prop := range addTaskPageFormProps.InputSelectProps {
+							@components.InputSelectForUser(prop)
+						}
+						for _, prop := range addTaskPageFormProps.DatePickerProps {
+							@components.DatepickerForUser(prop)
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}

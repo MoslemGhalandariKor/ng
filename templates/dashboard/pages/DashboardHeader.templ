@@ -1,0 +1,44 @@
+package pages
+
+templ DashboardHeader(username string) {
+	<div class="bg-gray-100 h-12 flex items-center justify-between px-8 border-b border-slate-200">
+		<div class="flex gap-3 ">
+			/* Recent Activities */
+			<button>
+				/*<History class="w-6 h-6" />*/
+			</button>
+			/* Search */
+			/*<SearchInput />*/
+		</div>
+		<div class="flex ">
+			<div class="pr-2 border-l border-gray-300 space-x-2">
+				<button class="p-1 bg-blue-600 rounded-lg ">
+					/*<Plus class="text-slate-50 w-4 h-4 "/>*/
+				</button>
+			</div>
+			<div class="pr-1 flex border-l border-gray-300 space-x-2">
+				<button class="p-1 hover:bg-slate-200 rounded-lg">
+					/*<Users class="text-slate-900 w-4 h-4 "/>*/
+				</button>
+				<button class="p-1 hover:bg-slate-200 rounded-lg">
+					/*<Bell class="text-slate-900 w-4 h-4 "/>*/
+				</button>
+				<button class="p-1 hover:bg-slate-200 rounded-lg">
+					/*<Settings class="text-slate-900 w-4 h-4 "/>*/
+				</button>
+			</div>
+			<div class="pr-2 flex gap-6">
+				<button class="flex items-center">
+					<span>{ username }</span>
+					/*<ChevronDown class="w-4 h-4"/>*/
+				</button>
+				<a href="/auth/logout">
+					<span>Logout</span>
+				</a>
+				<button>
+					/*<LayoutGrid class="w-6 h-6 text-slate-900"/>*/
+				</button>
+			</div>
+		</div>
+	</div>
+}

@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "flowbite": "^2.5.2",
+    "tailwind": "^4.0.0"
+  }
+}

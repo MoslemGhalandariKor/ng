@@ -1,0 +1,143 @@
+package pages
+
+import (
+	"nextgen/templates/app/appcomponents"
+	"nextgen/templates/components"
+)
+
+type HomePageComponents struct {
+	posts1 []FeaturedAppsprops
+	posts2 []FeaturedAppsprops
+}
+
+templ HomePage(userInfoProps appcomponents.UserInfoProps, posts1 []IntroLandingprops, posts2 []FeaturedAppsprops, alerts []components.AlertProps) {
+	@appcomponents.Layout(HomeContent(posts1, posts2), userInfoProps, alerts)
+}
+
+templ HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) {
+	<div>
+		<div>
+			<section class="bg-gray-100 dark:bg-gray-900 relative p-20 dark:text-white">
+				<div class="flex relative w-90% ">
+					<div class="pr-20 pl-64 text-left relative">
+						for _, post1 := range posts1 {
+							@IntroLanding(post1)
+						}
+					</div>
+					<div class=" w-96 bg-white dark:bg-gray-700 rounded-lg">
+						<div class="m-4  pb-2 border-b-4">
+							<p>Featured apps</p>
+						</div>
+						<ul>
+							for _, post2 := range posts2 {
+								@FeaturedApps(post2)
+							}
+						</ul>
+						<div class=" mt-2 p-4 border-t-4 text-center">
+							<a href="" class="ml-4 hover:text-blue-600"><span>EXPLORE ALL PRODUCTS</span></a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="bg-yellow-400 dark:bg-blue-900 flex">
+				<div class="m-20   ">
+					<div class="pr-20 pl-32 text-left border-r-4 border-dashed border-gray-600 relative">
+						<h1 class="text-4xl mt-20 mb-12 max-w-4xl">
+							Your life's work,
+							powered by our life's work
+						</h1>
+						<p class="text-2xl max-w-2xl mb-8">
+							A unique and powerful software suite to transform the way you work. Designed for businesses of all sizes, built by a company that values your privacy.
+						</p>
+						<div class="pt-12 pl-12">
+							<a href="" class="p-4  bg-red-600 max-w-64 text-center text-white">GET STARTED FOR FREE</a>
+						</div>
+					</div>
+				</div>
+				<div class="mt-20">
+					<div class="pr-20   ">
+						<h1 class=" text-2xl mt-20 ml-40 mb-12 w-96">
+							"Zoho continues to modify, adapt, grow, and add things to the platform that our business sees value in."
+						</h1>
+					</div>
+					<div class="pr-20 flex">
+						<div class="w-24">
+							<img src="../static/images/zh-video-poster-paul (1).png" class="mt-12 ml-60" alt=""/>
+						</div>
+						<div>
+							<h1 class="text-xl mt-20 ml-64  ">
+								Paul Grimes
+							</h1>
+							<small class="text-md ml-64">
+								Chief Operating Officer,
+								Lubrication Engineers
+							</small>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="bg-gray-100 dark:bg-gray-500 flex-row">
+				<div class="pt-12 pb-12 text-center content-center">
+					<div>
+						<h1 class="text-2xl">BRANDS THAT TRUST US</h1>
+					</div>
+					<div>
+						<ul class="flex justify-center mt-8 space-x-12">
+							<li class="w-32 mt-4"><img src="../static/images/amazon.svg" alt=""/></li>
+							<li class="w-16"><img src="../static/images/hp.svg" alt=""/></li>
+							<li class="w-32 mt-2"><img src="../static/images/kpmg.svg" alt=""/></li>
+							<li class="w-32 mt-4"><img src="../static/images/netflix.svg" alt=""/></li>
+							<li class="w-16"><img src="../static/images/renault.svg" alt=""/></li>
+						</ul>
+					</div>
+					<div>
+						<a href="" class="mt-12 text-xl hover:text-white">
+							CUSTOMER STORIES
+						</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+}
+
+type IntroLandingprops struct {
+	Title   string
+	Text    string
+	Link    string
+	Picture string
+}
+
+templ IntroLanding(post1 IntroLandingprops) {
+	<h1 class="text-7xl mb-16 max-w-4xl">
+		{ post1.Title }
+	</h1>
+	<p class="text-2xl max-w-2xl mb-8">
+		{ post1.Text }	
+	</p>
+	<div class="">
+		<a href={ templ.URL(post1.Link) } class="p-4 bg-red-600 max-w-64 text-center text-white rounded-3xl">GET STARTED FOR FREE</a>
+	</div>
+	<div>
+		<img src={ post1.Picture } alt="" class="max-w-4xl pt-12 bg-white rounded-3xl"/>
+	</div>
+}
+
+type FeaturedAppsprops struct {
+	Title string
+	Intro string
+	Link  string
+}
+
+templ FeaturedApps(post2 FeaturedAppsprops) {
+	<li class="ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg">
+		<a href={ templ.URL(post2.Link) }>
+			<h1 class="text-2xl">{ post2.Title }</h1>
+			<span>
+				<label for=""></label>
+				<small class="text-lg">{ post2.Intro }</small>
+			</span>
+		</a>
+		<i class="fa fa-caret-right mt-8"></i>
+	</li>
+}

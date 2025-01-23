@@ -1,0 +1,29 @@
+package pages
+
+import (
+	
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+type DashboardProps struct {
+	Email string
+	Name  string
+}
+
+templ DashboardPage(layoutProp dashboardcomponents.LayoutProp) {
+	@dashboardcomponents.Layout(DashboardContent(), layoutProp)
+}
+
+templ DashboardContent() {
+	<div class="mt-2">
+		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center ">
+			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
+				<div class="space-y-12">
+				
+					dashboard
+				
+				</div>
+			</div>
+		</div>
+	</div>
+}

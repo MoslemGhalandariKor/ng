@@ -1,0 +1,59 @@
+package team
+
+import (
+	"nextgen/templates/components"
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+type AddEmployeePageProp struct {
+	LayoutProp                   dashboardcomponents.LayoutProp
+	AddEmployeePageContentsProps AddEmployeePageContentsProps
+}
+
+type AddEmployeePageContentsProps struct {
+	TeamPageHeaderProps     []TeamPageHeaderProp
+	AddEmployeePageFormProp AddEmployeePageFormProps
+	FormLayoutSimpleProp    components.FormLayoutSimpleProp
+}
+
+type AddEmployeePageFormProps struct {
+	InputsProps            []components.InputFloatingProps
+	InputSelectProps       []components.InputSelectProp
+	FormProps              components.FormLayoutSimpleProp
+	DatepickerForUserProps []components.DatepickerForUserProps
+	InputFileForUserProp   []components.InputFileForUserProp
+}
+
+templ AddEmployeePage(addEmployeePageProp AddEmployeePageProp) {
+	@dashboardcomponents.Layout(AddEmployeePageContents(addEmployeePageProp.AddEmployeePageContentsProps), addEmployeePageProp.LayoutProp)
+}
+
+templ AddEmployeePageContents(addEmployeePageContentsProps AddEmployeePageContentsProps) {
+	@TeamPageHeader(addEmployeePageContentsProps.TeamPageHeaderProps)
+	@components.FormLayoutSimple(AddEmployeePageForm(addEmployeePageContentsProps.AddEmployeePageFormProp), addEmployeePageContentsProps.FormLayoutSimpleProp)
+}
+
+templ AddEmployeePageForm(addEmployeePageFormProps AddEmployeePageFormProps) {
+	<div class="mt-2 w-full">
+		<div class=" border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center ">
+			<div class="p-12 m-4 bg-gray-200 dark:bg-gray-200 rounded-2xl">
+				<div class="space-y-7  m-2 pl-4  bg-gray-200 rounded-lg justify-center">
+					<div class=" grid gap-4 sm:grid-cols-2 sm:gap-6 ">
+						for _, i := range addEmployeePageFormProps.InputsProps {
+							@components.InputForUser(i)
+						}
+						for _, prop := range addEmployeePageFormProps.InputSelectProps {
+							@components.InputSelectForUser(prop)
+						}
+						for _, prop := range addEmployeePageFormProps.DatepickerForUserProps {
+							@components.DatepickerForUser(prop)
+						}
+						for _, prop := range addEmployeePageFormProps.InputFileForUserProp {
+							@components.InputFileForUser(prop)
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}

@@ -1,0 +1,18 @@
+package pages
+
+import (
+	"nextgen/templates/components"
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+templ BusinessInfoPage(props DashboardProps, formLayoutSimpleProp components.FormLayoutSimpleProp, inputFormProps []components.InputFloatingProps, layoutProp dashboardcomponents.LayoutProp) {
+	@dashboardcomponents.Layout(components.FormLayoutSimple(BusinessInfoForm(inputFormProps), formLayoutSimpleProp),layoutProp)
+}
+
+templ BusinessInfoForm(inputFormProps []components.InputFloatingProps) {
+	<div>
+		for _, i := range inputFormProps {
+			@components.InputSimple(i)
+		}
+	</div>
+}
