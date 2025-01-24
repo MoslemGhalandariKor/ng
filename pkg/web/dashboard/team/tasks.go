@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
+	"strconv"
 
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
@@ -46,6 +47,7 @@ func TasksPage(c *gin.Context) {
 	}
 
 	taskinfo := []team.TaskInfoProps{}
+	DeleteTaskUrl := "/dashboard/employee/delete-task/"
 
 	for _, post := range *posts {
 		taskinfo = append(taskinfo, team.TaskInfoProps{
@@ -54,6 +56,7 @@ func TasksPage(c *gin.Context) {
 			Task:      post.EmployeeTask,
 			Role:      post.Role,
 			Deadline:  post.Deadline,
+			DeleteUrl: DeleteTaskUrl + strconv.FormatUint(uint64(post.ID), 10),
 		})
 	}
 

@@ -3,8 +3,10 @@ package server
 import (
 	"fmt"
 	"nextgen/internals/gintemplrenderer"
-	"github.com/gin-contrib/sessions/cookie"
+	"nextgen/pkg/web/app"
+
 	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 )
 
@@ -32,7 +34,8 @@ func (s *Server) StartServer() {
 	(&Routes{}).blogRouter(s)
 	(&Routes{}).aboutusRouter(s)
 	(&Routes{}).accountsRouter(s)
-	
+	s.Router.NoRoute(app.PageNotFound)
+
 	err := s.Router.Run()
 	if err != nil {
 		fmt.Println("Error starting the server")

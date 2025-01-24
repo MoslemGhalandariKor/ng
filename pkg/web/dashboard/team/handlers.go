@@ -2,9 +2,9 @@ package team
 
 import (
 	"net/http"
-	"github.com/gin-gonic/gin"
 	"strconv"
 
+	"github.com/gin-gonic/gin"
 )
 
 func AddEmployeeHandler(c *gin.Context) {
@@ -19,8 +19,8 @@ func AddEmployeeHandler(c *gin.Context) {
 	Employee.Username = c.PostForm("username")
 	Employee.NationalId = c.PostForm("national_id")
 	Employee.Role = c.PostForm("role")
-	Employee.Photo= c.PostForm("employeephoto")
-	
+	Employee.Photo = c.PostForm("employeephoto")
+
 	_, err := CreateEmployee(Employee)
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
@@ -29,14 +29,13 @@ func AddEmployeeHandler(c *gin.Context) {
 	c.Redirect(http.StatusFound, "/dashboard/employee/employees")
 }
 
-func DeleteEmployeeHandler(c *gin.Context){
+func DeleteEmployeeHandler(c *gin.Context) {
 	idParam := c.Param("id")
 	id, _ := strconv.Atoi(idParam)
 
 	_, _ = DeleteEmployeeByID(id)
+	c.Redirect(http.StatusFound, "/dashboard/employee/employees")
 }
-
-
 
 func AddTaskHandler(c *gin.Context) {
 	Task := &Task{}
@@ -50,5 +49,14 @@ func AddTaskHandler(c *gin.Context) {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 		return
 	}
+	c.Redirect(http.StatusFound, "/dashboard/employee/tasks")
+}
+
+
+func DeleteTaskHandler(c *gin.Context) {
+	idParam := c.Param("id")
+	id, _ := strconv.Atoi(idParam)
+
+	_, _ = DeleteTaskByID(id)
 	c.Redirect(http.StatusFound, "/dashboard/employee/tasks")
 }

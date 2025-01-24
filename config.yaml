@@ -1,9 +1,9 @@
 pgdatabase:
   host: "localhost"
   port: 5432
-  user: "admin"
-  password: "admin"
-  dbname: "fuckjs"
+  user: "postgres"
+  password: "mysecretpassword"
+  dbname: "postgres"
   sslmode: "disable"
 
 dev:

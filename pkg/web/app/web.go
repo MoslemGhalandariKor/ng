@@ -1,6 +1,8 @@
 package app
 
 import (
+	"net/http"
+	"nextgen/internals/gintemplrenderer"
 	"nextgen/internals/helpers"
 	"nextgen/templates/app/appcomponents"
 	"nextgen/templates/app/pages"
@@ -46,7 +48,7 @@ func HomePage(c *gin.Context) {
 	}
 
 	posts1 := []pages.IntroLandingprops{posts11}
-	posts2 := []pages.FeaturedAppsprops{posts21,posts22,posts23,posts24,posts25}
+	posts2 := []pages.FeaturedAppsprops{posts21, posts22, posts23, posts24, posts25}
 	var alerts []components.AlertProps
 	var userInfoProps appcomponents.UserInfoProps
 	session := sessions.Default(c)
@@ -108,4 +110,9 @@ func RegisterPage(c *gin.Context) {
 		alerts = append(alerts, components.AlertProps{Type: f.Type, Message: f.Message, Id: f.Id, DismissId: f.DismissId})
 	}
 	pages.RegisterPage(userInfoProps, alerts).Render(c.Request.Context(), c.Writer)
+}
+
+func PageNotFound(c *gin.Context) {
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.PageNotFound())
+	c.Render(http.StatusOK, r)
 }

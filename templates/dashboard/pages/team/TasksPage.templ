@@ -8,6 +8,7 @@ type TaskInfoProps struct {
 	Task      string
 	Role      string
 	Deadline  string
+	DeleteUrl string
 }
 
 type TasksPageProp struct {
@@ -71,9 +72,9 @@ templ TasksInfo(task TaskInfoProps) {
 		<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{ task.Deadline }</td>
 		<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 			<a href="">
-				<button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-					Delete
-				</button>
+				<form action={ templ.URL(task.DeleteUrl) } method="post">
+					<button data-modal-hide="default-modal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Delete</button>
+				</form>
 			</a>
 		</td>
 	</tr>

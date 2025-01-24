@@ -59,7 +59,8 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/employee/add-employee", team.AddEmployeePage)
 	dashboardRoutes.POST("/employee/delete-employee/:id", team.DeleteEmployeeHandler)
 	dashboardRoutes.GET("/employee/tasks", team.TasksPage)
-	dashboardRoutes.GET("/employee/add-tasks", team.AddTaskPage)
+	dashboardRoutes.GET("/employee/add-task", team.AddTaskPage)
+	dashboardRoutes.POST("/employee/delete-task/:id", team.DeleteTaskHandler)
 	dashboardRoutes.GET("/productpage", dashboard.ProductPage)
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
 
