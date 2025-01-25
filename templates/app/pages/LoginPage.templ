@@ -1,12 +1,9 @@
 package pages
 
-import (
-	"nextgen/templates/app/appcomponents"
-	"nextgen/templates/components"
-)
+import "nextgen/templates/app/appcomponents"
 
-templ LoginPage(userInfoProps appcomponents.UserInfoProps, alerts []components.AlertProps) {
-	@appcomponents.Layout(LoginContents(), userInfoProps, alerts)
+templ LoginPage(layoutProps appcomponents.LayoutProps) {
+	@appcomponents.Layout(LoginContents(), layoutProps)
 }
 
 templ LoginContents() {

@@ -8,17 +8,32 @@ package pages
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import (
-	"nextgen/templates/app/appcomponents"
-	"nextgen/templates/components"
-)
+import "nextgen/templates/app/appcomponents"
 
-type HomePageComponents struct {
-	posts1 []FeaturedAppsprops
-	posts2 []FeaturedAppsprops
+type IntroLandingprops struct {
+	Title   string
+	Text    string
+	Link    string
+	Picture string
 }
 
-func HomePage(userInfoProps appcomponents.UserInfoProps, posts1 []IntroLandingprops, posts2 []FeaturedAppsprops, alerts []components.AlertProps) templ.Component {
+type FeaturedAppsprops struct {
+	Title string
+	Intro string
+	Link  string
+}
+
+type HomePageContentProps struct {
+	IntroLanding []IntroLandingprops
+	FeaturedApps []FeaturedAppsprops
+}
+
+type HomePageProps struct {
+	HomePageContent HomePageContentProps
+	LayoutProps     appcomponents.LayoutProps
+}
+
+func HomePage(homePageProps HomePageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -39,7 +54,7 @@ func HomePage(userInfoProps appcomponents.UserInfoProps, posts1 []IntroLandingpr
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = appcomponents.Layout(HomeContent(posts1, posts2), userInfoProps, alerts).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = appcomponents.Layout(HomePageContent(homePageProps), homePageProps.LayoutProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -47,7 +62,7 @@ func HomePage(userInfoProps appcomponents.UserInfoProps, posts1 []IntroLandingpr
 	})
 }
 
-func HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) templ.Component {
+func HomePageContent(homePageProps HomePageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -72,8 +87,8 @@ func HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) templ.C
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, post1 := range posts1 {
-			templ_7745c5c3_Err = IntroLanding(post1).Render(ctx, templ_7745c5c3_Buffer)
+		for _, introLanding := range homePageProps.HomePageContent.IntroLanding {
+			templ_7745c5c3_Err = IntroLanding(introLanding).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -82,8 +97,8 @@ func HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) templ.C
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, post2 := range posts2 {
-			templ_7745c5c3_Err = FeaturedApps(post2).Render(ctx, templ_7745c5c3_Buffer)
+		for _, featuredApp := range homePageProps.HomePageContent.FeaturedApps {
+			templ_7745c5c3_Err = FeaturedApps(featuredApp).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -96,14 +111,7 @@ func HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) templ.C
 	})
 }
 
-type IntroLandingprops struct {
-	Title   string
-	Text    string
-	Link    string
-	Picture string
-}
-
-func IntroLanding(post1 IntroLandingprops) templ.Component {
+func IntroLanding(IntroLanding IntroLandingprops) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -129,9 +137,9 @@ func IntroLanding(post1 IntroLandingprops) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(post1.Title)
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(IntroLanding.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 113, Col: 15}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 121, Col: 22}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -142,9 +150,9 @@ func IntroLanding(post1 IntroLandingprops) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(post1.Text)
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(IntroLanding.Text)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 116, Col: 14}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 124, Col: 21}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -154,7 +162,7 @@ func IntroLanding(post1 IntroLandingprops) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var6 templ.SafeURL = templ.URL(post1.Link)
+		var templ_7745c5c3_Var6 templ.SafeURL = templ.URL(IntroLanding.Link)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var6)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -164,9 +172,9 @@ func IntroLanding(post1 IntroLandingprops) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(post1.Picture)
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(IntroLanding.Picture)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 122, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 130, Col: 33}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -180,13 +188,7 @@ func IntroLanding(post1 IntroLandingprops) templ.Component {
 	})
 }
 
-type FeaturedAppsprops struct {
-	Title string
-	Intro string
-	Link  string
-}
-
-func FeaturedApps(post2 FeaturedAppsprops) templ.Component {
+func FeaturedApps(FeaturedApps FeaturedAppsprops) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -211,7 +213,7 @@ func FeaturedApps(post2 FeaturedAppsprops) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var9 templ.SafeURL = templ.URL(post2.Link)
+		var templ_7745c5c3_Var9 templ.SafeURL = templ.URL(FeaturedApps.Link)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var9)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -221,9 +223,9 @@ func FeaturedApps(post2 FeaturedAppsprops) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var10 string
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(post2.Title)
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(FeaturedApps.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 135, Col: 37}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 137, Col: 44}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -234,9 +236,9 @@ func FeaturedApps(post2 FeaturedAppsprops) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var11 string
-		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(post2.Intro)
+		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(FeaturedApps.Intro)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 138, Col: 40}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 140, Col: 47}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {

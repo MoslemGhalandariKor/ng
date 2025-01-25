@@ -5,11 +5,11 @@ import (
 )
 
 func GetTeamInfo() (*[]TeamInfo, error) {
-	var posts []TeamInfo
+	var team []TeamInfo
 	
-	if err := pg.GDB.Find(&posts).Error; err != nil {
+	if err := pg.GDB.Find(&team).Error; err != nil {
 		return nil, err
 	}
-	return &posts, nil
+	return &team, nil
 }
 

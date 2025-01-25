@@ -1,18 +1,27 @@
 package blog
 
 import (
-	
-	"nextgen/internals/helpers"
+	"net/http"
+	"nextgen/internals/gintemplrenderer"
 	"nextgen/templates/app/appcomponents"
 	"nextgen/templates/blog"
-	"nextgen/templates/components"
 	"strconv"
 
-	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
 func PostPage(c *gin.Context) {
+
+	postPageProps := blog.PostPageProps{}
+
+	layoutProps, exists := c.Get("LayoutProp")
+
+	if !exists {
+		layoutProps = appcomponents.LayoutProps{}
+	}
+
+	postPageProps.LayoutProps = layoutProps.(appcomponents.LayoutProps)
+
 	id := c.Param("id")
 	idInt, err := strconv.Atoi(id)
 	if err != nil {
@@ -39,23 +48,9 @@ func PostPage(c *gin.Context) {
 		ImageAlt:      post.ImageAlt,
 		Link:          post.Link,
 	}
-	
+	postPageProps.BlogPagePostProps = []blog.BlogPagePostProps{postProps}
 
-	var alerts []components.AlertProps
-	var userInfoProps appcomponents.UserInfoProps
-	session := sessions.Default(c)
-	email := session.Get("Email")
-	username := session.Get("Username")
-	if email != nil {
-		userInfoProps.IsLoggedIn = true
-		userInfoProps.Email = email.(string)
-		userInfoProps.Username = username.(string)
-	} else {
-		userInfoProps.IsLoggedIn = false
-	}
-	flashes, _ := helpers.GetFlash(c, "flash")
-	for _, f := range flashes {
-		alerts = append(alerts, components.AlertProps{Type: f.Type, Message: f.Message, Id: f.Id, DismissId: f.DismissId})
-	}
-	blog.PostPage(userInfoProps, postProps, alerts).Render(c.Request.Context(), c.Writer)
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, blog.PostPage(postPageProps))
+	c.Render(http.StatusOK, r)
+
 }

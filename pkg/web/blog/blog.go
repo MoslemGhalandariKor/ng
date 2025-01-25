@@ -2,15 +2,24 @@ package blog
 
 import (
 	"fmt"
-	"nextgen/internals/helpers"
+	"net/http"
+	"nextgen/internals/gintemplrenderer"
 	"nextgen/templates/app/appcomponents"
 	"nextgen/templates/blog"
-	"nextgen/templates/components"
-	"github.com/gin-contrib/sessions"
+
 	"github.com/gin-gonic/gin"
 )
 
 func BlogPage(c *gin.Context) {
+
+	blogPageProps := blog.BlogPageProps{}
+	layoutProps, exists := c.Get("LayoutProp")
+
+	if !exists {
+		layoutProps = appcomponents.LayoutProps{}
+	}
+
+	blogPageProps.LayoutProps = layoutProps.(appcomponents.LayoutProps)
 
 	posts, err := GetAllPosts()
 	if err != nil {
@@ -27,7 +36,7 @@ func BlogPage(c *gin.Context) {
 			Summary:       post.Summary,
 			Writer:        post.Writer,
 			WriterRole:    post.WriterRole,
-			Image:   	   post.Image,
+			Image:         post.Image,
 			ImageAlt:      post.ImageAlt,
 			WriterPicture: post.WriterPicture,
 			PictureAlt:    post.PictureAlt,
@@ -35,21 +44,9 @@ func BlogPage(c *gin.Context) {
 		})
 	}
 
-	var alerts []components.AlertProps
-	var userInfoProps appcomponents.UserInfoProps
-	session := sessions.Default(c)
-	email := session.Get("Email")
-	username := session.Get("Username")
-	if email != nil {
-		userInfoProps.IsLoggedIn = true
-		userInfoProps.Email = email.(string)
-		userInfoProps.Username = username.(string)
-	} else {
-		userInfoProps.IsLoggedIn = false
-	}
-	flashes, _ := helpers.GetFlash(c, "flash")
-	for _, f := range flashes {
-		alerts = append(alerts, components.AlertProps{Type: f.Type, Message: f.Message, Id: f.Id, DismissId: f.DismissId})
-	}
-	blog.BlogPage(userInfoProps, postsProps, alerts).Render(c.Request.Context(), c.Writer)
+	blogPageProps.BlogPagePostProps = postsProps
+
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, blog.BlogPage(blogPageProps))
+	c.Render(http.StatusOK, r)
+
 }

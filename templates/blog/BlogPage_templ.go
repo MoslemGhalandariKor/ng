@@ -8,10 +8,7 @@ package blog
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import (
-	"nextgen/templates/app/appcomponents"
-	"nextgen/templates/components"
-)
+import "nextgen/templates/app/appcomponents"
 
 type BlogPagePostProps struct {
 	Category      string
@@ -28,7 +25,12 @@ type BlogPagePostProps struct {
 	Link          string
 }
 
-func BlogPage(userInfoProps appcomponents.UserInfoProps, posts []BlogPagePostProps, alerts []components.AlertProps) templ.Component {
+type BlogPageProps struct {
+	LayoutProps       appcomponents.LayoutProps
+	BlogPagePostProps []BlogPagePostProps
+}
+
+func BlogPage(blogPageProps BlogPageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -49,7 +51,7 @@ func BlogPage(userInfoProps appcomponents.UserInfoProps, posts []BlogPagePostPro
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = appcomponents.Layout(BlogContents(posts), userInfoProps, alerts).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = appcomponents.Layout(BlogPageContents(blogPageProps), blogPageProps.LayoutProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -57,7 +59,7 @@ func BlogPage(userInfoProps appcomponents.UserInfoProps, posts []BlogPagePostPro
 	})
 }
 
-func BlogContents(posts []BlogPagePostProps) templ.Component {
+func BlogPageContents(blogPageProps BlogPageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -82,8 +84,8 @@ func BlogContents(posts []BlogPagePostProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, post := range posts {
-			templ_7745c5c3_Err = BlogPagePost(post).Render(ctx, templ_7745c5c3_Buffer)
+		for _, blogPagePostProps := range blogPageProps.BlogPagePostProps {
+			templ_7745c5c3_Err = BlogPagePost(blogPagePostProps).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -96,7 +98,7 @@ func BlogContents(posts []BlogPagePostProps) templ.Component {
 	})
 }
 
-func BlogPagePost(post BlogPagePostProps) templ.Component {
+func BlogPagePost(blogPagePostProps BlogPagePostProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -122,9 +124,9 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(post.Category)
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(blogPagePostProps.Category)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 48, Col: 19}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 50, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -135,9 +137,9 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(post.Duration_time)
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(blogPagePostProps.Duration_time)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 50, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 52, Col: 58}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -148,9 +150,9 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(post.Title)
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(blogPagePostProps.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 52, Col: 107}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 54, Col: 120}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -161,9 +163,9 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(post.Summary)
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(blogPagePostProps.Summary)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 53, Col: 76}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 55, Col: 89}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -174,9 +176,9 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(post.WriterPicture)
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(blogPagePostProps.WriterPicture)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 56, Col: 62}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 58, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -187,9 +189,9 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var9 string
-		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(post.PictureAlt)
+		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(blogPagePostProps.PictureAlt)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 56, Col: 86}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 58, Col: 112}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -200,9 +202,9 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var10 string
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(post.Writer)
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(blogPagePostProps.Writer)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 58, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/blog/BlogPage.templ`, Line: 60, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -212,7 +214,7 @@ func BlogPagePost(post BlogPagePostProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var11 templ.SafeURL = templ.URL(post.Link)
+		var templ_7745c5c3_Var11 templ.SafeURL = templ.URL(blogPagePostProps.Link)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var11)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

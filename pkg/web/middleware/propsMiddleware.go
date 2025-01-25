@@ -1,18 +1,18 @@
 package middleware
 
 import (
-	"github.com/gin-gonic/gin"
-	"nextgen/templates/dashboard/dashboardcomponents"
-	"github.com/gin-contrib/sessions"
-	"nextgen/templates/components"
 	"nextgen/internals/helpers"
+	"nextgen/templates/app/appcomponents"
+	"nextgen/templates/components"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/gin"
 )
 
 func LayoutPropMiddelware(c *gin.Context) {
-	layoutProp := dashboardcomponents.LayoutProp{}
-	
-	userInfoProps := dashboardcomponents.UserInfoProps{}
+	layoutProp := appcomponents.LayoutProps{}
+
+	userInfoProps := appcomponents.UserInfoProps{}
 	session := sessions.Default(c)
 	email := session.Get("Email")
 	username := session.Get("Username")

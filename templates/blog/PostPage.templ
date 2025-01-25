@@ -1,35 +1,37 @@
 package blog
 
-import (
-	"nextgen/templates/app/appcomponents"
-	"nextgen/templates/components"
-)
+import "nextgen/templates/app/appcomponents"
 
-templ PostPage(userInfoProps appcomponents.UserInfoProps, post BlogPagePostProps, alerts []components.AlertProps) {
-	@appcomponents.Layout(PostContents(post), userInfoProps, alerts)
+type PostPageProps struct {
+	LayoutProps       appcomponents.LayoutProps
+	BlogPagePostProps []BlogPagePostProps
 }
 
-templ PostContents(post BlogPagePostProps) {
+templ PostPage(postPageProps PostPageProps) {
+	@appcomponents.Layout(PostContents(postPageProps.BlogPagePostProps[0]), postPageProps.LayoutProps)
+}
+
+templ PostContents(blogPagePostProps BlogPagePostProps) {
 	<main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
 		<div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
 			<article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
 				<header class="mb-4 lg:mb-6 not-format">
 					<address class="flex items-center mb-6 not-italic">
 						<div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-							<img class="mr-4 w-16 h-16 rounded-full" src={ post.WriterPicture } alt={ post.PictureAlt }/>
+							<img class="mr-4 w-16 h-16 rounded-full" src={ blogPagePostProps.WriterPicture } alt={ blogPagePostProps.PictureAlt }/>
 							<div>
-								<a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{ post.Writer }</a>
-								<p class="text-base text-gray-500 dark:text-gray-400">{ post.WriterRole }</p>
-								<p class="text-base text-gray-500 dark:text-gray-400"><time pubdate="" datetime="2022-02-08" title="February 8th, 2022">{ post.Duration_time }</time></p>
+								<a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{ blogPagePostProps.Writer }</a>
+								<p class="text-base text-gray-500 dark:text-gray-400">{ blogPagePostProps.WriterRole }</p>
+								<p class="text-base text-gray-500 dark:text-gray-400"><time pubdate="" datetime="2022-02-08" title="February 8th, 2022">{ blogPagePostProps.Duration_time }</time></p>
 							</div>
 						</div>
 					</address>
-					<h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{ post.Title }</h1>
+					<h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{ blogPagePostProps.Title }</h1>
 				</header>
 				<p class="lead">
-					{ post.Content }
+					{ blogPagePostProps.Content }
 				</p>
-				<img src={ post.Image } alt={ post.ImageAlt }>
+				<img src={ blogPagePostProps.Image } alt={ blogPagePostProps.ImageAlt }/>
 				<section class="not-format">
 					<div class="flex justify-between items-center mb-6">
 						<h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (20)</h2>

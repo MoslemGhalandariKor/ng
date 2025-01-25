@@ -18,7 +18,12 @@ type UserInfoProps struct {
 	IsLoggedIn bool
 }
 
-func Layout(contents templ.Component, userInfoProps UserInfoProps, alerts []components.AlertProps) templ.Component {
+type LayoutProps struct {
+	UserInfoProps UserInfoProps
+	Alerts        []components.AlertProps
+}
+
+func Layout(contents templ.Component, layoutProps LayoutProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -43,11 +48,11 @@ func Layout(contents templ.Component, userInfoProps UserInfoProps, alerts []comp
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = Navbar(userInfoProps).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Navbar(layoutProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Alert(alerts).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Alert(layoutProps.Alerts).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

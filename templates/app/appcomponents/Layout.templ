@@ -10,7 +10,12 @@ type UserInfoProps struct {
 	IsLoggedIn bool
 }
 
-templ Layout(contents templ.Component, userInfoProps UserInfoProps, alerts []components.AlertProps) {
+type LayoutProps struct {
+	UserInfoProps UserInfoProps
+	Alerts        []components.AlertProps
+}
+
+templ Layout(contents templ.Component, layoutProps LayoutProps) {
 	<!DOCTYPE html>
 	<html lang="en" class="h-full bg-gray-50">
 		<head>
@@ -24,13 +29,12 @@ templ Layout(contents templ.Component, userInfoProps UserInfoProps, alerts []com
 			<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
 		</head>
 		<body class="h-full">
-			@Navbar(userInfoProps)
-			@components.Alert(alerts)
+			@Navbar(layoutProps)
+			@components.Alert(layoutProps.Alerts)
 			@contents
 			@Footer()
 			<script src="../../../static/js/flowbite/flowbite.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-		
 		</body>
 	</html>
 }

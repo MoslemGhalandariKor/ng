@@ -7,7 +7,7 @@ import (
 	"nextgen/pkg/web/app"
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard"
-	"nextgen/pkg/web/dashboard/middleware"
+	"nextgen/pkg/web/middleware"
 	"nextgen/pkg/web/dashboard/team"
 )
 

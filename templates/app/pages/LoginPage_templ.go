@@ -8,12 +8,9 @@ package pages
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import (
-	"nextgen/templates/app/appcomponents"
-	"nextgen/templates/components"
-)
+import "nextgen/templates/app/appcomponents"
 
-func LoginPage(userInfoProps appcomponents.UserInfoProps, alerts []components.AlertProps) templ.Component {
+func LoginPage(layoutProps appcomponents.LayoutProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -34,7 +31,7 @@ func LoginPage(userInfoProps appcomponents.UserInfoProps, alerts []components.Al
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = appcomponents.Layout(LoginContents(), userInfoProps, alerts).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = appcomponents.Layout(LoginContents(), layoutProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

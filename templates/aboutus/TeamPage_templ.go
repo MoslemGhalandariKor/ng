@@ -8,12 +8,26 @@ package aboutus
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import (
-	"nextgen/templates/app/appcomponents"
-	"nextgen/templates/components"
-)
+import "nextgen/templates/app/appcomponents"
 
-func TeamPage(userInfoProps appcomponents.UserInfoProps, posts []TeamInfoProps, alerts []components.AlertProps) templ.Component {
+type TeamInfoProps struct {
+	Name       string
+	Role       string
+	Task       string
+	Picture    string
+	PictureAlt string
+	Linkdin    string
+	Github     string
+	Facebook   string
+	X          string
+}
+
+type TeamPageProps struct {
+	TeamInfoProps []TeamInfoProps
+	LayoutProps   appcomponents.LayoutProps
+}
+
+func TeamPage(teamPageProps TeamPageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -34,7 +48,7 @@ func TeamPage(userInfoProps appcomponents.UserInfoProps, posts []TeamInfoProps, 
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = appcomponents.Layout(TeamContent(posts), userInfoProps, alerts).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = appcomponents.Layout(TeamPageContent(teamPageProps), teamPageProps.LayoutProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -42,19 +56,7 @@ func TeamPage(userInfoProps appcomponents.UserInfoProps, posts []TeamInfoProps, 
 	})
 }
 
-type TeamInfoProps struct {
-	Name       string
-	Role       string
-	Task       string
-	Picture    string
-	PictureAlt string
-	Linkdin    string
-	Github     string
-	Facebook   string
-	X          string
-}
-
-func TeamContent(posts []TeamInfoProps) templ.Component {
+func TeamPageContent(teamPageProps TeamPageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -79,8 +81,8 @@ func TeamContent(posts []TeamInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, post := range posts {
-			templ_7745c5c3_Err = TeamInfo(post).Render(ctx, templ_7745c5c3_Buffer)
+		for _, teamInfoProps := range teamPageProps.TeamInfoProps {
+			templ_7745c5c3_Err = TeamInfo(teamInfoProps).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -93,7 +95,7 @@ func TeamContent(posts []TeamInfoProps) templ.Component {
 	})
 }
 
-func TeamInfo(post TeamInfoProps) templ.Component {
+func TeamInfo(teamInfoProps TeamInfoProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -119,9 +121,9 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
-		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(post.Picture)
+		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(teamInfoProps.Picture)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 43, Col: 89}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 45, Col: 98}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -132,9 +134,9 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(post.PictureAlt)
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(teamInfoProps.PictureAlt)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 43, Col: 113}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 45, Col: 131}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -145,9 +147,9 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
-		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(post.Name)
+		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(teamInfoProps.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 47, Col: 27}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 49, Col: 36}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -158,9 +160,9 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
-		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(post.Role)
+		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(teamInfoProps.Role)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 49, Col: 61}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 51, Col: 70}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -171,9 +173,9 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(post.Task)
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(teamInfoProps.Task)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 50, Col: 79}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/aboutus/TeamPage.templ`, Line: 52, Col: 88}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -183,7 +185,7 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var9 templ.SafeURL = templ.URL(post.Linkdin)
+		var templ_7745c5c3_Var9 templ.SafeURL = templ.URL(teamInfoProps.Linkdin)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var9)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -192,7 +194,7 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var10 templ.SafeURL = templ.URL(post.Github)
+		var templ_7745c5c3_Var10 templ.SafeURL = templ.URL(teamInfoProps.Github)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var10)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -201,7 +203,7 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var11 templ.SafeURL = templ.URL(post.Facebook)
+		var templ_7745c5c3_Var11 templ.SafeURL = templ.URL(teamInfoProps.Facebook)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var11)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -210,7 +212,7 @@ func TeamInfo(post TeamInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var12 templ.SafeURL = templ.URL(post.X)
+		var templ_7745c5c3_Var12 templ.SafeURL = templ.URL(teamInfoProps.X)
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var12)))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

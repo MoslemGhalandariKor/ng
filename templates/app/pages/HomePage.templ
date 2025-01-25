@@ -1,27 +1,42 @@
 package pages
 
-import (
-	"nextgen/templates/app/appcomponents"
-	"nextgen/templates/components"
-)
+import "nextgen/templates/app/appcomponents"
 
-type HomePageComponents struct {
-	posts1 []FeaturedAppsprops
-	posts2 []FeaturedAppsprops
+type IntroLandingprops struct {
+	Title   string
+	Text    string
+	Link    string
+	Picture string
 }
 
-templ HomePage(userInfoProps appcomponents.UserInfoProps, posts1 []IntroLandingprops, posts2 []FeaturedAppsprops, alerts []components.AlertProps) {
-	@appcomponents.Layout(HomeContent(posts1, posts2), userInfoProps, alerts)
+type FeaturedAppsprops struct {
+	Title string
+	Intro string
+	Link  string
 }
 
-templ HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) {
+type HomePageContentProps struct {
+	IntroLanding []IntroLandingprops
+	FeaturedApps []FeaturedAppsprops
+}
+
+type HomePageProps struct {
+	HomePageContent HomePageContentProps
+	LayoutProps     appcomponents.LayoutProps
+}
+
+templ HomePage(homePageProps HomePageProps) {
+	@appcomponents.Layout(HomePageContent(homePageProps), homePageProps.LayoutProps)
+}
+
+templ HomePageContent(homePageProps HomePageProps) {
 	<div>
 		<div>
 			<section class="bg-gray-100 dark:bg-gray-900 relative p-20 dark:text-white">
 				<div class="flex relative w-90% ">
 					<div class="pr-20 pl-64 text-left relative">
-						for _, post1 := range posts1 {
-							@IntroLanding(post1)
+						for _, introLanding := range homePageProps.HomePageContent.IntroLanding {
+							@IntroLanding(introLanding)
 						}
 					</div>
 					<div class=" w-96 bg-white dark:bg-gray-700 rounded-lg">
@@ -29,8 +44,8 @@ templ HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) {
 							<p>Featured apps</p>
 						</div>
 						<ul>
-							for _, post2 := range posts2 {
-								@FeaturedApps(post2)
+							for _, featuredApp := range homePageProps.HomePageContent.FeaturedApps {
+								@FeaturedApps(featuredApp)
 							}
 						</ul>
 						<div class=" mt-2 p-4 border-t-4 text-center">
@@ -101,41 +116,28 @@ templ HomeContent(posts1 []IntroLandingprops, posts2 []FeaturedAppsprops) {
 	</div>
 }
 
-type IntroLandingprops struct {
-	Title   string
-	Text    string
-	Link    string
-	Picture string
-}
-
-templ IntroLanding(post1 IntroLandingprops) {
+templ IntroLanding(IntroLanding IntroLandingprops) {
 	<h1 class="text-7xl mb-16 max-w-4xl">
-		{ post1.Title }
+		{ IntroLanding.Title }
 	</h1>
 	<p class="text-2xl max-w-2xl mb-8">
-		{ post1.Text }	
+		{ IntroLanding.Text }
 	</p>
 	<div class="">
-		<a href={ templ.URL(post1.Link) } class="p-4 bg-red-600 max-w-64 text-center text-white rounded-3xl">GET STARTED FOR FREE</a>
+		<a href={ templ.URL(IntroLanding.Link) } class="p-4 bg-red-600 max-w-64 text-center text-white rounded-3xl">GET STARTED FOR FREE</a>
 	</div>
 	<div>
-		<img src={ post1.Picture } alt="" class="max-w-4xl pt-12 bg-white rounded-3xl"/>
+		<img src={ IntroLanding.Picture } alt="" class="max-w-4xl pt-12 bg-white rounded-3xl"/>
 	</div>
 }
 
-type FeaturedAppsprops struct {
-	Title string
-	Intro string
-	Link  string
-}
-
-templ FeaturedApps(post2 FeaturedAppsprops) {
+templ FeaturedApps(FeaturedApps FeaturedAppsprops) {
 	<li class="ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg">
-		<a href={ templ.URL(post2.Link) }>
-			<h1 class="text-2xl">{ post2.Title }</h1>
+		<a href={ templ.URL(FeaturedApps.Link) }>
+			<h1 class="text-2xl">{ FeaturedApps.Title }</h1>
 			<span>
 				<label for=""></label>
-				<small class="text-lg">{ post2.Intro }</small>
+				<small class="text-lg">{ FeaturedApps.Intro }</small>
 			</span>
 		</a>
 		<i class="fa fa-caret-right mt-8"></i>

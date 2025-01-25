@@ -1,6 +1,6 @@
 package appcomponents
 
-templ Navbar(userInfoProps UserInfoProps) {
+templ Navbar(layoutProps LayoutProps) {
 	<nav class="bg-white border-gray-200 dark:bg-gray-900">
 		<div class="flex flex-wrap items-center justify-between  mx-auto p-4">
 			<div class="flex justify-between ">
@@ -130,7 +130,7 @@ templ Navbar(userInfoProps UserInfoProps) {
 			</div>
 			<div>
 				<div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
-					if userInfoProps.IsLoggedIn {
+					if layoutProps.UserInfoProps.IsLoggedIn {
 						<div class="flex items-center ms-3">
 							<div>
 								<button type="button" class="flex text-sm rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
@@ -143,10 +143,10 @@ templ Navbar(userInfoProps UserInfoProps) {
 							<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
 								<div class="px-4 py-3" role="none">
 									<p class="text-sm text-gray-900 dark:text-white" role="none">
-										{ userInfoProps.Username }
+										{ layoutProps.UserInfoProps.Username }
 									</p>
 									<p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-										{ userInfoProps.Email }
+										{ layoutProps.UserInfoProps.Email }
 									</p>
 								</div>
 								<ul class="py-1" role="none">

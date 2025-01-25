@@ -1,17 +1,18 @@
 package dashboard
 
 import (
-	"nextgen/templates/dashboard/dashboardcomponents"
-	"nextgen/templates/dashboard/pages"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
+	"nextgen/templates/dashboard/dashboardcomponents"
+	"nextgen/templates/dashboard/pages"
+
 	"github.com/gin-gonic/gin"
 )
 
 func DashboardPage(c *gin.Context) {
 
 	layoutProp, exists := c.Get("LayoutProp")
-	
+
 	if !exists {
 		layoutProp = dashboardcomponents.LayoutProp{}
 	}
@@ -22,7 +23,7 @@ func DashboardPage(c *gin.Context) {
 
 func ProductPage(c *gin.Context) {
 	layoutProp, exists := c.Get("LayoutProp")
-	
+
 	if !exists {
 		layoutProp = dashboardcomponents.LayoutProp{}
 	}
@@ -32,7 +33,7 @@ func ProductPage(c *gin.Context) {
 
 func CalendarPage(c *gin.Context) {
 	layoutProp, exists := c.Get("LayoutProp")
-	
+
 	if !exists {
 		layoutProp = dashboardcomponents.LayoutProp{}
 	}
@@ -69,7 +70,7 @@ func CalendarPage(c *gin.Context) {
 // 	layoutProp.Alerts = alerts
 
 // 	inputFormProps := []components.InputFloatingProps{CompanyNameInput, CompanyAddressInput, CompanyEmailInput, CompanyPhoneInput}
-	
+
 // 	props := pages.DashboardProps{}
 // 	props.Email = email.(string)
 // 	if userName == nil {

@@ -7,8 +7,8 @@ import (
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/team"
-    "strconv"
 	"sort"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -91,7 +91,6 @@ func EmployeesPage(c *gin.Context) {
 	c.Render(http.StatusOK, r)
 
 }
-
 
 func AddEmployeePage(c *gin.Context) {
 	addEmployeePageProp := team.AddEmployeePageProp{}
