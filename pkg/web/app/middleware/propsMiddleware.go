@@ -2,9 +2,8 @@ package middleware
 
 import (
 	"nextgen/internals/helpers"
-	"nextgen/templates/app/appcomponents"
 	"nextgen/templates/components"
-
+	"nextgen/templates/app/appcomponents"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )

@@ -7,7 +7,8 @@ import (
 	"nextgen/pkg/web/app"
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard"
-	"nextgen/pkg/web/middleware"
+	appmiddleware "nextgen/pkg/web/app/middleware"
+	dashboardmiddleware "nextgen/pkg/web/dashboard/middleware"
 	"nextgen/pkg/web/dashboard/team"
 )
 
@@ -18,6 +19,7 @@ type Routes struct {
 func (r *Routes) webRouter(server *Server) {
 	r.server = server
 	webRoutes := server.Router.Group("")
+	webRoutes.Use(appmiddleware.LayoutPropMiddelware)
 	webRoutes.GET("/home", app.HomePage)
 	webRoutes.GET("/login", app.LoginPage)
 	webRoutes.GET("/singup", app.RegisterPage)
@@ -27,6 +29,7 @@ func (r *Routes) webRouter(server *Server) {
 func (r *Routes) blogRouter(server *Server) {
 	r.server = server
 	blogRoutes := server.Router.Group("blog")
+	blogRoutes.Use(appmiddleware.LayoutPropMiddelware)
 	blogRoutes.GET("/", blog.BlogPage)
 	blogRoutes.GET("/post/:id", blog.PostPage)
 }
@@ -34,6 +37,7 @@ func (r *Routes) blogRouter(server *Server) {
 func (r *Routes) aboutusRouter(server *Server) {
 	r.server = server
 	aboutusRouter := server.Router.Group("aboutus")
+	aboutusRouter.Use(appmiddleware.LayoutPropMiddelware)
 	aboutusRouter.GET("/ourteam", aboutus.TeamPage)
 }
 
@@ -50,7 +54,7 @@ func (r *Routes) dashboardRouter(server *Server) {
 	r.server = server
 	dashboardRoutes := server.Router.Group("dashboard")
 	dashboardRoutes.Use(auth.AuthMiddleware)
-	dashboardRoutes.Use(middleware.LayoutPropMiddelware)
+	dashboardRoutes.Use(dashboardmiddleware.LayoutPropMiddelware)
 	dashboardRoutes.GET("/", dashboard.DashboardPage)
 	dashboardRoutes.GET("/personal-profile", dashboard.PersonalProfilePage)
 	dashboardRoutes.GET("/company-profile", dashboard.CompanyProfilePage)
