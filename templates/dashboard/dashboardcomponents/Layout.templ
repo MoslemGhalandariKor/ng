@@ -33,7 +33,6 @@ templ Layout(contents templ.Component, layoutProp LayoutProp) {
 		<body class="h-full dark:bg-gray-800">
 			<div>
 				<div class="relative z-40">
-					// @Sidebar(contents, userInfoProps)
 					@SidebarNew(contents, layoutProp.UserInfoProps)
 					<div class="absolute z-50 top-0 left-72  justify-between ">
 						@components.Alert(layoutProp.Alerts)
