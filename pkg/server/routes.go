@@ -5,13 +5,14 @@ import (
 	"nextgen/pkg/auth"
 	"nextgen/pkg/web/aboutus"
 	"nextgen/pkg/web/app"
+	appmiddleware "nextgen/pkg/web/app/middleware"
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard"
-	appmiddleware "nextgen/pkg/web/app/middleware"
 	dashboardmiddleware "nextgen/pkg/web/dashboard/middleware"
+	"nextgen/pkg/web/dashboard/product"
 	"nextgen/pkg/web/dashboard/team"
+	
 )
-
 type Routes struct {
 	server *Server
 }
@@ -23,7 +24,7 @@ func (r *Routes) webRouter(server *Server) {
 	webRoutes.GET("/home", app.HomePage)
 	webRoutes.GET("/login", app.LoginPage)
 	webRoutes.GET("/singup", app.RegisterPage)
-	
+
 }
 
 func (r *Routes) blogRouter(server *Server) {
@@ -47,7 +48,7 @@ func (r *Routes) accountsRouter(server *Server) {
 	aboutusRouter.POST("/membership", accounts.AddMembershipHandler)
 	aboutusRouter.POST("/addemployee", team.AddEmployeeHandler)
 	aboutusRouter.POST("/addtask", team.AddTaskHandler)
-	
+
 }
 
 func (r *Routes) dashboardRouter(server *Server) {
@@ -65,12 +66,12 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/employee/tasks", team.TasksPage)
 	dashboardRoutes.GET("/employee/add-task", team.AddTaskPage)
 	dashboardRoutes.POST("/employee/delete-task/:id", team.DeleteTaskHandler)
-	dashboardRoutes.GET("/productpage", dashboard.ProductPage)
+	dashboardRoutes.GET("/productpage", product.ProductPage)
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
 	dashboardRoutes.GET("/loyalty", dashboard.LoyaltyPage)
 	dashboardRoutes.GET("/campaign", dashboard.CampaignPage)
 	dashboardRoutes.GET("/settings", dashboard.SettingsPage)
-
+	dashboardRoutes.GET("/shop", product.ShopPage)
 
 }
 
