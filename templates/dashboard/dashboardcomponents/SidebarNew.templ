@@ -70,7 +70,8 @@ templ SidebarNew(contents templ.Component, userInfoProps UserInfoProps) {
 	<aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
 		<div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
 			<div class="flex h-16 shrink-0 items-center">
-				<img class="h-8 w-auto" src="../../../static/images/nextgen.png" alt="Your Company"/>
+				<img class="h-12 w-auto" src={ userInfoProps.CompanyLogo } alt="Your Company"/>
+				<h3 class="font-medium pl-2 text-gray-900 dark:text-white"> { userInfoProps.CompanyName} </h3>
 			</div>
 			<ul class="space-y-2 font-medium">
 				<li>

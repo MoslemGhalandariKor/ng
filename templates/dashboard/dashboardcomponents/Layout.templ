@@ -2,18 +2,19 @@ package dashboardcomponents
 
 import "nextgen/templates/components"
 
-
 type UserInfoProps struct {
-	FirstName  string
-	LastName   string
-	Username   string
-	Email      string
-	IsLoggedIn bool
+	FirstName   string
+	LastName    string
+	Username    string
+	Email       string
+	IsLoggedIn  bool
+	CompanyLogo string
+	CompanyName string
 }
 
-type LayoutProp struct{
-	UserInfoProps   UserInfoProps
-	Alerts          []components.AlertProps
+type LayoutProp struct {
+	UserInfoProps UserInfoProps
+	Alerts        []components.AlertProps
 }
 
 templ Layout(contents templ.Component, layoutProp LayoutProp) {
@@ -36,7 +37,6 @@ templ Layout(contents templ.Component, layoutProp LayoutProp) {
 					@SidebarNew(contents, layoutProp.UserInfoProps)
 					<div class="absolute z-50 top-0 left-72  justify-between ">
 						@components.Alert(layoutProp.Alerts)
-						
 					</div>
 				</div>
 			</div>

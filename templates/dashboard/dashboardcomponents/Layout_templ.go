@@ -11,11 +11,13 @@ import templruntime "github.com/a-h/templ/runtime"
 import "nextgen/templates/components"
 
 type UserInfoProps struct {
-	FirstName  string
-	LastName   string
-	Username   string
-	Email      string
-	IsLoggedIn bool
+	FirstName   string
+	LastName    string
+	Username    string
+	Email       string
+	IsLoggedIn  bool
+	CompanyLogo string
+	CompanyName string
 }
 
 type LayoutProp struct {

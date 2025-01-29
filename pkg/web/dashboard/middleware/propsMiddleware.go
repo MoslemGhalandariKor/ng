@@ -4,6 +4,7 @@ import (
 	"nextgen/internals/helpers"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
@@ -22,6 +23,8 @@ func LayoutPropMiddelware(c *gin.Context) {
 	} else {
 		userInfoProps.IsLoggedIn = false
 	}
+	userInfoProps.CompanyLogo = "../static/images/zh-video-poster-paul (1).png"
+	userInfoProps.CompanyName = "Your Company Name"
 	layoutProp.UserInfoProps = userInfoProps
 
 	alerts, err := helpers.GetAlerts(c)
