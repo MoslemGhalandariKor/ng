@@ -7,7 +7,7 @@ CREATE TABLE N_LOY_TXN (
     MODIFICATION_NUM     NUMBER DEFAULT 0, -- Modification count
     CONFLICT_ID          VARCHAR2(15 CHAR), -- Conflict resolution ID
     TXN_NUM              VARCHAR2(50 CHAR) UNIQUE, -- Unique transaction number
-    MEMBER_ID            VARCHAR2(15 CHAR) NOT NULL, -- FK to N_LOY_MEMBERS
+    MEMBER_ID            VARCHAR2(15 CHAR) NOT NULL, -- FK to N_LOY_MEMBER
     PROGRAM_ID           VARCHAR2(15 CHAR) NOT NULL, -- FK to N_LOY_PROGRAM
     TXN_TYPE_CD          VARCHAR2(30 CHAR) NOT NULL, -- Transaction type code (e.g., "Accrual", "Redemption")
     TXN_DATE             TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date of the transaction

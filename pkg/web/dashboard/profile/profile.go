@@ -96,7 +96,7 @@ func CompanyProfilePage(c *gin.Context) {
 	profilePageHeaderProp := make([]profile.ProfilePageHeaderProp, 0)
 
 	for key, value := range ProfilePageHeaderProps {
-		if key == "PersonalProfile" {
+		if key == "CompanyProfile" {
 			value.Class = currentHeaderElementClass
 		} else {
 			value.Class = headerElementsClass

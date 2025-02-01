@@ -26,6 +26,7 @@ type ProfilePageHeaderProp struct {
 	Class string
 }
 
+
 type ProfilePageProps struct {
 	ProfilePageHeaderProp   []ProfilePageHeaderProp
 	LayoutProp           dashboardcomponents.LayoutProp
@@ -33,11 +34,12 @@ type ProfilePageProps struct {
 }
 
 templ PersonalProfile(profilePageProps ProfilePageProps) {
-	@dashboardcomponents.Layout(PersonalProfilePageContent(profilePageProps.ProfilePageInfoProps), profilePageProps.LayoutProp)
-	@ProfilePageHeader(profilePageProps.ProfilePageHeaderProp)
+	@dashboardcomponents.Layout(PersonalProfilePageContent(profilePageProps.ProfilePageInfoProps, profilePageProps.ProfilePageHeaderProp), profilePageProps.LayoutProp)
 }
 
-templ PersonalProfilePageContent(user ProfilePageInfoProps) {
+templ PersonalProfilePageContent(user ProfilePageInfoProps, profilePageHeaderProps []ProfilePageHeaderProp) {
+	@ProfilePageHeader(profilePageHeaderProps)
+
 	<div class="mt-2">
 		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center ">
 			<form class="p-12 m-4 w-full bg-gray-200 rounded-2xl">
@@ -203,12 +205,12 @@ templ PersonalProfilePageContent(user ProfilePageInfoProps) {
 }
 
 templ CompanyProfile(profilePageProps ProfilePageProps) {
-	@dashboardcomponents.Layout(CompanyProfilePageContent(profilePageProps.ProfilePageInfoProps), profilePageProps.LayoutProp)
-	@ProfilePageHeader(profilePageProps.ProfilePageHeaderProp)
+	@dashboardcomponents.Layout(CompanyProfilePageContent(profilePageProps.ProfilePageInfoProps, profilePageProps.ProfilePageHeaderProp), profilePageProps.LayoutProp)
 }
 
-templ CompanyProfilePageContent(user ProfilePageInfoProps) {
-	
+templ CompanyProfilePageContent(user ProfilePageInfoProps, profilePageHeaderProps []ProfilePageHeaderProp ) {
+	@ProfilePageHeader(profilePageHeaderProps)
+
 	<div class="mt-2">
 		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center ">
 			<form class="p-12 m-4 w-full bg-gray-200 rounded-2xl">
