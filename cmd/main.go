@@ -3,24 +3,40 @@ package main
 import (
 	"log"
 	"nextgen/internals/db/pg"
+	"nextgen/internals/db/ora"
+	"nextgen/internals/config"
 	"nextgen/pkg/accounts"
 	"nextgen/pkg/auth"
 	"nextgen/pkg/server"
 	"nextgen/pkg/web/aboutus"
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard/team"
-
-	"github.com/spf13/viper"
+	"fmt"
 )
 
 func init() {
-	viper.SetConfigFile("config.yaml")
-	if err := viper.ReadInConfig(); err != nil {
-		log.Fatalf("Error reading config file, %s", err)
+	oraCfg, err := config.LoadOracleConfig()
+	if err != nil {
+		log.Fatalf("Failed to load oracle database configuration: %v", err)
+	}
+	oraDsn := fmt.Sprintf(`user="%s" password="%s" connectString="%s" libDir="%s"`,
+		oraCfg.OracleUser, oraCfg.OraclePassword, oraCfg.OracleConnectString, oraCfg.OracleInstantClientPath)
+	fmt.Println(oraDsn)
+	// Initialize the Oracle database connection pool
+	if err := ora.Initialize(oraDsn, oraCfg.OracleMaxOpenConns, oraCfg.OracleMaxIdleConns); err != nil {
+		log.Fatalf("Oracle database initialization failed: %v", err)
 	}
 
-	pg.ConnectDatabase()
-	pg.Initialize()
+	pgCfg, err := config.LoadPostgresConfig()
+	if err != nil {
+		log.Fatalf("Failed to lead postgres database configration: %v", err)
+	}
+	pgDsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=%s",
+		pgCfg.PostgresHost, pgCfg.PostgresPort, pgCfg.PostgresUser, pgCfg.PostgresPassword, pgCfg.PostgresDbName, pgCfg.PostgresSslMode)
+
+	if err := pg.Initialize(pgDsn, pgCfg.PostgresMaxOpenConns, pgCfg.PostgresMaxIdleConns); err != nil {
+		log.Fatalf("Postgres database initialization failed: %v", err)
+	}
 
 }
 

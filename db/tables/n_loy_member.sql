@@ -1,9 +1,9 @@
 CREATE TABLE N_LOY_MEMBER (
     ROW_ID                 VARCHAR2(15 CHAR) NOT NULL, -- Primary key, Siebel-style ROW_ID
     CREATED                TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CREATED_BY             VARCHAR2(400), -- Creation by
+    CREATED_BY             VARCHAR2(400), -- User who created the record
     LAST_UPD               TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Last update timestamp
-    LAST_UPD_BY            VARCHAR2(400), -- Updated by
+    LAST_UPD_BY            VARCHAR2(400), -- User who last updated the record
     MODIFICATION_NUM       NUMBER DEFAULT 0, -- Modification count for record tracking
     CONFLICT_ID            VARCHAR2(15 CHAR), -- Conflict resolution ID
     PARTY_ID               VARCHAR2(15 CHAR), -- Foreign key to N_PARTY

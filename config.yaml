@@ -1,10 +1,16 @@
-pgdatabase:
-  host: "localhost"
-  port: 5432
-  user: "postgres"
-  password: "mysecretpassword"
-  dbname: "postgres"
-  sslmode: "disable"
+oracle_user: sadmin
+oracle_password: pass123
+oracle_connect_string: localhost:1521/nextgendb
+oracle_instant_client_path: /Users/moslem/Downloads/instantclient_23_3
+oracle_max_open_conns: 10
+oracle_max_idle_conns: 5
+
+postgres_host: "localhost"
+postgres_port: 5432
+postgres_user: "postgres"
+postgres_password: "mysecretpassword"
+postgres_dbname: "postgres"
+postgres_sslmode: "disable"
 
 dev:
   port: 8080
