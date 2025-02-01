@@ -28,7 +28,7 @@ var TeamPageHeaderProps = map[string]*team.TeamPageHeaderProp{
 		Class: ""},
 	"AddTasksPage": &team.TeamPageHeaderProp{
 		Label: "Add Tasks",
-		Url:   "/dashboard/employee/add-tasks",
+		Url:   "/dashboard/employee/add-task",
 		Class: ""},
 }
 

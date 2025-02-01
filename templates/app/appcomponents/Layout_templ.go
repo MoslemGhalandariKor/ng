@@ -8,18 +8,13 @@ package appcomponents
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "nextgen/templates/components"
-
-type UserInfoProps struct {
-	FirstName  string
-	LastName   string
-	Username   string
-	Email      string
-	IsLoggedIn bool
-}
+import (
+	"nextgen/templates/components"
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
 
 type LayoutProps struct {
-	UserInfoProps UserInfoProps
+	UserInfoProps dashboardcomponents.UserInfoProps
 	Alerts        []components.AlertProps
 }
 

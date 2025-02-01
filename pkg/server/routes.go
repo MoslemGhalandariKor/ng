@@ -10,9 +10,10 @@ import (
 	"nextgen/pkg/web/dashboard"
 	dashboardmiddleware "nextgen/pkg/web/dashboard/middleware"
 	"nextgen/pkg/web/dashboard/product"
+	"nextgen/pkg/web/dashboard/profile"
 	"nextgen/pkg/web/dashboard/team"
-	
 )
+
 type Routes struct {
 	server *Server
 }
@@ -57,9 +58,8 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.Use(auth.AuthMiddleware)
 	dashboardRoutes.Use(dashboardmiddleware.LayoutPropMiddelware)
 	dashboardRoutes.GET("/", dashboard.DashboardPage)
-	dashboardRoutes.GET("/personal-profile", dashboard.PersonalProfilePage)
-	dashboardRoutes.GET("/company-profile", dashboard.CompanyProfilePage)
-	dashboardRoutes.GET("/profile", dashboard.PersonalProfilePage)
+	dashboardRoutes.GET("/personal-profile", profile.PersonalProfilePage)
+	dashboardRoutes.GET("/company-profile", profile.CompanyProfilePage)
 	dashboardRoutes.GET("/employee/employees", team.EmployeesPage)
 	dashboardRoutes.GET("/employee/add-employee", team.AddEmployeePage)
 	dashboardRoutes.POST("/employee/delete-employee/:id", team.DeleteEmployeeHandler)
