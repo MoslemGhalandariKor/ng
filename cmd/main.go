@@ -12,6 +12,7 @@ import (
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard/team"
 	"fmt"
+	"time"
 )
 
 func init() {
@@ -41,7 +42,10 @@ func init() {
 }
 
 func main() {
-
+	startTime := time.Now()
+	ora.CallProcedure()
+	elapsedTime := time.Since(startTime)
+	fmt.Printf("Execution Time: %s\n", elapsedTime)
 	// Create a new DB connection
 	err := pg.GDB.AutoMigrate(auth.User{}, blog.BlogPost{}, aboutus.TeamInfo{}, accounts.Memberships{}, team.Employee{}, team.Task{})
 	if err != nil {

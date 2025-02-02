@@ -1,6 +1,7 @@
 package ora
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
@@ -88,4 +89,25 @@ func Initialize(dsn string, maxOpenConns, maxIdleConns int) error {
 func LogConnectionPoolStats() {
     stats := OraDB.Stats()
     log.Printf("Open connections: %d, Idle connections: %d", stats.OpenConnections, stats.Idle)
+}
+
+func CallProcedure(){
+	ctx := context.Background()
+
+	var p_response_code int
+	var p_response_desc string
+	q := `BEGIN PRC_TEST(:1, :2, :3, :4); END;`
+	_, err := OraDB.ExecContext(ctx,
+					           q,
+						       "param",
+							   "param",
+							   sql.Out{Dest: &p_response_code},
+							   sql.Out{Dest: &p_response_desc},
+								)
+    if err !=nil{
+		log.Fatalf("Failed to execute procedure: %v", err)
+	}
+	fmt.Printf("Mapped Output P_RESPONSE_CODE: %d\n", p_response_code)
+	fmt.Printf("Mapped Output P_RESPONSE_DESC: %s\n", p_response_desc)
+
 }
