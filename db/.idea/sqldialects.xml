@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/functions/FNC_GENERATE_ROW_ID.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/functions/fnc_format_uuid.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/functions/fnc_to_base36.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/sequences/seq_loy_row_id.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_acrl/trg_n_loy_acrl_insert.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_acrl/trg_n_loy_acrl_update.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_member/trg_n_loy_member_insert_created_by.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_member/trg_n_loy_member_update_last_upd.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_rdm/trg_n_loy_rdm_insert.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_rdm/trg_n_loy_rdm_update.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_txn/trg_n_loy_txn_insert.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/n_loy_txn/trg_n_loy_txn_update.sql" dialect="Oracle" />
+  </component>
+</project>

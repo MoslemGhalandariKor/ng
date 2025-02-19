@@ -96,7 +96,12 @@ func CallProcedure(){
 
 	var p_response_code int
 	var p_response_desc string
-	q := `BEGIN PRC_TEST(:1, :2, :3, :4); END;`
+
+	q := `BEGIN 
+		    PRC_TEST(:1, :2, :3, :4); 
+		  END;`
+
+
 	_, err := OraDB.ExecContext(ctx,
 					           q,
 						       "param",
@@ -104,6 +109,7 @@ func CallProcedure(){
 							   sql.Out{Dest: &p_response_code},
 							   sql.Out{Dest: &p_response_desc},
 								)
+								
     if err !=nil{
 		log.Fatalf("Failed to execute procedure: %v", err)
 	}

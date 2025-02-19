@@ -1,4 +1,4 @@
-# signup 
+# d
 
 <procedure id="example-procedure">
     <step>
@@ -16,13 +16,3 @@ Some text.
 
 ### Subchapter
 
-Some more text.
-
-```sql
-
-CREATE TABLE TBL_USERS(
-   NAME TEXT,
-   LASTNAME TEXT,
-)
-
-```

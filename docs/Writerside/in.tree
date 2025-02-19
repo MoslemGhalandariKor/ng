@@ -6,6 +6,9 @@
                  name="Instance Name"
                  start-page="starter.md">
 
+    <toc-element topic="b.md"/>
+    <toc-element topic="c.md"/>
+    <toc-element topic="d.md"/>
     <toc-element topic="starter.md"/>
     <toc-element topic="signup.md"/>
 </instance-profile>

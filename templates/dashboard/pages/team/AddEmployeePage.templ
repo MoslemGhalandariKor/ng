@@ -39,18 +39,23 @@ templ AddEmployeePageForm(addEmployeePageFormProps AddEmployeePageFormProps) {
 			<div class="p-12 m-4 bg-gray-200 dark:bg-gray-200 rounded-2xl">
 				<div class="space-y-7  m-2 pl-4  bg-gray-200 rounded-lg justify-center">
 					<div class=" grid gap-4 sm:grid-cols-2 sm:gap-6 ">
+
 						for _, i := range addEmployeePageFormProps.InputsProps {
 							@components.InputForUser(i)
 						}
+					
 						for _, prop := range addEmployeePageFormProps.InputSelectProps {
 							@components.InputSelectForUser(prop)
 						}
+						<div>
 						for _, prop := range addEmployeePageFormProps.DatepickerForUserProps {
 							@components.DatepickerForUser(prop)
-						}
+						}	
+						</div>
 						for _, prop := range addEmployeePageFormProps.InputFileForUserProp {
 							@components.InputFileForUser(prop)
 						}
+
 					</div>
 				</div>
 			</div>

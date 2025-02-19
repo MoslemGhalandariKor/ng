@@ -1,4 +1,4 @@
-CREATE TABLE N_PARTNER (
+CREATE TABLE N_LOY_PARTNER (
     ROW_ID              VARCHAR2(15 CHAR) NOT NULL, -- Primary Key
     CREATED             TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Creation timestamp
     LAST_UPD            TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Last update timestamp

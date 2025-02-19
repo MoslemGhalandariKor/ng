@@ -131,11 +131,19 @@ func AddEmployeePageForm(addEmployeePageFormProps AddEmployeePageFormProps) temp
 				return templ_7745c5c3_Err
 			}
 		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		for _, prop := range addEmployeePageFormProps.DatepickerForUserProps {
 			templ_7745c5c3_Err = components.DatepickerForUser(prop).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
 		}
 		for _, prop := range addEmployeePageFormProps.InputFileForUserProp {
 			templ_7745c5c3_Err = components.InputFileForUser(prop).Render(ctx, templ_7745c5c3_Buffer)
