@@ -1,32 +1,30 @@
 package main
 
 import (
-	"nextgen/internals/db/pg"
-	"nextgen/internals/db/ora"
+	"fmt"
+	"log"
 	"nextgen/internals/config"
+	"nextgen/internals/db/pg"
 	"nextgen/pkg/accounts"
 	"nextgen/pkg/auth"
 	"nextgen/pkg/server"
 	"nextgen/pkg/web/aboutus"
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard/team"
-	"fmt"
-	"time"
-	"log"
 )
 
 func init() {
-	oraCfg, err := config.LoadOracleConfig()
-	if err != nil {
-		log.Fatalf("Failed to load oracle database configuration: %v", err)
-	}
-	oraDsn := fmt.Sprintf(`user="%s" password="%s" connectString="%s" libDir="%s"`,
-		oraCfg.OracleUser, oraCfg.OraclePassword, oraCfg.OracleConnectString, oraCfg.OracleInstantClientPath)
-	fmt.Println(oraDsn)
-	// Initialize the Oracle database connection pool
-	if err := ora.Initialize(oraDsn, oraCfg.OracleMaxOpenConns, oraCfg.OracleMaxIdleConns); err != nil {
-		log.Fatalf("Oracle database initialization failed: %v", err)
-	}
+	// oraCfg, err := config.LoadOracleConfig()
+	// if err != nil {
+	// 	log.Fatalf("Failed to load oracle database configuration: %v", err)
+	// }
+	// oraDsn := fmt.Sprintf(`user="%s" password="%s" connectString="%s" libDir="%s"`,
+	// 	oraCfg.OracleUser, oraCfg.OraclePassword, oraCfg.OracleConnectString, oraCfg.OracleInstantClientPath)
+	// fmt.Println(oraDsn)
+	// // Initialize the Oracle database connection pool
+	// if err := ora.Initialize(oraDsn, oraCfg.OracleMaxOpenConns, oraCfg.OracleMaxIdleConns); err != nil {
+	// 	log.Fatalf("Oracle database initialization failed: %v", err)
+	// }
 
 	pgCfg, err := config.LoadPostgresConfig()
 	if err != nil {
@@ -42,10 +40,10 @@ func init() {
 }
 
 func main() {
-	startTime := time.Now()
-	ora.CallProcedure()
-	elapsedTime := time.Since(startTime)
-	fmt.Printf("Execution Time: %s\n", elapsedTime)
+	// startTime := time.Now()
+	// ora.CallProcedure()
+	// elapsedTime := time.Since(startTime)
+	// fmt.Printf("Execution Time: %s\n", elapsedTime)
 	// Create a new DB connection
 	err := pg.GDB.AutoMigrate(auth.User{}, blog.BlogPost{}, aboutus.TeamInfo{}, accounts.Memberships{}, team.Employee{}, team.Task{})
 	if err != nil {
