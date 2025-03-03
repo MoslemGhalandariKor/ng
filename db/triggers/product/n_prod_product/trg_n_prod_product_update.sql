@@ -1,0 +1,8 @@
+CREATE OR REPLACE TRIGGER TRG_N_PROD_PRODUCT_UPDATE
+BEFORE UPDATE ON N_PROD_PRODUCT
+FOR EACH ROW
+BEGIN
+    :NEW.LAST_UPD := CURRENT_TIMESTAMP;
+    :NEW.LAST_UPD_BY := USER; -- Automatically populates with the database user executing the update
+END;
+/

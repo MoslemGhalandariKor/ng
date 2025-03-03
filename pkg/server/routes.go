@@ -3,6 +3,7 @@ package server
 import (
 	"nextgen/pkg/accounts"
 	"nextgen/pkg/auth"
+	product_management "nextgen/pkg/product-management"
 	"nextgen/pkg/web/aboutus"
 	"nextgen/pkg/web/app"
 	appmiddleware "nextgen/pkg/web/app/middleware"
@@ -58,16 +59,20 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.Use(auth.AuthMiddleware)
 	dashboardRoutes.Use(dashboardmiddleware.LayoutPropMiddelware)
 	dashboardRoutes.GET("/", dashboard.DashboardPage)
+	// Profile Routes
 	dashboardRoutes.GET("/personal-profile", profile.PersonalProfilePage)
 	dashboardRoutes.GET("/company-profile", profile.CompanyProfilePage)
+	// Employees Routes
 	dashboardRoutes.GET("/employee/employees", team.EmployeesPage)
 	dashboardRoutes.GET("/employee/add-employee", team.AddEmployeePage)
 	dashboardRoutes.POST("/employee/delete-employee/:id", team.DeleteEmployeeHandler)
 	dashboardRoutes.GET("/employee/tasks", team.TasksPage)
 	dashboardRoutes.GET("/employee/add-task", team.AddTaskPage)
 	dashboardRoutes.POST("/employee/delete-task/:id", team.DeleteTaskHandler)
-	dashboardRoutes.GET("/productpage", product.ProductPage)
-	dashboardRoutes.GET("/productpage/add-product", product.AddProductPage)
+	// Products Routes
+	dashboardRoutes.GET("/products", product.ProductsPage)
+	dashboardRoutes.GET("/add-product", product.AddProductPage)
+	dashboardRoutes.POST("/add-product", product_management.AddProductHandler)
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
 	dashboardRoutes.GET("/loyalty", dashboard.LoyaltyPage)
 	dashboardRoutes.GET("/campaign", dashboard.CampaignPage)
