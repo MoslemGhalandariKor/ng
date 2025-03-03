@@ -2,10 +2,13 @@ package product
 
 import (
 	// "fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
+
+	"github.com/gin-gonic/gin"
+
 	// product_management "nextgen/pkg/product-management"
+	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/product"
 	"sort"
@@ -94,8 +97,11 @@ func AddProductPage(c *gin.Context) {
 		return productPageHeaderProps[i].Url > productPageHeaderProps[j].Url
 	})
 
-	addProductPageProps.AddProductPageContentsProp.ProductPageHeaderProps = productPageHeaderProps
+	addProductPageProps.AddProductPageContentsProps.ProductPageHeaderProps = productPageHeaderProps
 
+	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
+	
+	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))
 	c.Render(http.StatusOK, r)
 

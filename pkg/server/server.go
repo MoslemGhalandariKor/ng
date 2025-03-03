@@ -19,7 +19,7 @@ func NewServer() *Server {
 	store := cookie.NewStore([]byte("secret"))
 	router.Use(sessions.Sessions("session", store))
 
-	router.LoadHTMLGlob("templates/**/**/**/*")
+	router.LoadHTMLGlob("templates/**/**/**/**/*")
 	router.Static("static", "static")
 	ginHtmlRenderer := router.HTMLRender
 	router.HTMLRender = &gintemplrenderer.HTMLTemplRenderer{FallbackHtmlRenderer: ginHtmlRenderer}
