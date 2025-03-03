@@ -1,21 +1,22 @@
--- Create Product Table
-CREATE TABLE n_prod_product (
-    row_id VARCHAR2(15) PRIMARY KEY, -- Unique identifier for the product
-    CREATED                TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CREATED_BY             VARCHAR2(400)    , -- User who created the record
-    LAST_UPD               TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Last update timestamp
-    LAST_UPD_BY            VARCHAR2(400), -- User who last updated the record
-    name VARCHAR2(255) NOT NULL, -- Name of the product
-    DESCRIPTION VARCHAR2(4000), -- Detailed description of the product
-    sku VARCHAR2(50), -- Unique Stock Keeping Unit
-    barcode VARCHAR2(50) UNIQUE, -- Unique barcode identifier
-    category_id VARCHAR2(15), -- Reference to product category
-    brand_id VARCHAR2(15), -- Reference to product brand
-    weight DECIMAL(10,2), -- Product weight in kg
-    dimensions VARCHAR2(50), -- Product dimensions (LxWxH)
-    status VARCHAR2(20) CHECK (status IN ('Active', 'Inactive', 'Discontinued')), -- Status of the product
-    CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES n_prod_category(row_id),
-    CONSTRAINT fk_product_brand FOREIGN KEY (brand_id) REFERENCES n_prod_brand(row_id)
+create table N_PROD_PRODUCT
+(
+  row_id          VARCHAR2(15) not null,
+  created         TIMESTAMP(6) default CURRENT_TIMESTAMP,
+  created_by      VARCHAR2(400),
+  last_upd        TIMESTAMP(6) default CURRENT_TIMESTAMP,
+  last_upd_by     VARCHAR2(400),
+  name            VARCHAR2(400) not null,
+  description     VARCHAR2(4000),
+  PRICE           NUMBER,
+  PROD_SIZE       VARCHAR2(40),
+  PROD_LENGTH     NUMBER,
+  PROD_MATERIAL   VARCHAR2(400),
+  PROD_COLOR      VARCHAR2(400),
+  IMAGE_SRC       VARCHAR2(400),
+  barcode         VARCHAR2(50) UNIQUE,
+  category_id     VARCHAR2(15),
+  brand_id        VARCHAR2(15),
+  status          VARCHAR2(20) DEFAULT 'Active'
 );
 ALTER TABLE N_PROD_PRODUCT DROP COLUMN sku;
 ALTER TABLE N_PROD_PRODUCT ADD sku VARCHAR2(50);
@@ -26,3 +27,5 @@ SELECT * FROM n_prod_product;
 
 
 SELECT FNC_GENERATE_ROW_ID() FROM DUAL;
+
+SELECT * FROM TBL_TEST

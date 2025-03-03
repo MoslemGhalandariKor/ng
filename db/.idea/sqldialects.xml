@@ -10,14 +10,14 @@
     <file url="file://$PROJECT_DIR$/tables/product/TBL_PRODUCT_MANAGEMENT_LOG.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/tables/product/n_prod_category.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/tables/product/n_prod_product.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/N_LOY_TXN/trg_n_loy_txn_insert.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/triggers/N_LOY_TXN/trg_n_loy_txn_update.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/n_loy_acrl/trg_n_loy_acrl_insert.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/n_loy_acrl/trg_n_loy_acrl_update.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/n_loy_member/trg_n_loy_member_insert_created_by.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/n_loy_member/trg_n_loy_member_update_last_upd.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/n_loy_rdm/trg_n_loy_rdm_insert.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/n_loy_rdm/trg_n_loy_rdm_update.sql" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/triggers/n_loy_txn/trg_n_loy_txn_insert.sql" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/triggers/n_loy_txn/trg_n_loy_txn_update.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/product/n_prod_product/trg_n_prod_product_insert.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/triggers/product/n_prod_product/trg_n_prod_product_update.sql" dialect="Oracle" />
     <file url="PROJECT" dialect="Oracle" />
