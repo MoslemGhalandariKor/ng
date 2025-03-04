@@ -1,7 +1,48 @@
 package product 
 
-templ AddCategory(){
- 
- 
+import (
+        "nextgen/templates/components"
+    	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+type AddCategoryPageProps struct {
+	LayoutProp       dashboardcomponents.LayoutProp
+	ProductPageHeaderProps []ProductPageHeaderProp
+    FormLayoutSimpleProp    components.FormLayoutSimpleProp
+}
+
+
+templ AddCategoryPage(addcategoryPageProps AddCategoryPageProps) {
+	@dashboardcomponents.Layout(AddCategoryPageContent(addcategoryPageProps), addcategoryPageProps.LayoutProp)
+}
+
+
+templ AddCategoryPageContent(addcategoryPageProps AddCategoryPageProps){
+    @ProductPageHeader(addcategoryPageProps.ProductPageHeaderProps)
+    @components.FormLayoutSimple(AddCategoryPageForm(), addcategoryPageProps.FormLayoutSimpleProp)
+}
+templ AddCategoryPageForm(){
+     <div class="mt-2">
+            <div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
+                <div class=" m-2 w-full bg-gray-200 rounded-2xl">
+                    <div class="space-y-12 p-4">
+                       <div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="headcategory" class="block mb-2 text-sm font-medium text-gray-900 ">Add Head Category</label>
+                            <input type="text" name="headcategory" id="headcategory"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Type head category" required="" />
+                        </div>
+                        <div>
+                            <label for="subcategory" class="block mb-2 text-sm font-medium text-gray-900 ">Add Sub Category</label>
+                            <input type="text" name="subcategory" id="subcategory"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Type sub category" required="" />
+                        </div>
+                       </div>
     
+                    </div>
+                </div>
+            </div>
+        </div>
 }

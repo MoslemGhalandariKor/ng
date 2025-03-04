@@ -23,6 +23,14 @@ var ProductPageHeaderProps = map[string]*product.ProductPageHeaderProp{
 		Label: "Add Product",
 		Url:   "/dashboard/add-product",
 		Class: ""},
+		"CategoryPage": &product.ProductPageHeaderProp{
+		Label: "Category",
+		Url:   "/dashboard/category",
+		Class: ""},
+		"AddCategoryPage": &product.ProductPageHeaderProp{
+		Label: "Add Category",
+		Url:   "/dashboard/add-category",
+		Class: ""},
 }
 var headerElementsClass = "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
 var currentHeaderElementClass = "inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-gray-200 dark:border-gray-200"
@@ -100,8 +108,8 @@ func AddProductPage(c *gin.Context) {
 	addProductPageProps.AddProductPageContentsProps.ProductPageHeaderProps = productPageHeaderProps
 
 	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
-	
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
+	
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))
 	c.Render(http.StatusOK, r)
 

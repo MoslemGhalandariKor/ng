@@ -3,26 +3,27 @@ package product
 import (
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
-	"nextgen/pkg/web/dashboard/product"
+	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
+	"nextgen/templates/dashboard/pages/product"
 	"sort"
 
 	"github.com/gin-gonic/gin"
 )
 
-func Category(c *gin.Context) {
-	categoryPagePros := product.CategoryPagePros{}
+func CategoryPage(c *gin.Context) {
+	categoryPageProps := product.CategoryPageProps{}
 	layoutProp, exists := c.Get("LayoutProp")
 
 	if !exists {
 		layoutProp = dashboardcomponents.LayoutProp{}
 	}
 
-	categoryPagePros.LayoutProp = layoutProp.(dashboardcomponents.LayoutProp)
+	categoryPageProps.LayoutProp = layoutProp.(dashboardcomponents.LayoutProp)
 
 	productPageHeaderProps := make([]product.ProductPageHeaderProp, 0)
 	for key, value := range ProductPageHeaderProps {
-		if key == "ProductsPage" {
+		if key == "CategoryPage" {
 			value.Class = currentHeaderElementClass
 		} else {
 			value.Class = headerElementsClass
@@ -32,8 +33,40 @@ func Category(c *gin.Context) {
 	sort.Slice(productPageHeaderProps, func(i, j int) bool {
 		return productPageHeaderProps[i].Url > productPageHeaderProps[j].Url
 	})
+	categoryPageProps.ProductPageHeaderProps = productPageHeaderProps
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.CategoryPage(categoryPageProps))
+	c.Render(http.StatusOK, r)
 
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.CategoryPage(categoryPagePros))
+}
+
+func AddCategoryPage(c *gin.Context) {
+	addCategoryPageProps := product.AddCategoryPageProps{}
+	layoutProp, exists := c.Get("LayoutProp")
+
+	if !exists {
+		layoutProp = dashboardcomponents.LayoutProp{}
+	}
+
+	addCategoryPageProps.LayoutProp = layoutProp.(dashboardcomponents.LayoutProp)
+
+	addCategoryPageHeaderProps := make([]product.ProductPageHeaderProp, 0)
+	for key, value := range ProductPageHeaderProps {
+		if key == "AddCategoryPage" {
+			value.Class = currentHeaderElementClass
+		} else {
+			value.Class = headerElementsClass
+		}
+		addCategoryPageHeaderProps = append(addCategoryPageHeaderProps, *value)
+	}
+	sort.Slice(addCategoryPageHeaderProps, func(i, j int) bool {
+		return addCategoryPageHeaderProps[i].Url > addCategoryPageHeaderProps[j].Url
+	})
+	addCategoryPageProps.ProductPageHeaderProps = addCategoryPageHeaderProps
+
+	addCategoryFormProp := components.FormLayoutSimpleProp{Action: "#", Method: "POST"}
+	addCategoryPageProps.FormLayoutSimpleProp = addCategoryFormProp
+	
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddCategoryPage(addCategoryPageProps))
 	c.Render(http.StatusOK, r)
 
 }
