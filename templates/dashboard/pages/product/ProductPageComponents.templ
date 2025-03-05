@@ -1,23 +1,18 @@
 package product
 
 type ProductListProps struct {
-	ProductName string
-	ProductImg  string
-	Category    string
-	Stock       string
-	DaySales    string
-	MonthSales  string
-	Rating      string
-	TotalSales  string
-	Revenue     string
-	Brand       string
-	Price       string
-	ItemWeight  string
-	ItemLenght  string
-	ItemBreadht string
-	ItemWidth   string
-	Description string
-	IdUrl       string
+	RowID        string    `json:"row_id"`        // VARCHAR2(15)
+	Name         string    `json:"name"`          // VARCHAR2(400)
+	Description  string    `json:"description"`   // VARCHAR2(4000)
+	Price        string   `json:"price"`         // NUMBER
+	ProdSize     string    `json:"prod_size"`     // VARCHAR2(40)
+	ProdLength   float64   `json:"prod_length"`   // NUMBER
+	ProdMaterial string    `json:"prod_material"` // VARCHAR2(400)
+	ProdColor    string    `json:"prod_color"`    // VARCHAR2(400)
+	ImageSrc     string    `json:"image_src"`     // VARCHAR2(400)
+	Barcode      string    `json:"barcode"`       // VARCHAR2(50)
+	Category     string    `json:"category_id"`   // VARCHAR2(15)
+	Brand        string    `json:"brand_id"`      // VARCHAR2(15)
 }
 
 templ ProductList(productListProps ProductListProps) {
@@ -35,20 +30,12 @@ templ ProductList(productListProps ProductListProps) {
 			</div>
 		</th>
 		<td class="px-4 py-3">
-			<span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">Desktop PC</span>
+			<span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{ productListProps.Category }</span>
 		</td>
 		<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 			<div class="flex items-center">
 				<div class="h-4 w-4 rounded-full inline-block mr-2 bg-gray-700"></div>
-				{ productListProps.Stock }
-			</div>
-		</td>
-		<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-			<div class="flex items-center">
-				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-400 mr-2" aria-hidden="true">
-					<path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"></path>
-				</svg>
-				{ productListProps.TotalSales }
+				Stock
 			</div>
 		</td>
 		<td class="px-4 py-3">{ productListProps.Price }</td>
@@ -504,7 +491,7 @@ templ UpdateProduct() {
 templ PreviewProduct(productListProps ProductListProps) {
 	<div id="drawer-read-product-advanced" class="overflow-y-auto fixed top-0 left-0 z-40 p-4 w-full max-w-lg h-5/6 bg-white transition-transform -translate-x-full dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-label" aria-hidden="true">
 		<div>
-			<h4 id="read-drawer-label" class="mb-1.5 leading-none text-xl font-semibold text-gray-900 dark:text-white">{ productListProps.ProductName }</h4>
+			<h4 id="read-drawer-label" class="mb-1.5 leading-none text-xl font-semibold text-gray-900 dark:text-white">{ productListProps.Name }</h4>
 			<h5 class="mb-5 text-xl font-bold text-gray-900 dark:text-white">{ productListProps.Price } </h5>
 		</div>
 		<button type="button" data-drawer-dismiss="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
