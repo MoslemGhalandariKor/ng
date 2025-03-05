@@ -1,23 +1,18 @@
 package product
 
 type ProductListProps struct {
-	ProductName string
-	ProductImg  string
-	Category    string
-	Stock       string
-	DaySales    string
-	MonthSales  string
-	Rating      string
-	TotalSales  string
-	Revenue     string
-	Brand       string
-	Price       string
-	ItemWeight  string
-	ItemLenght  string
-	ItemBreadht string
-	ItemWidth   string
-	Description string
-	IdUrl       string
+	RowID        string    `json:"row_id"`        // VARCHAR2(15)
+	Name         string    `json:"name"`          // VARCHAR2(400)
+	Description  string    `json:"description"`   // VARCHAR2(4000)
+	Price        float64   `json:"price"`         // NUMBER
+	ProdSize     string    `json:"prod_size"`     // VARCHAR2(40)
+	ProdLength   float64   `json:"prod_length"`   // NUMBER
+	ProdMaterial string    `json:"prod_material"` // VARCHAR2(400)
+	ProdColor    string    `json:"prod_color"`    // VARCHAR2(400)
+	ImageSrc     string    `json:"image_src"`     // VARCHAR2(400)
+	Barcode      string    `json:"barcode"`       // VARCHAR2(50)
+	Category     string    `json:"category_id"`   // VARCHAR2(15)
+	Brand        string    `json:"brand_id"`      // VARCHAR2(15)
 }
 
 templ ProductList(productListProps ProductListProps) {

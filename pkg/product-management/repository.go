@@ -8,7 +8,7 @@ import (
 	"nextgen/internals/db/ora"
 )
 
-func PrcAddProduct(product Product) (ResponseCode int, ResponseDesc string) {
+func AddProduct(product Product) (ResponseCode int, ResponseDesc string) {
 	ctx := context.Background()
 
 	var p_response_code int
@@ -37,35 +37,50 @@ func PrcAddProduct(product Product) (ResponseCode int, ResponseDesc string) {
 	return p_response_code, p_response_desc
 }
 
-func PrcGetAllProducts() (products []Product, err error) {
+func GetAllProducts() (products []Product, err error) {
+
+	q := "SELECT * FROM N_PROD_PRODUCT"
+
+	rows, err := ora.OraDB.Query(q)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var product Product
+		if err := rows.Scan(&product.RowID, &product.Name, &product.Price, &product.Name); err != nil {
+			log.Fatal(err)
+		}
+		products = append(products, product)
+	}
+	return products, nil
+}
+
+func AddCategory(category Category) (ResponseCode int, ResponseDesc string) {
+	ctx := context.Background()
+
 	var p_response_code int
 	var p_response_desc string
-	var cursor *sql.Rows
-	var prods []Product
-	ctx := context.Background()
-	query := "BEGIN PKG_PRODUCT_MANAGEMENT.PRC_GET_ALL_PRODUCTS(:1, :2, :3); END;"
 
-	_, err = ora.OraDB.ExecContext(ctx,
-		query,
-		sql.Out{Dest: &cursor},
+	q := `BEGIN 
+		    PKG_PRODUCT_MANAGEMENT.PRC_ADD_CATEGORY(:1, :2, :3, :4, :5); 
+		  END;`
+
+	_, err := ora.OraDB.ExecContext(ctx,
+		q,
+		category.Name,
+		category.Description,
+		category.ParentId,
 		sql.Out{Dest: &p_response_code},
-		sql.Out{Dest: &p_response_desc})
-
-	defer cursor.Close()
+		sql.Out{Dest: &p_response_desc},
+	)
 
 	if err != nil {
-		log.Println("Error executing stored procedure:", err)
-		return nil, err
+		log.Fatalf("Failed to execute procedure: %v", err)
 	}
-	for cursor.Next() {
-		var product Product
-		err = cursor.Scan(&product.Name, product.Description)
-		if err != nil {
-			log.Println("Error scanning product:", err)
-			return nil, err
-		}
-		prods = append(prods, product)
-	}
+	fmt.Printf("Mapped Output P_RESPONSE_CODE: %d\n", p_response_code)
+	fmt.Printf("Mapped Output P_RESPONSE_DESC: %s\n", p_response_desc)
 
-	return prods, nil
+	return p_response_code, p_response_desc
 }

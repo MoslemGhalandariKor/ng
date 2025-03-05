@@ -23,11 +23,11 @@ var ProductPageHeaderProps = map[string]*product.ProductPageHeaderProp{
 		Label: "Add Product",
 		Url:   "/dashboard/add-product",
 		Class: ""},
-		"CategoryPage": &product.ProductPageHeaderProp{
-		Label: "Category",
-		Url:   "/dashboard/category",
+	"CategoryPage": &product.ProductPageHeaderProp{
+		Label: "Categories",
+		Url:   "/dashboard/categories",
 		Class: ""},
-		"AddCategoryPage": &product.ProductPageHeaderProp{
+	"AddCategoryPage": &product.ProductPageHeaderProp{
 		Label: "Add Category",
 		Url:   "/dashboard/add-category",
 		Class: ""},
@@ -109,7 +109,7 @@ func AddProductPage(c *gin.Context) {
 
 	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
-	
+
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))
 	c.Render(http.StatusOK, r)
 

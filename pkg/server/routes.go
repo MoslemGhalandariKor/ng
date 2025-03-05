@@ -73,7 +73,7 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/products", product.ProductsPage)
 	dashboardRoutes.GET("/add-product", product.AddProductPage)
 	dashboardRoutes.POST("/add-product", product_management.AddProductHandler)
-	dashboardRoutes.GET("/category", product.CategoryPage)
+	dashboardRoutes.GET("/categories", product.CategoryPage)
 	dashboardRoutes.GET("/add-category", product.AddCategoryPage)
 	// Extra Routes
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
