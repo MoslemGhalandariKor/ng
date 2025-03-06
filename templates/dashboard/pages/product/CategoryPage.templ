@@ -1,7 +1,7 @@
 package product
 
 import (
-	
+	"nextgen/pkg/product_management"
 	"nextgen/templates/dashboard/dashboardcomponents"
 )
 
@@ -86,9 +86,7 @@ templ CategoryInfo(category CategoryInfoProps) {
 				<form action={ templ.URL(category.DeleteUrl) } method="POST">
 					<button data-modal-hide="default-modal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Delete</button>
 				</form>
-				// <form action="#" method="POST">
-				// 	<button data-modal-hide="default-modal" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Delete</button>
-				// </form>
+				
 			</a>
 		</td>
 	</tr>
