@@ -23,43 +23,34 @@ templ CategoryPage(categoryPageProps CategoryPageProps) {
 }
 
 templ CategoryPageContent(categoryPageProps CategoryPageProps) {
-	@ProductPageHeader(categoryPageProps.ProductPageHeaderProps)
-	<div class="mt-2">
-		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
-			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
-				<div class="space-y-12 p-4">
-					<div class="mt-8 flow-root">
-						<div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-							<div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-								<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-									<table class="min-w-full divide-y divide-gray-300">
-										<thead class="bg-gray-50">
-											<tr>
-												<th
-													scope="col"
-													class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
-												>
-													Category
-												</th>
-												<th
-													scope="col"
-													class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-												>
-													Description
-												</th>
-												<th
-													scope="col"
-													class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-												>
-													Parent Category
-												</th>
-												<th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-													<span class="sr-only">Action</span>
-												</th>
-											</tr>
-										</thead>
-										<tbody class="divide-y divide-gray-200 bg-white">
-											for _, categoryInfo := range categoryPageProps.CategoryInfoProps {
+@ProductPageHeader(categoryPageProps.ProductPageHeaderProps)
+<div class="mt-2">
+    <div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
+        <div class=" m-2 w-full bg-gray-200 rounded-2xl">
+            <div class="space-y-12 p-4">
+                <div class="mt-8 flow-root">
+                    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                            <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-300">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                Head Category</th>
+                                            <th scope="col"
+                                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                Sub Category</th>
+                                            <th scope="col"
+                                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                Description</th>
+                                            <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                                                <span class="sr-only">Action</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                        for _, categoryInfo := range categoryPageProps.categoryInfoProps {
 												@CategoryInfo(categoryInfo)
 											}
 										</tbody>
