@@ -17,3 +17,4 @@ CREATE TABLE n_prod_purchase_order_item (
     CONSTRAINT fk_po_item_product FOREIGN KEY (product_id) REFERENCES n_prod_product(row_id),
     CONSTRAINT fk_po_item_variant FOREIGN KEY (variant_id) REFERENCES n_prod_product_variant(row_id)
 );
+ALTER TABLE n_prod_purchase_order_item DROP CONSTRAINT fk_po_item_order

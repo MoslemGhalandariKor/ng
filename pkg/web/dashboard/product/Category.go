@@ -40,25 +40,14 @@ func CategoryPage(c *gin.Context) {
 
 
 
-	categories, err := product_management.GetAllCategoriesHandler()
+	categories, err := product_management.GetAllCategoriesService()
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	categoryInfo := []product.CategoryInfoProps{}
-	DeleteTaskUrl := "/dashboard/delete-category/"
 
-	for _, category := range categories {
-		
-		categoryInfo = append(categoryInfo, product.CategoryInfoProps{
-			Name:        category.Name,
-			ParentId:    category.ParentId,
-			Description: category.Description,
-			DeleteUrl:   DeleteTaskUrl + category.RowID,
-		})
-	}
 
-	categoryPageProps.CategoryInfoProps = categoryInfo
+	categoryPageProps.Categories = categories
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.CategoryPage(categoryPageProps))
 	c.Render(http.StatusOK, r)
@@ -91,7 +80,8 @@ func AddCategoryPage(c *gin.Context) {
 
 	addCategoryFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-category", Method: "POST"}
 	addCategoryPageProps.FormLayoutSimpleProp = addCategoryFormProp
-
+	categories, _ := product_management.GetAllCategoriesService()
+	addCategoryPageProps.Categories = categories
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddCategoryPage(addCategoryPageProps))
 	c.Render(http.StatusOK, r)
 

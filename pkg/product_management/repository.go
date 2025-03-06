@@ -45,7 +45,7 @@ func AddProduct(product Product) (ResponseCode int, ResponseDesc string) {
 	return p_response_code, p_response_desc
 }
 
-func GetAllProducts() (products []Product, err error) {
+func GetAllProducts() (products []ProductView, err error) {
 
 	q := `
 		SELECT 	P.ROW_ID,
@@ -55,14 +55,15 @@ func GetAllProducts() (products []Product, err error) {
 				P.PROD_LENGTH,
 				P.PROD_MATERIAL,
 				P.PROD_COLOR,
-				P.IMAGE_SRC,
-				
+				P.IMAGE_SRC,				
 				P.BARCODE,
-				P.CATEGORY_ID,
+				C.NAME,
 				P.BRAND_ID,
 				P.STATUS,
 				P.PRICE
-  		FROM 	N_PROD_PRODUCT P	
+  		FROM 	N_PROD_PRODUCT P,
+			    N_PROD_CATEGORY C
+	   WHERE P.CATEGORY_ID = C.ROW_ID	
 `
 
 	rows, err := ora.OraDB.Query(q)
@@ -72,8 +73,8 @@ func GetAllProducts() (products []Product, err error) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var product Product
-		if err := rows.Scan(&product.RowID, &product.Name, &product.Description, &product.ProdSize, &product.ProdLength, &product.ProdMaterial, &product.ProdColor, &product.ImageSrc,  &product.Barcode, &product.CategoryID, &product.BrandID, &product.Status, &product.Price); err != nil {
+		var product ProductView
+		if err := rows.Scan(&product.RowID, &product.Name, &product.Description, &product.ProdSize, &product.ProdLength, &product.ProdMaterial, &product.ProdColor, &product.ImageSrc,  &product.Barcode, &product.CategoryName, &product.BrandName, &product.Status, &product.Price); err != nil {
 			log.Fatal(err)
 		}
 		products = append(products, product)
@@ -135,16 +136,20 @@ func AddCategory(category Category) (ResponseCode int, ResponseDesc string) {
 	return p_response_code, p_response_desc
 }
 
-func GetAllCategories() (categories []Category, err error) {
+func GetAllCategories() (categories []CategoryView, err error) {
 
 	q := `
-		SELECT  	C.ROW_ID,
-      				C.NAME,
-       				C.DESCRIPTION,
-       				C1.NAME 
-  		FROM 		N_PROD_CATEGORY C
-  		LEFT JOIN 	N_PROD_CATEGORY C1
-  		ON C1.ROW_ID = C.PARENT_ID
+SELECT C.ROW_ID,
+       C.NAME,
+       C.DESCRIPTION,
+       C1.NAME AS PARENT_NAME,
+       U.URL || TO_CHAR(C.ROW_ID) AS DELETE_CATEGORY_URL
+FROM N_PROD_CATEGORY C
+JOIN A_URL_CONFIG U
+    ON U.METHODE = 'DELETE_CATEGORY_BY_ID'
+   AND U.METHODE_TYPE = 'DELETE'
+LEFT JOIN N_PROD_CATEGORY C1
+    ON C1.ROW_ID = C.PARENT_ID
 `
 
 	rows, err := ora.OraDB.Query(q)
@@ -154,8 +159,8 @@ func GetAllCategories() (categories []Category, err error) {
 	defer rows.Close()
 
 	for rows.Next() {
-		var category Category
-		if err := rows.Scan(&category.RowID, &category.Name, &category.Description, &category.ParentId); err != nil {
+		var category CategoryView
+		if err := rows.Scan(&category.RowID, &category.Name, &category.Description, &category.ParentCategoryName, &category.DeleteCategoryUrl); err != nil {
 			log.Fatal(err)
 		}
 		categories = append(categories, category)

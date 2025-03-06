@@ -3,7 +3,7 @@ package product
 import "nextgen/pkg/product_management"
 
 
-templ ProductList(product product_management.Product ) {
+templ ProductList(product product_management.ProductView ) {
 	<tr class="border-b dark:border-gray-600 hover:bg-gray-100 ">
 		<td class="p-4 w-4">
 			<div class="flex items-center">
@@ -18,7 +18,7 @@ templ ProductList(product product_management.Product ) {
 			</div>
 		</th>
 		<td class="px-4 py-3">
-			<span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{ product.CategoryID }</span>
+			<span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{ product.CategoryName }</span>
 		</td>
 		<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
 			<div class="flex items-center">
@@ -290,7 +290,7 @@ templ FilterOptions() {
 	</div>
 }
 
-templ UpdateProduct(product product_management.Product) {
+templ UpdateProduct(product product_management.ProductView) {
 	<form action="#" id={ product.RowID } class="fixed top-0 left-0 z-40 w-full h-5/6 max-w-3xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-product-label" aria-hidden="true">
 		<h5 id="drawer-label" class="inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">New Product</h5>
 		<button type="button" data-drawer-dismiss={ product.RowID } aria-controls={ product.RowID } class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
@@ -443,11 +443,11 @@ templ UpdateProduct(product product_management.Product) {
 			<div class="space-y-4 sm:space-y-6">
 				<div>
 					<label for="product-brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-					<input type="text" id="product-brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.BrandID } placeholder="Product Brand" required=""/>
+					<input type="text" id="product-brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.BrandName } placeholder="Product Brand" required=""/>
 				</div>
 				<div>
 					<label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-					<input type="text" id="product-category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.CategoryID } placeholder="Product Category" required=""/>
+					<input type="text" id="product-category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.CategoryName } placeholder="Product Category" required=""/>
 				</div>
 				<div>
 					<label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Length (cm)</label>
@@ -479,7 +479,7 @@ templ UpdateProduct(product product_management.Product) {
 	</form>
 }
 
-templ PreviewProduct(product product_management.Product) {
+templ PreviewProduct(product product_management.ProductView) {
 	<div id={ product.RowID } class="overflow-y-auto fixed top-0 left-0 z-40 p-4 w-full max-w-lg h-5/6 bg-white transition-transform -translate-x-full dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-label" aria-hidden="true">
 		<div>
 			<h4 id="read-drawer-label" class="mb-1.5 leading-none text-xl font-semibold text-gray-900 dark:text-white">{ product.Name }</h4>
@@ -528,9 +528,9 @@ templ PreviewProduct(product product_management.Product) {
 			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Amount</dt><dd class="text-gray-500 dark:text-gray-400">Amount</dd></div>
 			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">sizes</dt><dd class="text-gray-500 dark:text-gray-400">{product.ProdSize  }</dd></div>
 			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Length  (cm)</dt><dd class="text-gray-500 dark:text-gray-400">{ product.ProdLength }</dd></div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Brand</dt><dd class="text-gray-500 dark:text-gray-400">{ product.BrandID }</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Brand</dt><dd class="text-gray-500 dark:text-gray-400">{ product.BrandName }</dd></div>
 			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Barcode</dt><dd class="text-gray-500 dark:text-gray-400">{ product.Barcode }</dd></div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Category</dt><dd class="text-gray-500 dark:text-gray-400">{ product.CategoryID }</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Category</dt><dd class="text-gray-500 dark:text-gray-400">{ product.CategoryName }</dd></div>
 		</dl>
 		<div class="flex bottom-0 left-0 justify-center pb-4 space-x-4 w-full">
 			<button type="button" class="text-white w-full inline-flex items-center justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">

@@ -10,7 +10,7 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import "nextgen/pkg/product_management"
 
-func FashionAndClothingPage(categoryInfo []product_management.Category) templ.Component {
+func FashionAndClothingPage(categoryInfo []product_management.CategoryView) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -31,21 +31,34 @@ func FashionAndClothingPage(categoryInfo []product_management.Category) templ.Co
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12\"><div class=\"relative p-4 w-full  h-full md:h-auto\"><!-- Modal content --><div class=\"relative p-4 bg-white rounded-lg shadow  sm:p-5\"><!-- Modal header --><div class=\"flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 \"><h3 class=\"text-lg font-semibold text-gray-900\">Add Product</h3></div><!-- Modal body --><div class=\" gap-4 mb-4 sm:grid-cols-2 space-y-4\"><div class=\"grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4\"><label for=\"category\" class=\"block mb-2 text-sm font-medium text-gray-900 \">Product Category :</label><div><select id=\"category_id\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 \"><option selected=\"\">Select category</option> ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12\"><div class=\"relative p-4 w-full  h-full md:h-auto\"><!-- Modal content --><div class=\"relative p-4 bg-white rounded-lg shadow  sm:p-5\"><!-- Modal header --><div class=\"flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 \"><h3 class=\"text-lg font-semibold text-gray-900\">Add Product</h3></div><!-- Modal body --><div class=\" gap-4 mb-4 sm:grid-cols-2 space-y-4\"><div class=\"grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4\"><label for=\"category_id\" class=\"block mb-2 text-sm font-medium text-gray-900 \">Product Category :</label><div><select id=\"category_id\" name=\"category_id\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 \"><option selected=\"\">Select category</option> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, category := range categoryInfo {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<option selected=\"\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<option value=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
-			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(category.Name)
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(category.RowID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcategorycomponents/FashionAndClothingPage.templ`, Line: 31, Col: 47}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcategorycomponents/FashionAndClothingPage.templ`, Line: 32, Col: 42}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(category.Name)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcategorycomponents/FashionAndClothingPage.templ`, Line: 32, Col: 60}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

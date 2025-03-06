@@ -33,13 +33,6 @@ func AddProductHandler(c *gin.Context) {
 
 }
 
-func GetAllProductsHandler() (products []Product, err error) {
-
-	products, err = GetAllProducts()
-
-	return products, err
-
-}
 
 func DeleteProductHandler(c *gin.Context) {
 	idParam := c.Param("id")
@@ -50,11 +43,8 @@ func DeleteProductHandler(c *gin.Context) {
 
 
 func AddCategoryHandler(c *gin.Context) {
-	category := Category{
-		Name:        c.PostForm("name"),
-		Description: c.PostForm("description"),
-		ParentId:    c.PostForm("parent_id"),
-	}
+	var category Category
+	c.Bind(&category)
 
 	responseCode, responseDesc := AddCategory(category)
 
@@ -65,15 +55,6 @@ func AddCategoryHandler(c *gin.Context) {
 	}
 
 }
-
-func GetAllCategoriesHandler() (categories []Category, err error) {
-
-	categories, err = GetAllCategories()
-
-	return categories, err
-
-}
-
 func DeleteCategoryHandler(c *gin.Context) {
 	idParam := c.Param("id")
 

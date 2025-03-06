@@ -3,8 +3,8 @@ create table N_PROD_PRODUCT
   row_id        VARCHAR2(15) not null,
   created       TIMESTAMP(6),
   created_by    VARCHAR2(400),
-  lastupd       TIMESTAMP(6),
-  lastupd_by    VARCHAR2(400),
+  last_upd       TIMESTAMP(6),
+  last_upd_by    VARCHAR2(400),
   name          VARCHAR2(400),
   description   VARCHAR2(4000),
   price         NUMBER,
@@ -22,7 +22,7 @@ create table N_PROD_PRODUCT
 ALTER TABLE N_PROD_PRODUCT DROP COLUMN sku;
 ALTER TABLE N_PROD_PRODUCT ADD sku VARCHAR2(50);
 ALTER TABLE n_prod_product MODIFY (description VARCHAR2(4000));
-
+DROP TABLE N_PROD_PRODUCT
 ALTER TABLE n_prod_product DROP CONSTRAINT fk_product_brand;
 SELECT * FROM n_prod_product;
 

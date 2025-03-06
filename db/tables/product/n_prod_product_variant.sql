@@ -13,3 +13,5 @@ CREATE TABLE n_prod_product_variant (
     stock INTEGER DEFAULT 0, -- Available stock for the variant
     CONSTRAINT fk_variant_product FOREIGN KEY (product_id) REFERENCES n_prod_product(row_id)
 );
+
+ALTER TABLE n_prod_product_variant DROP CONSTRAINT fk_variant_product

@@ -23,7 +23,7 @@ type AddProductPageProps struct {
 type AddProductPageContentsProps struct {
 	ProductPageHeaderProps []ProductPageHeaderProp
 	FormLayoutSimpleProp   components.FormLayoutSimpleProp
-	CategoryInfo           []product_management.Category
+	CategoryInfo           []product_management.CategoryView
 }
 
 func AddProductPage(addProductPageProps AddProductPageProps) templ.Component {

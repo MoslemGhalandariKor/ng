@@ -61,7 +61,7 @@ func ProductsPage(c *gin.Context) {
 	})
 	productPageProps.ProductPageHeaderProps = productPageHeaderProps
 	
-	products, _ := product_management.GetAllProductsHandler()
+	products, _ := product_management.GetAllProductsService()
 	productPageProps.Products = products
 
 
@@ -98,7 +98,7 @@ func AddProductPage(c *gin.Context) {
 	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
 
-	categoryName, _ := product_management.GetAllCategoriesHandler()
+	categoryName, _ := product_management.GetAllCategoriesService()
 	addProductPageProps.AddProductPageContentsProps.CategoryInfo = categoryName
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))

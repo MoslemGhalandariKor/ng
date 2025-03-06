@@ -6,7 +6,7 @@ import (
 )
 type ProductPageProps struct {
 	LayoutProp       dashboardcomponents.LayoutProp
-	Products         []product_management.Product
+	Products         []product_management.ProductView
 	ProductPageHeaderProps []ProductPageHeaderProp
 }
 
@@ -68,9 +68,14 @@ templ ProductPageContent(productPageProps ProductPageProps) {
 					</section>
 					<!-- End block -->
 					<!-- drawer component -->
-					@UpdateProduct(productPageProps.Products[0])
-					<!-- Preview Drawer -->
-					@PreviewProduct(productPageProps.Products[0])
+					for _, product := range productPageProps.Products {
+						@UpdateProduct(product)
+					}
+					for _, product := range productPageProps.Products {
+						@PreviewProduct(product)
+					}
+
+
 					<!-- Delete Modal -->
 					<div id="delete-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
 						<div class="relative w-full h-auto max-w-md max-h-full">
