@@ -1,10 +1,12 @@
 package product
 
-import "nextgen/templates/dashboard/dashboardcomponents"
-
+import (
+    "nextgen/templates/dashboard/dashboardcomponents"
+    "nextgen/pkg/product_management"
+)
 type ProductPageProps struct {
 	LayoutProp       dashboardcomponents.LayoutProp
-	ProductListProps []ProductListProps
+	Products         []product_management.Product
 	ProductPageHeaderProps []ProductPageHeaderProp
 }
 
@@ -55,7 +57,7 @@ templ ProductPageContent(productPageProps ProductPageProps) {
 											</tr>
 										</thead>
 										<tbody>
-											for _, product := range productPageProps.ProductListProps {
+											for _, product := range productPageProps.Products {
 												@ProductList(product)
 											}
 										</tbody>
@@ -66,9 +68,9 @@ templ ProductPageContent(productPageProps ProductPageProps) {
 					</section>
 					<!-- End block -->
 					<!-- drawer component -->
-					@UpdateProduct()
+					@UpdateProduct(productPageProps.Products[0])
 					<!-- Preview Drawer -->
-					@PreviewProduct(productPageProps.ProductListProps[0])
+					@PreviewProduct(productPageProps.Products[0])
 					<!-- Delete Modal -->
 					<div id="delete-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
 						<div class="relative w-full h-auto max-w-md max-h-full">

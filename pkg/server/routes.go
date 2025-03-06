@@ -3,7 +3,7 @@ package server
 import (
 	"nextgen/pkg/accounts"
 	"nextgen/pkg/auth"
-	product_management "nextgen/pkg/product-management"
+	product_management "nextgen/pkg/product_management"
 	"nextgen/pkg/web/aboutus"
 	"nextgen/pkg/web/app"
 	appmiddleware "nextgen/pkg/web/app/middleware"
@@ -75,6 +75,9 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.POST("/add-product", product_management.AddProductHandler)
 	dashboardRoutes.GET("/categories", product.CategoryPage)
 	dashboardRoutes.GET("/add-category", product.AddCategoryPage)
+	dashboardRoutes.POST("/add-category", product_management.AddCategoryHandler)
+	dashboardRoutes.POST("/delete-category/:id", product_management.DeleteCategoryHandler)
+
 	// Extra Routes
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
 	dashboardRoutes.GET("/loyalty", dashboard.LoyaltyPage)

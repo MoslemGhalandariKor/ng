@@ -11,9 +11,10 @@ type Product struct {
 	LastUpdBy    string    `json:"last_upd_by"`   // VARCHAR2(400)
 	Name         string    `json:"name"`          // VARCHAR2(400)
 	Description  string    `json:"description"`   // VARCHAR2(4000)
-	Price        float64   `json:"price"`         // NUMBER
+	Price        string    `json:"price"`          // NUMBER
+	Amount       string    `json:"amount"`          // NUMBER
 	ProdSize     string    `json:"prod_size"`     // VARCHAR2(40)
-	ProdLength   float64   `json:"prod_length"`   // NUMBER
+	ProdLength   string    `json:"prod_length"`    // NUMBER
 	ProdMaterial string    `json:"prod_material"` // VARCHAR2(400)
 	ProdColor    string    `json:"prod_color"`    // VARCHAR2(400)
 	ImageSrc     string    `json:"image_src"`     // VARCHAR2(400)

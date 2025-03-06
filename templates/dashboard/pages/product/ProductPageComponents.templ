@@ -1,54 +1,42 @@
 package product
 
-type ProductListProps struct {
-	RowID        string    `json:"row_id"`        // VARCHAR2(15)
-	Name         string    `json:"name"`          // VARCHAR2(400)
-	Description  string    `json:"description"`   // VARCHAR2(4000)
-	Price        string   `json:"price"`         // NUMBER
-	ProdSize     string    `json:"prod_size"`     // VARCHAR2(40)
-	ProdLength   float64   `json:"prod_length"`   // NUMBER
-	ProdMaterial string    `json:"prod_material"` // VARCHAR2(400)
-	ProdColor    string    `json:"prod_color"`    // VARCHAR2(400)
-	ImageSrc     string    `json:"image_src"`     // VARCHAR2(400)
-	Barcode      string    `json:"barcode"`       // VARCHAR2(50)
-	Category     string    `json:"category_id"`   // VARCHAR2(15)
-	Brand        string    `json:"brand_id"`      // VARCHAR2(15)
-}
+import "nextgen/pkg/product_management"
 
-templ ProductList(productListProps ProductListProps) {
-	<tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+
+templ ProductList(product product_management.Product ) {
+	<tr class="border-b dark:border-gray-600 hover:bg-gray-100 ">
 		<td class="p-4 w-4">
 			<div class="flex items-center">
-				<input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+				<input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 "/>
 				<label for="checkbox-table-search-1" class="sr-only">checkbox</label>
 			</div>
 		</td>
-		<th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+		<th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
 			<div class="flex items-center mr-3">
-				<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png" alt="iMac Front Image" class="h-8 w-auto mr-3"/>
-				{ productListProps.Name }
+				<img src={ product.ImageSrc } alt={ product.ImageSrc } class="h-8 w-auto mr-3"/>
+				{ product.Name }
 			</div>
 		</th>
 		<td class="px-4 py-3">
-			<span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{ productListProps.Category }</span>
+			<span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{ product.CategoryID }</span>
 		</td>
-		<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+		<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
 			<div class="flex items-center">
 				<div class="h-4 w-4 rounded-full inline-block mr-2 bg-gray-700"></div>
-				Stock
+				
 			</div>
 		</td>
-		<td class="px-4 py-3">{ productListProps.Price }</td>
-		<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+		<td class="px-4 py-3">{ product.Price }</td>
+		<td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
 			<div class="flex items-center space-x-4">
-				<button type="button" data-drawer-target="drawer-update-product" data-drawer-show="drawer-update-product" aria-controls="drawer-update-product" class="py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+				<button type="button" data-drawer-target={ product.RowID } data-drawer-show={ product.RowID } aria-controls={ product.RowID } class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300   dark:focus:ring-primary-800">
 					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
 						<path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
 						<path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>
 					</svg>
 					Edit
 				</button>
-				<button type="button" data-drawer-target="drawer-read-product-advanced" data-drawer-show="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced" class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+				<button type="button" data-drawer-target={ product.RowID } data-drawer-show={ product.RowID } aria-controls={ product.RowID } class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-100 focus:outline-none bg-blue-700 hover:bg-blue-800 rounded-lg border border-gray-200   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 ">
 					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-2 -ml-0.5">
 						<path d="M12 15a3 3 0 100-6 3 3 0 000 6z"></path>
 						<path fill-rule="evenodd" clip-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z"></path>
@@ -302,10 +290,10 @@ templ FilterOptions() {
 	</div>
 }
 
-templ UpdateProduct() {
-	<form action="#" id="drawer-update-product" class="fixed top-0 left-0 z-40 w-full h-5/6 max-w-3xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-product-label" aria-hidden="true">
+templ UpdateProduct(product product_management.Product) {
+	<form action="#" id={ product.RowID } class="fixed top-0 left-0 z-40 w-full h-5/6 max-w-3xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-product-label" aria-hidden="true">
 		<h5 id="drawer-label" class="inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">New Product</h5>
-		<button type="button" data-drawer-dismiss="drawer-update-product" aria-controls="drawer-update-product" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+		<button type="button" data-drawer-dismiss={ product.RowID } aria-controls={ product.RowID } class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
 			<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
 			</svg>
@@ -315,7 +303,7 @@ templ UpdateProduct() {
 			<div class="space-y-4 sm:col-span-2 sm:space-y-6">
 				<div>
 					<label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
-					<input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="Apple iMac 27“" placeholder="Type product name" required=""/>
+					<input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.Name } placeholder="Type product name" required=""/>
 				</div>
 				<div>
 					<label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
@@ -380,14 +368,14 @@ templ UpdateProduct() {
 								<div class="tooltip-arrow" data-popper-arrow=""></div>
 							</div>
 						</div>
-						<div class="px-4 py-3 bg-white rounded-b-lg dark:bg-gray-800"><textarea id="description" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write product description here" required="">Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US</textarea></div>
+						<div class="px-4 py-3 bg-white rounded-b-lg dark:bg-gray-800"><textarea id="description" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write product description here" required="">{ product.Description }</textarea></div>
 					</div>
 				</div>
 				<div class="mb-4">
 					<span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Images</span>
 					<div class="grid grid-cols-3 gap-4 mb-4">
 						<div class="relative p-2 bg-gray-100 rounded-lg sm:w-36 sm:h-36 dark:bg-gray-700">
-							<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="imac image"/>
+							<img src={ product.ImageSrc } alt={ product.ImageSrc }/>
 							<button type="button" class="absolute text-red-600 dark:text-red-500 hover:text-red-500 dark:hover:text-red-400 bottom-1 left-1">
 								<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
@@ -396,7 +384,7 @@ templ UpdateProduct() {
 							</button>
 						</div>
 						<div class="relative p-2 bg-gray-100 rounded-lg sm:w-36 sm:h-36 dark:bg-gray-700">
-							<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png" alt="imac image"/>
+							<img src={ product.ImageSrc } alt={ product.ImageSrc }/>
 							<button type="button" class="absolute text-red-600 dark:text-red-500 hover:text-red-500 dark:hover:text-red-400 bottom-1 left-1">
 								<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
@@ -405,7 +393,7 @@ templ UpdateProduct() {
 							</button>
 						</div>
 						<div class="relative p-2 bg-gray-100 rounded-lg sm:w-36 sm:h-36 dark:bg-gray-700">
-							<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-back-image.png" alt="imac image"/>
+							<img src={ product.ImageSrc } alt={ product.ImageSrc }/>
 							<button type="button" class="absolute text-red-600 dark:text-red-500 hover:text-red-500 dark:hover:text-red-400 bottom-1 left-1">
 								<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
@@ -414,7 +402,7 @@ templ UpdateProduct() {
 							</button>
 						</div>
 						<div class="relative p-2 bg-gray-100 rounded-lg sm:w-36 sm:h-36 dark:bg-gray-700">
-							<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="imac image"/>
+							<img src={ product.ImageSrc } alt={ product.ImageSrc }/>
 							<button type="button" class="absolute text-red-600 dark:text-red-500 hover:text-red-500 dark:hover:text-red-400 bottom-1 left-1">
 								<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
@@ -455,24 +443,27 @@ templ UpdateProduct() {
 			<div class="space-y-4 sm:space-y-6">
 				<div>
 					<label for="product-brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-					<input type="text" id="product-brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="Apple" placeholder="Product Brand" required=""/>
-				</div>
-				<div><label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label><select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"><option selected="">Electronics</option><option value="TV">TV/Monitors</option><option value="PC">PC</option><option value="GA">Gaming/Console</option><option value="PH">Phones</option></select></div>
-				<div>
-					<label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Weight (kg)</label>
-					<input type="number" name="item-weight" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="12" placeholder="Ex. 12" required=""/>
+					<input type="text" id="product-brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.BrandID } placeholder="Product Brand" required=""/>
 				</div>
 				<div>
-					<label for="length" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Length (cm)</label>
-					<input type="number" name="length" id="lenght" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="105" placeholder="Ex. 105" required=""/>
+					<label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+					<input type="text" id="product-category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.CategoryID } placeholder="Product Category" required=""/>
 				</div>
 				<div>
-					<label for="breadth" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Breadth (cm)</label>
-					<input type="number" name="breadth" id="breadth" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="15" placeholder="Ex. 15" required=""/>
+					<label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Length (cm)</label>
+					<input type="number" name="item-weight" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.ProdLength } placeholder="Ex. 12" required=""/>
 				</div>
 				<div>
-					<label for="width" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Width (cm)</label>
-					<input type="number" name="width" id="width" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="23" placeholder="Ex. 23" required=""/>
+					<label for="barcode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Barcode </label>
+					<input type="text" name="barcode" id="barcode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.Barcode } placeholder="Product. Barcode" required=""/>
+				</div>
+				<div>
+					<label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+					<input type="text" name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.Status } placeholder="active" required=""/>
+				</div>
+				<div>
+					<label for="prod_color" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Color</label>
+					<input type="number" name="prod_color" id="prod_color" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={ product.ProdColor } placeholder="red" required=""/>
 				</div>
 			</div>
 		</div>
@@ -488,13 +479,13 @@ templ UpdateProduct() {
 	</form>
 }
 
-templ PreviewProduct(productListProps ProductListProps) {
-	<div id="drawer-read-product-advanced" class="overflow-y-auto fixed top-0 left-0 z-40 p-4 w-full max-w-lg h-5/6 bg-white transition-transform -translate-x-full dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-label" aria-hidden="true">
+templ PreviewProduct(product product_management.Product) {
+	<div id={ product.RowID } class="overflow-y-auto fixed top-0 left-0 z-40 p-4 w-full max-w-lg h-5/6 bg-white transition-transform -translate-x-full dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-label" aria-hidden="true">
 		<div>
-			<h4 id="read-drawer-label" class="mb-1.5 leading-none text-xl font-semibold text-gray-900 dark:text-white">{ productListProps.Name }</h4>
-			<h5 class="mb-5 text-xl font-bold text-gray-900 dark:text-white">{ productListProps.Price } </h5>
+			<h4 id="read-drawer-label" class="mb-1.5 leading-none text-xl font-semibold text-gray-900 dark:text-white">{ product.Name }</h4>
+			<h5 class="mb-5 text-xl font-bold text-gray-900 dark:text-white"> { product.Price } </h5>
 		</div>
-		<button type="button" data-drawer-dismiss="drawer-read-product-advanced" aria-controls="drawer-read-product-advanced" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+		<button type="button" data-drawer-dismiss={ product.RowID } aria-controls={ product.RowID } class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
 			<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
 			</svg>
@@ -502,37 +493,29 @@ templ PreviewProduct(productListProps ProductListProps) {
 		</button>
 		<div class="grid grid-cols-3 gap-4 mb-4 sm:mb-5">
 			<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
-				<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="iMac Side Image"/>
+				<img src={ product.ImageSrc } alt=""/>
 			</div>
 			<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
-				<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png" alt="iMac Front Image"/>
+				<img src={ product.ImageSrc } alt=""/>
 			</div>
 			<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
-				<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-back-image.png" alt="iMac Back Image"/>
+				<img src={ product.ImageSrc } alt=""/>
 			</div>
 			<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
-				<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="iMac Back Image"/>
+				<img src={ product.ImageSrc } alt=""/>
 			</div>
 			<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
-				<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-back-image.png" alt="iMac Front Image"/>
+				<img src={ product.ImageSrc } alt=""/>
 			</div>
 			<div class="p-2 w-auto bg-gray-100 rounded-lg dark:bg-gray-700">
-				<img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-side-image.png" alt="iMac Side Image"/>
+				<img src={ product.ImageSrc } alt=""/>
 			</div>
 		</div>
-		<dl class="sm:mb-5"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt><dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Standard glass ,3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US.</dd></dl>
+		<dl class="sm:mb-5"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt><dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400"> { product.Description } </dd></dl>
 		<dl class="grid grid-cols-2 gap-4 mb-4">
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Material</dt><dd class="text-gray-500 dark:text-gray-400">{ product.ProdMaterial }</dd></div>
 			<div class="col-span-2 p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 sm:col-span-1 dark:border-gray-600">
-				<dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Shipping</dt>
-				<dd class="flex items-center text-gray-500 dark:text-gray-400">
-					<svg class="w-4 h-4 mr-1.5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-					</svg>
-					United States, Europe
-				</dd>
-			</div>
-			<div class="col-span-2 p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 sm:col-span-1 dark:border-gray-600">
-				<dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Colors</dt>
+				<dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Product Colors</dt>
 				<dd class="flex items-center space-x-2 font-light text-gray-500 dark:text-gray-400">
 					<div class="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full"></div>
 					<div class="flex-shrink-0 w-6 h-6 bg-indigo-400 rounded-full"></div>
@@ -542,22 +525,12 @@ templ PreviewProduct(productListProps ProductListProps) {
 					<div class="flex-shrink-0 w-6 h-6 bg-green-300 rounded-full"></div>
 				</dd>
 			</div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-				<dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Product State</dt>
-				<dd class="text-gray-500 dark:text-gray-400">
-					<span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-						<svg aria-hidden="true" class="mr-1 w-3 h-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-							<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-						</svg>
-						New
-					</span>
-				</dd>
-			</div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Sold by</dt><dd class="text-gray-500 dark:text-gray-400">Flowbite</dd></div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Ships from</dt><dd class="text-gray-500 dark:text-gray-400">Flowbite</dd></div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Brand</dt><dd class="text-gray-500 dark:text-gray-400">Apple</dd></div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Dimensions (cm)</dt><dd class="text-gray-500 dark:text-gray-400">105 x 15 x 23</dd></div>
-			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Item weight</dt><dd class="text-gray-500 dark:text-gray-400">12kg</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Amount</dt><dd class="text-gray-500 dark:text-gray-400">Amount</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">sizes</dt><dd class="text-gray-500 dark:text-gray-400">{product.ProdSize  }</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Length  (cm)</dt><dd class="text-gray-500 dark:text-gray-400">{ product.ProdLength }</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Brand</dt><dd class="text-gray-500 dark:text-gray-400">{ product.BrandID }</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Barcode</dt><dd class="text-gray-500 dark:text-gray-400">{ product.Barcode }</dd></div>
+			<div class="p-3 bg-gray-100 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600"><dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Category</dt><dd class="text-gray-500 dark:text-gray-400">{ product.CategoryID }</dd></div>
 		</dl>
 		<div class="flex bottom-0 left-0 justify-center pb-4 space-x-4 w-full">
 			<button type="button" class="text-white w-full inline-flex items-center justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">

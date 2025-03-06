@@ -4,10 +4,11 @@ import (
 	// "fmt"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
+	"nextgen/pkg/product_management"
 
 	"github.com/gin-gonic/gin"
 
-	// product_management "nextgen/pkg/product-management"
+	// product_management "nextgen/pkg/product_management"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/product"
@@ -58,25 +59,12 @@ func ProductsPage(c *gin.Context) {
 	sort.Slice(productPageHeaderProps, func(i, j int) bool {
 		return productPageHeaderProps[i].Url > productPageHeaderProps[j].Url
 	})
-
-	// productsList := []product.ProductListProps{}
-	// products := []product_management.Product{}
-
-	// products, err := product_management.GetAllProducts()
-
-	// if err != nil {
-	// 	fmt.Println(err)
-	// } else {
-	// 	for _, prod := range products {
-	// 		productsList = append(productsList, product.ProductListProps{
-	// 			ProductName: prod.Name,
-	// 			Description: prod.Description,
-	// 		})
-	// 	}
-	// }
-
 	productPageProps.ProductPageHeaderProps = productPageHeaderProps
-	// productPageProps.ProductListProps = productsList
+	
+	products, _ := product_management.GetAllProductsHandler()
+	productPageProps.Products = products
+
+
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.ProductPage(productPageProps))
 	c.Render(http.StatusOK, r)
 }
@@ -109,6 +97,9 @@ func AddProductPage(c *gin.Context) {
 
 	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
+
+	categoryName, _ := product_management.GetAllCategoriesHandler()
+	addProductPageProps.AddProductPageContentsProps.CategoryInfo = categoryName
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))
 	c.Render(http.StatusOK, r)
