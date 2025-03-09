@@ -1,6 +1,6 @@
 package product
 
-import "nextgen/templates/dashboard/dashboardcomponents"
+// import "nextgen/templates/dashboard/dashboardcomponents"
 
 type ProductPageHeaderProp struct {
 	Url   string
@@ -8,10 +8,10 @@ type ProductPageHeaderProp struct {
 	Class string
 }
 
-type ProductPageProp struct {
-	LayoutProp          dashboardcomponents.LayoutProp
-	ProductPageHeaderProp []ProductPageHeaderProp
-}
+// type ProductPageProp struct {
+// 	LayoutProp          dashboardcomponents.LayoutProp
+// 	ProductPageHeaderProp []ProductPageHeaderProp
+// }
 
 templ ProductPageHeader(props []ProductPageHeaderProp) {
 	<div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">

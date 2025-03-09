@@ -1,0 +1,67 @@
+package warehouse
+
+import (
+	"nextgen/templates/components"
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+type AddWarehousePageProps struct {
+	LayoutProp             dashboardcomponents.LayoutProp
+	WarehouseHeaderPageProps []WarehouseHeaderPageProps
+	FormLayoutSimpleProp   components.FormLayoutSimpleProp
+}
+
+templ AddWarehousePage(addWarehousePageProps AddWarehousePageProps) {
+	@dashboardcomponents.Layout(AddWarehousePageContent(addWarehousePageProps), addWarehousePageProps.LayoutProp)
+}
+
+templ AddWarehousePageContent(addWarehousePageProps AddWarehousePageProps) {
+	@WarehouseHeaderPage(addWarehousePageProps.WarehouseHeaderPageProps)
+	@components.FormLayoutSimple(AddWarehousePageForm(),addWarehousePageProps.FormLayoutSimpleProp)
+}
+
+templ AddWarehousePageForm() {
+	<div class="mt-2">
+		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
+			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
+				<div class="space-y-12 p-4">
+					<div class="grid gap-4 sm:col-span-3 md:gap-6 sm:grid-cols-3">
+						<div>
+							<label for="warehouse_name" class="block mb-2 text-sm font-medium text-gray-900 ">Warehouse Name</label>
+							<input
+								type="text"
+								name="Warehouse Name"
+								id="warehouse_name"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+								placeholder="Type Warehouse Name"
+								required=""
+							/>
+						</div>
+						<div>
+							<label for="warehouse_address" class="block mb-2 text-sm font-medium text-gray-900 ">Warehouse Address</label>
+							<input
+								type="text"
+								name="Warehouse Address"
+								id="warehouse_address"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+								placeholder="Type Warehouse Address"
+								required=""
+							/>
+						</div>
+						<div>
+							<label for="warehouse_manager" class="block mb-2 text-sm font-medium text-gray-900 ">Warehouse Manager</label>
+							<input
+								type="text"
+								name="Warehouse Manager"
+								id="warehouse_manager"
+								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+								placeholder="Type Warehouse Manager"
+								required=""
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}

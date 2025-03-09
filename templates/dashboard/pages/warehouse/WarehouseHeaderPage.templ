@@ -1,0 +1,20 @@
+package warehouse
+
+type WarehouseHeaderPageProps struct {
+	Url   string
+	Label string
+	Class string
+}
+
+
+templ WarehouseHeaderPage(headers []WarehouseHeaderPageProps) {
+	<div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+		<ul class="flex flex-wrap -mb-px">
+			for _, header := range headers {
+				<li class="me-2">
+					<a href={ templ.URL(header.Url) } class={ header.Class }>{ header.Label }</a>
+				</li>
+			}
+		</ul>
+	</div>
+}

@@ -5,9 +5,7 @@ import (
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/pkg/product_management"
-
 	"github.com/gin-gonic/gin"
-
 	// product_management "nextgen/pkg/product_management"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"

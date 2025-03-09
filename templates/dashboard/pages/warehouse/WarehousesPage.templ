@@ -1,0 +1,174 @@
+package warehouse
+
+import "nextgen/templates/dashboard/dashboardcomponents"
+
+type WarehousesPageProps struct {
+	LayoutProp               dashboardcomponents.LayoutProp
+	WarehouseHeaderPageProps []WarehouseHeaderPageProps
+	WarehousesInfoBlock      []WarehousesInfoBlockProps
+}
+
+templ WarehpusesPage(warehousesPageProps WarehousesPageProps) {
+	@dashboardcomponents.Layout(WarehousesPageContent(warehousesPageProps), warehousesPageProps.LayoutProp)
+}
+
+templ WarehousesPageContent(warehousesPageProps WarehousesPageProps) {
+	<!-- Header block -->
+	@WarehouseHeaderPage(warehousesPageProps.WarehouseHeaderPageProps)
+	<!-- Content block -->
+	<div class="mt-2">
+		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
+			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
+				<div class="space-y-12 p-4">
+					<section class="py-10 md:py-12">
+						<div class="mx-auto  max-w-7xl space-y-12">
+							<div class="max-w-2xl xl:col-span-2">
+								<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Warehouses Information</h2>
+							</div>
+							<div class="">
+								<ul class="grid grid-cols-2 gap-4 ">
+									for _, warehouseInfo := range warehousesPageProps.WarehousesInfoBlock {
+										@WarehousesInfoBlock(warehouseInfo)
+									}
+								</ul>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+type WarehousesInfoBlockProps struct {
+	Imagescr         string
+	WarehouseName    string
+	WarehouseManager string
+	WarehouseAddress string
+	NumberOfWorkers  string
+	Status           string
+	Amount           string
+	LastUpdated      string
+    WarehouseInventoryProps []WarehouseInventoryProps
+    WarehouseEmployeeProps  []WarehouseEmployeeProps
+}
+
+templ WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) {
+	<li class="flex flex-col gap-10 border-4 border-white rounded-2xl p-2 sm:flex-row">
+		<img class="aspect-[4/5] w-52 flex-none rounded-2xl object-cover" src={ warehouseInfo.Imagescr } alt=""/>
+		<div class="max-w-xl flex-auto">
+			<h3 class="text-lg font-semibold leading-8 tracking-tight text-gray-900">{ warehouseInfo.WarehouseName }</h3>
+			<p class="text-base leading-7 text-gray-600">{ warehouseInfo.WarehouseManager }</p>
+			<p class="mt-6 text-base leading-7 text-gray-600 flex ">
+				<a href="#" class="pr-2 text-gray-400 hover:text-gray-500">
+					<svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+						<path fill-rule="evenodd" d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z" clip-rule="evenodd"></path>
+					</svg>
+				</a>{ warehouseInfo.WarehouseAddress }
+			</p>
+			<ul role="list" class="grid-cols-2 grid mt-6 gap-x-6">
+				<li class="mb-4">
+					<h2 class="text-lg font-semibold text-gray-700">Number of Workers</h2>
+					<p class="text-gray-600">{ warehouseInfo.NumberOfWorkers }</p>
+				</li>
+				<li class="mb-4">
+					<h2 class="text-lg font-semibold text-gray-700">Status</h2>
+					<p class="text-gray-600">{ warehouseInfo.Status }</p>
+				</li>
+				<li class="mb-4">
+					<h2 class="text-lg font-semibold text-gray-700">Amount</h2>
+					<p class="text-gray-600">{ warehouseInfo.Amount }</p>
+				</li>
+				<li class="mb-4">
+					<h2 class="text-lg font-semibold text-gray-700">Last Updated</h2>
+					<p class="text-gray-600">{ warehouseInfo.LastUpdated }</p>
+				</li>
+			</ul>
+			<div class="">
+				<button id={ warehouseInfo.WarehouseName } data-modal-target={ warehouseInfo.WarehouseName } data-modal-toggle={ warehouseInfo.WarehouseName } class="block text-white bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center " type="button">
+					More Info
+				</button>
+				<!-- Main modal -->
+				<div id={ warehouseInfo.WarehouseName } tabindex="-1" aria-hidden="true" class="  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+					<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
+						<div>
+							<h1 class="text-2xl font-bold text-gray-800 mb-4">{ warehouseInfo.WarehouseName }</h1>
+						</div>
+						<div class="space-y-24">
+							<div class="mb-4">
+								<h2 class="text-lg font-semibold text-gray-700">Inventory Status</h2>
+								<table class="w-full border-collapse border border-gray-300">
+									<thead>
+										<tr class="bg-gray-200">
+											<th class="border border-gray-300 px-4 py-2">Item</th>
+											<th class="border border-gray-300 px-4 py-2">Quantity</th>
+											<th class="border border-gray-300 px-4 py-2">Size</th>
+											<th class="border border-gray-300 px-4 py-2">Color</th>
+											<th class="border border-gray-300 px-4 py-2">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										for _, warehouseInventory := range warehouseInfo.WarehouseInventoryProps {
+											@WarehouseInventory(warehouseInventory)
+										}
+									</tbody>
+								</table>
+							</div>
+							<div class="mb-4">
+								<h2 class="text-lg font-semibold text-gray-700">Employee Status</h2>
+								<table class="w-full border-collapse border border-gray-300">
+									<thead>
+										for _, warehouseEmployee := range warehouseInfo.WarehouseEmployeeProps {
+											@WarehouseEmployee(warehouseEmployee)
+										}
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+}
+
+
+type WarehouseInventoryProps struct{
+ItemName string
+Quantity string
+ItemSize string
+ItemColor string
+ItemStatus string
+
+}
+
+
+
+templ WarehouseInventory(warehouseInventory WarehouseInventoryProps) {
+	<td class="border border-gray-300 px-4 py-2">{ warehouseInventory.ItemName }</td>
+	<td class="border border-gray-300 px-4 py-2">{ warehouseInventory.Quantity }</td>
+	<td class="border border-gray-300 px-4 py-2">{ warehouseInventory.ItemSize }</td>
+	<td class="border border-gray-300 px-4 py-2">{ warehouseInventory.ItemColor }</td>
+	<td class="border border-gray-300 px-4 py-2">{ warehouseInventory.ItemStatus }</td>
+}
+
+type WarehouseEmployeeProps struct{
+EmployeeName string
+EmployeePhonenumber string
+EmployeeAddress string
+EmployeeRole string
+EmployeeStatus string
+
+}
+
+
+templ WarehouseEmployee(warehouseEmployee WarehouseEmployeeProps) {
+	<tr>
+		<td class="border border-gray-300 px-4 py-2">{ warehouseEmployee.EmployeeName }</td>
+		<td class="border border-gray-300 px-4 py-2">{ warehouseEmployee.EmployeePhonenumber }</td>
+		<td class="border border-gray-300 px-4 py-2">{ warehouseEmployee.EmployeeAddress }</td>
+		<td class="border border-gray-300 px-4 py-2">{ warehouseEmployee.EmployeeRole }</td>
+		<td class="border border-gray-300 px-4 py-2">{ warehouseEmployee.EmployeeStatus }</td>
+	</tr>
+}

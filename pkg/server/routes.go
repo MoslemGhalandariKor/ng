@@ -13,6 +13,7 @@ import (
 	"nextgen/pkg/web/dashboard/product"
 	"nextgen/pkg/web/dashboard/profile"
 	"nextgen/pkg/web/dashboard/team"
+	"nextgen/pkg/web/dashboard/warehouse"
 )
 
 type Routes struct {
@@ -77,7 +78,10 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/add-category", product.AddCategoryPage)
 	dashboardRoutes.POST("/add-category", product_management.AddCategoryHandler)
 	dashboardRoutes.POST("/delete-category/:id", product_management.DeleteCategoryHandler)
-
+	// Warehouse Routes
+	dashboardRoutes.GET("/warehouses", warehouse.WarehousesPage)
+	dashboardRoutes.GET("/add-warehouse", warehouse.AddWarehousePage)
+	dashboardRoutes.GET("/inventory", warehouse.InventoryPage)
 	// Extra Routes
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
 	dashboardRoutes.GET("/loyalty", dashboard.LoyaltyPage)

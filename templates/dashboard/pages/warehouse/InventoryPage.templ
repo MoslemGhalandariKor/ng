@@ -1,0 +1,203 @@
+package warehouse
+
+import (
+	"nextgen/templates/components"
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+type InventoryPageProps struct {
+	LayoutProp               dashboardcomponents.LayoutProp
+	WarehouseHeaderPageProps []WarehouseHeaderPageProps
+	FormLayoutSimpleProp     components.FormLayoutSimpleProp
+}
+
+templ InventoryPage(inventoryPageProps InventoryPageProps) {
+	@dashboardcomponents.Layout(InventoryPageContent(inventoryPageProps), inventoryPageProps.LayoutProp)
+}
+
+templ InventoryPageContent(inventoryPageProps InventoryPageProps) {
+	@WarehouseHeaderPage(inventoryPageProps.WarehouseHeaderPageProps)
+	<div class="mt-2">
+		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
+			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
+				<div class="space-y-12 p-4">
+					<div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+						<h2 class="text-2xl font-bold mb-4 text-center">Clothing Inventory</h2>
+						<!-- Add New Product Button -->
+						<button id="addNewButton" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mb-4">+ Add New Product</button>
+						<!-- Inventory Table -->
+						<div class="overflow-x-auto">
+							<table class="w-full border-collapse border border-gray-300" id="inventoryTable">
+								<thead class="bg-gray-200">
+									<tr>
+										<th class="border p-2">#</th>
+										<th class="border p-2">Name</th>
+										<th class="border p-2">Stock</th>
+										<th class="border p-2">Color</th>
+										<th class="border p-2">Size</th>
+										<th class="border p-2">Material</th>
+										<th class="border p-2">User</th>
+										<th class="border p-2">Price</th>
+										<th class="border p-2">Warehouse</th>
+										<th class="border p-2">Actions</th>
+									</tr>
+								</thead>
+								<tbody id="inventoryBody">
+									<tr class="bg-white">
+										<td class="border p-2 text-center">1</td>
+										<td class="border p-2 text-center">Denim Jacket</td>
+										<td class="border p-2 text-center">15</td>
+										<td class="border p-2 text-center">Blue</td>
+										<td class="border p-2 text-center">M</td>
+										<td class="border p-2 text-center">Cotton Blend</td>
+										<td class="border p-2 text-center">Admin</td>
+										<td class="border p-2 text-center">$49.99</td>
+										<td class="border p-2 text-center">Warehouse A</td>
+										<td class="border p-2 text-center">
+											<button class="edit-btn bg-blue-700 hover:bg-blue-800 text-white px-3 py-1 rounded">Edit</button>
+											<button class="delete-btn bg-red-700 hover:bg-red-800 text-white px-3 py-1 rounded">Delete</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- Add/Edit Form -->
+						<div id="productForm" class="hidden mt-6">
+							<h3 class="text-xl font-bold mb-2" id="formTitle">Add New Product</h3>
+							<form id="productFormElement" class="grid grid-cols-2 gap-4">
+								<input type="hidden" id="editIndex"/>
+								<div>
+									<label class="block text-sm font-semibold">Name</label>
+									<input type="text" id="productName" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div>
+									<label class="block text-sm font-semibold">Stock</label>
+									<input type="number" id="productStock" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div>
+									<label class="block text-sm font-semibold">Color</label>
+									<input type="text" id="productColor" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div>
+									<label class="block text-sm font-semibold">Size</label>
+									<input type="text" id="productSize" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div>
+									<label class="block text-sm font-semibold">Material</label>
+									<input type="text" id="productMaterial" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div>
+									<label class="block text-sm font-semibold">User</label>
+									<input type="text" id="productUser" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div>
+									<label class="block text-sm font-semibold">Price ($)</label>
+									<input type="number" id="productPrice" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div>
+									<label class="block text-sm font-semibold">Warehouse</label>
+									<input type="text" id="productWarehouse" class="w-full p-2 border rounded-lg" required/>
+								</div>
+								<div class="col-span-2">
+									<button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-lg">Save Product</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	 <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inventoryTable = document.getElementById("inventoryBody");
+            const productForm = document.getElementById("productForm");
+            const productFormElement = document.getElementById("productFormElement");
+            const addNewButton = document.getElementById("addNewButton");
+            const formTitle = document.getElementById("formTitle");
+            let editRow = null;
+
+            // Show Add New Product Form
+            addNewButton.addEventListener("click", function () {
+                editRow = null;
+                formTitle.textContent = "Add New Product";
+                productFormElement.reset();
+                productForm.classList.remove("hidden");
+            });
+
+            // Handle Edit
+            inventoryTable.addEventListener("click", function (event) {
+                if (event.target.classList.contains("edit-btn")) {
+                    let row = event.target.closest("tr");
+                    let cells = row.querySelectorAll("td");
+
+                    document.getElementById("productName").value = cells[1].innerText;
+                    document.getElementById("productStock").value = cells[2].innerText;
+                    document.getElementById("productColor").value = cells[3].innerText;
+                    document.getElementById("productSize").value = cells[4].innerText;
+                    document.getElementById("productMaterial").value = cells[5].innerText;
+                    document.getElementById("productUser").value = cells[6].innerText;
+                    document.getElementById("productPrice").value = parseFloat(cells[7].innerText.replace("$", ""));
+                    document.getElementById("productWarehouse").value = cells[8].innerText;
+
+                    editRow = row;
+                    formTitle.textContent = "Edit Product";
+                    productForm.classList.remove("hidden");
+                }
+            });
+
+            // Handle Delete
+            inventoryTable.addEventListener("click", function (event) {
+                if (event.target.classList.contains("delete-btn")) {
+                    let row = event.target.closest("tr");
+                    row.remove();
+                }
+            });
+
+            // Handle Form Submission
+            productFormElement.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                let productData = {
+                    name: document.getElementById("productName").value,
+                    stock: document.getElementById("productStock").value,
+                    color: document.getElementById("productColor").value,
+                    size: document.getElementById("productSize").value,
+                    material: document.getElementById("productMaterial").value,
+                    user: document.getElementById("productUser").value,
+                    price: parseFloat(document.getElementById("productPrice").value).toFixed(2),
+                    warehouse: document.getElementById("productWarehouse").value,
+                };
+
+                if (editRow) {
+                    let cells = editRow.querySelectorAll("td");
+                    cells[1].innerText = productData.name;
+                    cells[2].innerText = productData.stock;
+                    cells[3].innerText = productData.color;
+                    cells[4].innerText = productData.size;
+                    cells[5].innerText = productData.material;
+                    cells[6].innerText = productData.user;
+                    cells[7].innerText = `$${productData.price}`;
+                    cells[8].innerText = productData.warehouse;
+                } else {
+                    inventoryTable.insertAdjacentHTML("beforeend", `<tr>
+                        <td class="border p-2 text-center">${inventoryTable.rows.length + 1}</td>
+                        <td class="border p-2">${productData.name}</td>
+                        <td class="border p-2">${productData.stock}</td>
+                        <td class="border p-2">${productData.color}</td>
+                        <td class="border p-2">${productData.size}</td>
+                        <td class="border p-2">${productData.material}</td>
+                        <td class="border p-2">${productData.user}</td>
+                        <td class="border p-2">$${productData.price}</td>
+                        <td class="border p-2">${productData.warehouse}</td>
+                        <td class="border p-2"><button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded">Edit</button> <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded">Delete</button></td>
+                    </tr>`);
+                }
+
+                productForm.classList.add("hidden");
+                productFormElement.reset();
+            });
+        });
+    </script>
+  
+}
