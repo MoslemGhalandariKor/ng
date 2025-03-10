@@ -11,10 +11,10 @@ type Product struct {
 	LastUpdBy    string    `form:"last_upd_by"`   // VARCHAR2(400)
 	Name         string    `form:"name"`          // VARCHAR2(400)
 	Description  string    `form:"description"`   // VARCHAR2(4000)
-	Price        string    `form:"price"`          // NUMBER
-	Amount       string    `form:"amount"`          // NUMBER
+	Price        string    `form:"price"`         // NUMBER
+	Amount       string    `form:"amount"`        // NUMBER
 	ProdSize     string    `form:"prod_size"`     // VARCHAR2(40)
-	ProdLength   string    `form:"prod_length"`    // NUMBER
+	ProdLength   string    `form:"prod_length"`   // NUMBER
 	ProdMaterial string    `form:"prod_material"` // VARCHAR2(400)
 	ProdColor    string    `form:"prod_color"`    // VARCHAR2(400)
 	ImageSrc     string    `form:"image_src"`     // VARCHAR2(400)
@@ -25,20 +25,20 @@ type Product struct {
 }
 
 type ProductView struct {
-	RowID          string    
-	Name           string    
-	Description    string    
-	Price          string   
-	Amount         string  
-	ProdSize       string    
-	ProdLength     string   
-	ProdMaterial   string  
-	ProdColor      string   
-	ImageSrc       string    
-	Barcode        string   
-	CategoryName   string    
-	BrandName      string    
-	Status         string    
+	RowID        string
+	Name         string
+	Description  string
+	Price        string
+	Amount       string
+	ProdSize     string
+	ProdLength   string
+	ProdMaterial string
+	ProdColor    string
+	ImageSrc     string
+	Barcode      string
+	CategoryName string
+	BrandName    string
+	Status       string
 }
 
 type Category struct {
@@ -49,15 +49,14 @@ type Category struct {
 	LastUpdBy   string    `form:"last_upd_by"` // VARCHAR2(400)
 	Name        string    `form:"name"`        // VARCHAR2(400)
 	Description string    `form:"description"` // VARCHAR2(4000)
-	ParentId    string    `form:"parent_id"`       // NUMBER
+	ParentId    string    `form:"parent_id"`   // NUMBER
 
 }
 
-
 type CategoryView struct {
-	RowID                 string        
-	Name                  string           
-	Description           string    
-	ParentCategoryName    string    
-	DeleteCategoryUrl     string    
+	RowID              string
+	Name               string
+	Description        string
+	ParentCategoryName string
+	DeleteCategoryUrl  string
 }
