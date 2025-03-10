@@ -1,8 +1,11 @@
 package product_management
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"path/filepath"
+	"time"
 
 	// "strconv"
 	"github.com/gin-gonic/gin"
@@ -18,11 +21,28 @@ func AddProductHandler(c *gin.Context) {
 		ProdLength:   c.PostForm("prod_length"),
 		ProdMaterial: c.PostForm("prod_material"),
 		ProdColor:    c.PostForm("prod_color"),
-		ImageSrc:     c.PostForm("image_src"),
 		Barcode:      c.PostForm("barcode"),
 		CategoryID:   c.PostForm("category_id"),
 		BrandID:      c.PostForm("brand_id"),
 	}
+	productsImagePath := "./static/images/product/"
+	productImage, err := c.FormFile("image_file")
+	if err != nil {
+		fmt.Println(err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save file"})
+		return
+	}
+	imageExtension := filepath.Ext(productImage.Filename)
+
+	newImageName := fmt.Sprintf("%d%s", time.Now().UnixNano(), imageExtension)
+
+	imagePath := filepath.Join(productsImagePath, newImageName)
+	if err := c.SaveUploadedFile(productImage, imagePath); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save file"})
+		return
+	}
+	product.ImageSrc = imagePath
+
 	responseCode, responseDesc := AddProduct(product)
 
 	if responseCode != 0 {
@@ -33,14 +53,12 @@ func AddProductHandler(c *gin.Context) {
 
 }
 
-
 func DeleteProductHandler(c *gin.Context) {
 	idParam := c.Param("id")
 
 	_, _ = DeleteProductById(idParam)
 	c.Redirect(http.StatusFound, "/dashboard/Product")
 }
-
 
 func AddCategoryHandler(c *gin.Context) {
 	var category Category

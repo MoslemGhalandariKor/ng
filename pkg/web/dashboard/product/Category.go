@@ -9,7 +9,6 @@ import (
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/product"
 	"sort"
-	
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,18 +33,14 @@ func CategoryPage(c *gin.Context) {
 		productPageHeaderProps = append(productPageHeaderProps, *value)
 	}
 	sort.Slice(productPageHeaderProps, func(i, j int) bool {
-		return productPageHeaderProps[i].Url > productPageHeaderProps[j].Url
+		return productPageHeaderProps[i].PositionNumber < productPageHeaderProps[j].PositionNumber
 	})
 	categoryPageProps.ProductPageHeaderProps = productPageHeaderProps
-
-
 
 	categories, err := product_management.GetAllCategoriesService()
 	if err != nil {
 		fmt.Println(err)
 	}
-
-
 
 	categoryPageProps.Categories = categories
 
@@ -74,7 +69,7 @@ func AddCategoryPage(c *gin.Context) {
 		addCategoryPageHeaderProps = append(addCategoryPageHeaderProps, *value)
 	}
 	sort.Slice(addCategoryPageHeaderProps, func(i, j int) bool {
-		return addCategoryPageHeaderProps[i].Url > addCategoryPageHeaderProps[j].Url
+		return addCategoryPageHeaderProps[i].PositionNumber < addCategoryPageHeaderProps[j].PositionNumber
 	})
 	addCategoryPageProps.ProductPageHeaderProps = addCategoryPageHeaderProps
 

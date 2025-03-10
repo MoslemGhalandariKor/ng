@@ -21,6 +21,7 @@ func NewServer() *Server {
 
 	router.LoadHTMLGlob("templates/**/**/**/**/*")
 	router.Static("static", "static")
+
 	ginHtmlRenderer := router.HTMLRender
 	router.HTMLRender = &gintemplrenderer.HTMLTemplRenderer{FallbackHtmlRenderer: ginHtmlRenderer}
 	return &Server{

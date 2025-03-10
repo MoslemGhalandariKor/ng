@@ -68,9 +68,9 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
     V_ERROR_CODE     VARCHAR2(400);
     V_ERROR_DESC     VARCHAR2(4000);
   BEGIN
-  
+
     V_START_TIME := SYSTIMESTAMP;
-  
+    V_METHODE_NAME := 'PRC_ADD_PRODUCT';
     V_LOG_MESSAGE   := 'SUCCESS';
     V_RESPONSE_CODE := 0;
     V_RESPONSE_DESC := 'SUCCESS';
@@ -126,7 +126,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
         V_ERROR_CODE    := SQLCODE;
         V_ERROR_DESC    := SQLERRM;
         V_RESPONSE_CODE := -100;
-        V_RESPONSE_DESC := 'Faild';
+        V_RESPONSE_DESC := 'Failed';
         ROLLBACK;
       
     END;
@@ -168,7 +168,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
   BEGIN
   
     V_START_TIME := SYSTIMESTAMP;
-  
+    V_METHODE_NAME := 'PRC_DELETE_PRODUCT';
     V_LOG_MESSAGE   := 'SUCCESS';
     V_RESPONSE_CODE := 0;
     V_RESPONSE_DESC := 'SUCCESS';
@@ -189,7 +189,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
         V_ERROR_CODE    := SQLCODE;
         V_ERROR_DESC    := SQLERRM;
         V_RESPONSE_CODE := -100;
-        V_RESPONSE_DESC := 'Faild';
+        V_RESPONSE_DESC := 'Failed';
         ROLLBACK;
       
     END;
@@ -234,7 +234,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
   BEGIN
   
     V_START_TIME := SYSTIMESTAMP;
-  
+    V_METHODE_NAME := 'PRC_ADD_CATEGORY';
     V_LOG_MESSAGE   := 'SUCCESS';
     V_RESPONSE_CODE := 0;
     V_RESPONSE_DESC := 'SUCCESS';
@@ -263,7 +263,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
         V_ERROR_CODE    := SQLCODE;
         V_ERROR_DESC    := SQLERRM;
         V_RESPONSE_CODE := -100;
-        V_RESPONSE_DESC := 'Faild';
+        V_RESPONSE_DESC := 'Failed';
         ROLLBACK;
       
     END;
@@ -306,7 +306,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
   BEGIN
   
     V_START_TIME := SYSTIMESTAMP;
-  
+    V_METHODE_NAME := 'PRC_DELETE_CATEGORY';
     V_LOG_MESSAGE   := 'SUCCESS';
     V_RESPONSE_CODE := 0;
     V_RESPONSE_DESC := 'SUCCESS';
@@ -327,7 +327,7 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
         V_ERROR_CODE    := SQLCODE;
         V_ERROR_DESC    := SQLERRM;
         V_RESPONSE_CODE := -100;
-        V_RESPONSE_DESC := 'Faild';
+        V_RESPONSE_DESC := 'Failed';
         ROLLBACK;
       
     END;
@@ -351,6 +351,148 @@ CREATE OR REPLACE PACKAGE BODY PKG_PRODUCT_MANAGEMENT AS
 
 ---------------------------------------------------------------------------------------------------    
 
----------------------------------------------------------------------------------------------------    
+---------------------------------------------------------------------------------------------------
+
+  ---------------------------------------------------------------------------------------------------
+
+  ---------------------------------------------------------------------------------------------------
+
+  PROCEDURE PRC_ADD_BRAND(P_NAME          IN VARCHAR2,
+                          P_DESCRIPTION   IN VARCHAR2,
+                          P_PARENT_ID     IN VARCHAR2,
+                          P_RESPONSE_CODE OUT NUMBER,
+                          P_RESPONSE_DESC OUT VARCHAR2) IS
+
+    V_LOG_MESSAGE    VARCHAR2(4000);
+    V_PARAMETERS     CLOB;
+    V_START_TIME     TIMESTAMP;
+    V_END_TIME       TIMESTAMP;
+    V_EXECUTION_TIME VARCHAR2(400);
+    V_METHODE_NAME   VARCHAR2(4000);
+    V_RESPONSE_CODE  NUMBER;
+    V_RESPONSE_DESC  VARCHAR2(4000);
+    V_ERROR_CODE     VARCHAR2(400);
+    V_ERROR_DESC     VARCHAR2(4000);
+  BEGIN
+
+    V_START_TIME := SYSTIMESTAMP;
+    V_METHODE_NAME := 'PRC_ADD_CATEGORY';
+    V_LOG_MESSAGE   := 'SUCCESS';
+    V_RESPONSE_CODE := 0;
+    V_RESPONSE_DESC := 'SUCCESS';
+    V_ERROR_CODE    := 0;
+    V_ERROR_DESC    := 'SUCCESS';
+
+    V_PARAMETERS := JSON_OBJECT(KEY 'NAME' VALUE P_NAME,
+                                KEY 'DESCRIPTION' VALUE P_DESCRIPTION,
+                                KEY 'PARENT_ID' VALUE P_PARENT_ID);
+
+    BEGIN
+
+      INSERT INTO N_PROD_CATEGORY
+        (ROW_ID, NAME, DESCRIPTION, PARENT_ID)
+      VALUES
+        (FNC_GENERATE_PRODUCT_MANAGEMENT_ROW_ID(),
+         P_NAME,
+         P_DESCRIPTION,
+         P_PARENT_ID);
+
+      COMMIT;
+
+    EXCEPTION
+      WHEN OTHERS THEN
+        V_LOG_MESSAGE   := 'Error occurred: ' || SQLERRM;
+        V_ERROR_CODE    := SQLCODE;
+        V_ERROR_DESC    := SQLERRM;
+        V_RESPONSE_CODE := -100;
+        V_RESPONSE_DESC := 'Failed';
+        ROLLBACK;
+
+    END;
+
+    V_END_TIME := SYSDATE;
+    SELECT TO_CHAR((V_END_TIME - V_START_TIME))
+      INTO V_EXECUTION_TIME
+      FROM DUAL;
+    P_RESPONSE_CODE := V_RESPONSE_CODE;
+    P_RESPONSE_DESC := V_RESPONSE_DESC;
+    PRC_INSERT_LOG(P_LOG_MESSAGE    => V_LOG_MESSAGE,
+                   P_METHODE_NAME   => V_METHODE_NAME,
+                   P_PARAMETERS     => V_PARAMETERS,
+                   P_REQUEST_ID     => NULL,
+                   P_EXECUTION_TIME => V_EXECUTION_TIME,
+                   P_RESPONSE_CODE  => V_RESPONSE_CODE,
+                   P_RESPONSE_DESC  => V_RESPONSE_DESC,
+                   P_ERROR_CODE     => V_ERROR_CODE,
+                   P_ERROR_DESC     => V_ERROR_DESC);
+  END;
+
+  ---------------------------------------------------------------------------------------------------
+
+  ---------------------------------------------------------------------------------------------------
+
+  PROCEDURE PRC_DELETE_BRAND(P_CATEGORY_ID   IN VARCHAR2,
+                                P_RESPONSE_CODE OUT NUMBER,
+                                P_RESPONSE_DESC OUT VARCHAR2) IS
+
+    V_LOG_MESSAGE    VARCHAR2(4000);
+    V_PARAMETERS     CLOB;
+    V_START_TIME     TIMESTAMP;
+    V_END_TIME       TIMESTAMP;
+    V_EXECUTION_TIME VARCHAR2(400);
+    V_METHODE_NAME   VARCHAR2(4000);
+    V_RESPONSE_CODE  NUMBER;
+    V_RESPONSE_DESC  VARCHAR2(4000);
+    V_ERROR_CODE     VARCHAR2(400);
+    V_ERROR_DESC     VARCHAR2(4000);
+  BEGIN
+
+    V_START_TIME := SYSTIMESTAMP;
+    V_METHODE_NAME := 'PRC_DELETE_CATEGORY';
+    V_LOG_MESSAGE   := 'SUCCESS';
+    V_RESPONSE_CODE := 0;
+    V_RESPONSE_DESC := 'SUCCESS';
+    V_ERROR_CODE    := 0;
+    V_ERROR_DESC    := 'SUCCESS';
+
+    V_PARAMETERS := JSON_OBJECT(KEY 'CATEGORY_ID' VALUE P_CATEGORY_ID);
+
+    BEGIN
+
+      DELETE N_PROD_CATEGORY P WHERE P.ROW_ID = P_CATEGORY_ID;
+
+      COMMIT;
+
+    EXCEPTION
+      WHEN OTHERS THEN
+        V_LOG_MESSAGE   := 'Error occurred: ' || SQLERRM;
+        V_ERROR_CODE    := SQLCODE;
+        V_ERROR_DESC    := SQLERRM;
+        V_RESPONSE_CODE := -100;
+        V_RESPONSE_DESC := 'Failed';
+        ROLLBACK;
+
+    END;
+
+    V_END_TIME := SYSDATE;
+    SELECT TO_CHAR((V_END_TIME - V_START_TIME))
+      INTO V_EXECUTION_TIME
+      FROM DUAL;
+    P_RESPONSE_CODE := V_RESPONSE_CODE;
+    P_RESPONSE_DESC := V_RESPONSE_DESC;
+    PRC_INSERT_LOG(P_LOG_MESSAGE    => V_LOG_MESSAGE,
+                   P_METHODE_NAME   => V_METHODE_NAME,
+                   P_PARAMETERS     => V_PARAMETERS,
+                   P_REQUEST_ID     => NULL,
+                   P_EXECUTION_TIME => V_EXECUTION_TIME,
+                   P_RESPONSE_CODE  => V_RESPONSE_CODE,
+                   P_RESPONSE_DESC  => V_RESPONSE_DESC,
+                   P_ERROR_CODE     => V_ERROR_CODE,
+                   P_ERROR_DESC     => V_ERROR_DESC);
+  END;
+
+---------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
 
 END;
