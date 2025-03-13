@@ -8,6 +8,7 @@ import (
 	"sort"
 	"github.com/gin-gonic/gin"
 	"nextgen/templates/components"
+	"nextgen/pkg/product_management"
 )
 
 var WarehouseHeaderPageProps = map[string]*warehouse.WarehouseHeaderPageProps{
@@ -117,6 +118,9 @@ func InventoryPage(c *gin.Context) {
 
 	inventoryFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-warehouse", Method: "POST"}
 	inventoryPageProps.FormLayoutSimpleProp = inventoryFormProp
+
+	products, _ := product_management.GetAllProductsService()
+	inventoryPageProps.Products = products
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, warehouse.InventoryPage(inventoryPageProps))
 	c.Render(http.StatusOK, r)

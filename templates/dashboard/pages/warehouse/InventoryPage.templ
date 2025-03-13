@@ -97,97 +97,97 @@ templ InventoryPageContent(inventoryPageProps InventoryPageProps) {
 			</div>
 		</div>
 	</div>
-	<script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const inventoryTable = document.getElementById("inventoryBody");
-            const productForm = document.getElementById("productForm");
-            const productFormElement = document.getElementById("productFormElement");
-            const addNewButton = document.getElementById("addNewButton");
-            const formTitle = document.getElementById("formTitle");
-            let editRow = null;
+	// <script>
+    //     document.addEventListener("DOMContentLoaded", function () {
+    //         const inventoryTable = document.getElementById("inventoryBody");
+    //         const productForm = document.getElementById("productForm");
+    //         const productFormElement = document.getElementById("productFormElement");
+    //         const addNewButton = document.getElementById("addNewButton");
+    //         const formTitle = document.getElementById("formTitle");
+    //         let editRow = null;
 
-            // Show Add New Product Form
-            addNewButton.addEventListener("click", function () {
-                editRow = null;
-                formTitle.textContent = "Add New Product";
-                productFormElement.reset();
-                productForm.classList.remove("hidden");
-            });
+    //         // Show Add New Product Form
+    //         addNewButton.addEventListener("click", function () {
+    //             editRow = null;
+    //             formTitle.textContent = "Add New Product";
+    //             productFormElement.reset();
+    //             productForm.classList.remove("hidden");
+    //         });
 
-            // Handle Edit
-            inventoryTable.addEventListener("click", function (event) {
-                if (event.target.classList.contains("edit-btn")) {
-                    let row = event.target.closest("tr");
-                    let cells = row.querySelectorAll("td");
+    //         // Handle Edit
+    //         inventoryTable.addEventListener("click", function (event) {
+    //             if (event.target.classList.contains("edit-btn")) {
+    //                 let row = event.target.closest("tr");
+    //                 let cells = row.querySelectorAll("td");
 
-                    document.getElementById("productName").value = cells[1].innerText;
-                    document.getElementById("productStock").value = cells[2].innerText;
-                    document.getElementById("productColor").value = cells[3].innerText;
-                    document.getElementById("productSize").value = cells[4].innerText;
-                    document.getElementById("productMaterial").value = cells[5].innerText;
-                    document.getElementById("productUser").value = cells[6].innerText;
-                    document.getElementById("productPrice").value = parseFloat(cells[7].innerText.replace("$", ""));
-                    document.getElementById("productWarehouse").value = cells[8].innerText;
+    //                 document.getElementById("productName").value = cells[1].innerText;
+    //                 document.getElementById("productStock").value = cells[2].innerText;
+    //                 document.getElementById("productColor").value = cells[3].innerText;
+    //                 document.getElementById("productSize").value = cells[4].innerText;
+    //                 document.getElementById("productMaterial").value = cells[5].innerText;
+    //                 document.getElementById("productUser").value = cells[6].innerText;
+    //                 document.getElementById("productPrice").value = parseFloat(cells[7].innerText.replace("$", ""));
+    //                 document.getElementById("productWarehouse").value = cells[8].innerText;
 
-                    editRow = row;
-                    formTitle.textContent = "Edit Product";
-                    productForm.classList.remove("hidden");
-                }
-            });
+    //                 editRow = row;
+    //                 formTitle.textContent = "Edit Product";
+    //                 productForm.classList.remove("hidden");
+    //             }
+    //         });
 
-            // Handle Delete
-            inventoryTable.addEventListener("click", function (event) {
-                if (event.target.classList.contains("delete-btn")) {
-                    let row = event.target.closest("tr");
-                    row.remove();
-                }
-            });
+    //         // Handle Delete
+    //         inventoryTable.addEventListener("click", function (event) {
+    //             if (event.target.classList.contains("delete-btn")) {
+    //                 let row = event.target.closest("tr");
+    //                 row.remove();
+    //             }
+    //         });
 
-            // Handle Form Submission
-            productFormElement.addEventListener("submit", function (event) {
-                event.preventDefault();
+    //         // Handle Form Submission
+    //         productFormElement.addEventListener("submit", function (event) {
+    //             event.preventDefault();
 
-                let productData = {
-                    name: document.getElementById("productName").value,
-                    stock: document.getElementById("productStock").value,
-                    color: document.getElementById("productColor").value,
-                    size: document.getElementById("productSize").value,
-                    material: document.getElementById("productMaterial").value,
-                    user: document.getElementById("productUser").value,
-                    price: parseFloat(document.getElementById("productPrice").value).toFixed(2),
-                    warehouse: document.getElementById("productWarehouse").value,
-                };
+    //             let productData = {
+    //                 name: document.getElementById("productName").value,
+    //                 stock: document.getElementById("productStock").value,
+    //                 color: document.getElementById("productColor").value,
+    //                 size: document.getElementById("productSize").value,
+    //                 material: document.getElementById("productMaterial").value,
+    //                 user: document.getElementById("productUser").value,
+    //                 price: parseFloat(document.getElementById("productPrice").value).toFixed(2),
+    //                 warehouse: document.getElementById("productWarehouse").value,
+    //             };
 
-                if (editRow) {
-                    let cells = editRow.querySelectorAll("td");
-                    cells[1].innerText = productData.name;
-                    cells[2].innerText = productData.stock;
-                    cells[3].innerText = productData.color;
-                    cells[4].innerText = productData.size;
-                    cells[5].innerText = productData.material;
-                    cells[6].innerText = productData.user;
-                    cells[7].innerText = `$${productData.price}`;
-                    cells[8].innerText = productData.warehouse;
-                } else {
-                    inventoryTable.insertAdjacentHTML("beforeend", `<tr>
-                        <td class="border p-2 text-center">${inventoryTable.rows.length + 1}</td>
-                        <td class="border p-2">${productData.name}</td>
-                        <td class="border p-2">${productData.stock}</td>
-                        <td class="border p-2">${productData.color}</td>
-                        <td class="border p-2">${productData.size}</td>
-                        <td class="border p-2">${productData.material}</td>
-                        <td class="border p-2">${productData.user}</td>
-                        <td class="border p-2">$${productData.price}</td>
-                        <td class="border p-2">${productData.warehouse}</td>
-                        <td class="border p-2"><button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded">Edit</button> <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded">Delete</button></td>
-                    </tr>`);
-                }
+    //             if (editRow) {
+    //                 let cells = editRow.querySelectorAll("td");
+    //                 cells[1].innerText = productData.name;
+    //                 cells[2].innerText = productData.stock;
+    //                 cells[3].innerText = productData.color;
+    //                 cells[4].innerText = productData.size;
+    //                 cells[5].innerText = productData.material;
+    //                 cells[6].innerText = productData.user;
+    //                 cells[7].innerText = `$${productData.price}`;
+    //                 cells[8].innerText = productData.warehouse;
+    //             } else {
+    //                 inventoryTable.insertAdjacentHTML("beforeend", `<tr>
+    //                     <td class="border p-2 text-center">${inventoryTable.rows.length + 1}</td>
+    //                     <td class="border p-2">${productData.name}</td>
+    //                     <td class="border p-2">${productData.stock}</td>
+    //                     <td class="border p-2">${productData.color}</td>
+    //                     <td class="border p-2">${productData.size}</td>
+    //                     <td class="border p-2">${productData.material}</td>
+    //                     <td class="border p-2">${productData.user}</td>
+    //                     <td class="border p-2">$${productData.price}</td>
+    //                     <td class="border p-2">${productData.warehouse}</td>
+    //                     <td class="border p-2"><button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded">Edit</button> <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded">Delete</button></td>
+    //                 </tr>`);
+    //             }
 
-                productForm.classList.add("hidden");
-                productFormElement.reset();
-            });
-        });
-    </script>
+    //             productForm.classList.add("hidden");
+    //             productFormElement.reset();
+    //         });
+    //     });
+    // </script>
 }
 
 templ ProductList(product product_management.ProductView) {
@@ -201,8 +201,8 @@ templ ProductList(product product_management.ProductView) {
 		<td class="border p-2 text-center">{ product.Price }</td>
 		<td class="border p-2 text-center">Warehouse A</td>
 		<td class="border p-2 text-center">
-			<button class="edit-btn bg-blue-700 hover:bg-blue-800 text-white px-3 py-1 rounded">Edit</button>
-			<button class="delete-btn bg-red-700 hover:bg-red-800 text-white px-3 py-1 rounded">Delete</button>
+			<button class="edit-btn bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded">Edit</button>
+			<button class="delete-btn bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">Delete</button>
 		</td>
 	</tr>
 }
