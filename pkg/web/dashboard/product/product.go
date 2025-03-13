@@ -79,6 +79,7 @@ func ProductsPage(c *gin.Context) {
 	for _, prod := range productPageProps.Products {
 		fmt.Println(prod)
 	}
+	
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.ProductPage(productPageProps))
 	c.Render(http.StatusOK, r)
 }

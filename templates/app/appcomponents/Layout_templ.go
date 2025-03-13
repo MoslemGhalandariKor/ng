@@ -39,7 +39,7 @@ func Layout(contents templ.Component, layoutProps LayoutProps) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\" class=\"h-full bg-gray-50\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title></title><!-- Tailwind CSS --><link rel=\"stylesheet\" href=\"../../../static/css/output.css\"><script src=\"https://cdn.tailwindcss.com\"> </script><!-- Flowbite --><link href=\"https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css\" rel=\"stylesheet\"></head><body class=\"h-full\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\" class=\"h-full bg-gray-50\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title></title><!-- Tailwind CSS --><link rel=\"stylesheet\" href=\"../../../static/css/output.css\"><script src=\"https://cdn.tailwindcss.com\"> </script><!-- Flowbite --><link href=\"https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css\" rel=\"stylesheet\"><!-- Daisyu --><link href=\"https://cdn.jsdelivr.net/npm/daisyui@5\" rel=\"stylesheet\" type=\"text/css\"><script src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"></script><link href=\"https://cdn.jsdelivr.net/npm/daisyui@5.0.2/themes.css\" rel=\"stylesheet\" type=\"text/css\"></head><body class=\"h-full\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

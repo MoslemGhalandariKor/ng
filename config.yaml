@@ -1,8 +1,8 @@
 oracle_user: sadmin
 oracle_password: pass123
 oracle_connect_string: localhost:1521/nextgendb
-oracle_instant_client_path: /Users/moslem/Downloads/instantclient_23_3
-#oracle_instant_client_path: C:/oracle/instantclient_23_7
+# oracle_instant_client_path: /Users/moslem/Downloads/instantclient_23_3
+oracle_instant_client_path: C:/oracle/instantclient_23_7
 oracle_max_open_conns: 10
 oracle_max_idle_conns: 5
 

@@ -4,9 +4,7 @@ import (
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/templates/dashboard/dashboardcomponents"
-
 	"nextgen/templates/dashboard/pages"
-
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,6 +1,7 @@
 package warehouse
 
 import (
+	"nextgen/pkg/product_management"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 )
@@ -9,6 +10,7 @@ type InventoryPageProps struct {
 	LayoutProp               dashboardcomponents.LayoutProp
 	WarehouseHeaderPageProps []WarehouseHeaderPageProps
 	FormLayoutSimpleProp     components.FormLayoutSimpleProp
+	Products                 []product_management.ProductView
 }
 
 templ InventoryPage(inventoryPageProps InventoryPageProps) {
@@ -30,7 +32,6 @@ templ InventoryPageContent(inventoryPageProps InventoryPageProps) {
 							<table class="w-full border-collapse border border-gray-300" id="inventoryTable">
 								<thead class="bg-gray-200">
 									<tr>
-										<th class="border p-2">#</th>
 										<th class="border p-2">Name</th>
 										<th class="border p-2">Stock</th>
 										<th class="border p-2">Color</th>
@@ -43,21 +44,9 @@ templ InventoryPageContent(inventoryPageProps InventoryPageProps) {
 									</tr>
 								</thead>
 								<tbody id="inventoryBody">
-									<tr class="bg-white">
-										<td class="border p-2 text-center">1</td>
-										<td class="border p-2 text-center">Denim Jacket</td>
-										<td class="border p-2 text-center">15</td>
-										<td class="border p-2 text-center">Blue</td>
-										<td class="border p-2 text-center">M</td>
-										<td class="border p-2 text-center">Cotton Blend</td>
-										<td class="border p-2 text-center">Admin</td>
-										<td class="border p-2 text-center">$49.99</td>
-										<td class="border p-2 text-center">Warehouse A</td>
-										<td class="border p-2 text-center">
-											<button class="edit-btn bg-blue-700 hover:bg-blue-800 text-white px-3 py-1 rounded">Edit</button>
-											<button class="delete-btn bg-red-700 hover:bg-red-800 text-white px-3 py-1 rounded">Delete</button>
-										</td>
-									</tr>
+									for _, product := range inventoryPageProps.Products {
+										@ProductList(product)
+									}
 								</tbody>
 							</table>
 						</div>
@@ -108,7 +97,7 @@ templ InventoryPageContent(inventoryPageProps InventoryPageProps) {
 			</div>
 		</div>
 	</div>
-	 <script>
+	<script>
         document.addEventListener("DOMContentLoaded", function () {
             const inventoryTable = document.getElementById("inventoryBody");
             const productForm = document.getElementById("productForm");
@@ -199,5 +188,21 @@ templ InventoryPageContent(inventoryPageProps InventoryPageProps) {
             });
         });
     </script>
-  
+}
+
+templ ProductList(product product_management.ProductView) {
+	<tr class="bg-white">
+		<td class="border p-2 text-center">{ product.Name }</td>
+		<td class="border p-2 text-center">{ product.Amount }</td>
+		<td class="border p-2 text-center">{ product.ProdColor }</td>
+		<td class="border p-2 text-center">{ product.ProdSize }</td>
+		<td class="border p-2 text-center">{ product.ProdMaterial }</td>
+		<td class="border p-2 text-center">Admin</td>
+		<td class="border p-2 text-center">{ product.Price }</td>
+		<td class="border p-2 text-center">Warehouse A</td>
+		<td class="border p-2 text-center">
+			<button class="edit-btn bg-blue-700 hover:bg-blue-800 text-white px-3 py-1 rounded">Edit</button>
+			<button class="delete-btn bg-red-700 hover:bg-red-800 text-white px-3 py-1 rounded">Delete</button>
+		</td>
+	</tr>
 }
