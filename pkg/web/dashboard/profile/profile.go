@@ -1,7 +1,7 @@
 package profile
 
 import (
-	"fmt"
+	
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/templates/dashboard/dashboardcomponents"
@@ -49,34 +49,6 @@ func PersonalProfilePage(c *gin.Context) {
 	})
 
 	profilePageProps.ProfilePageHeaderProp = profilePageHeaderProp
-
-	users, err := GetUser()
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	userInfo := []profile.ProfilePageInfoProps{}
-
-	for _, user := range *users {
-		userInfo = append(userInfo, profile.ProfilePageInfoProps{
-			FirstName:   user.FirstName,
-			LastName:    user.LastName,
-			Username:    user.Username,
-			Email:       user.Email,
-			PhoneNumber: user.PhoneNumber,
-			About:       user.About,
-			UserPhoto:   user.UserPhoto,
-			CoverPhoto:  user.CoverPhoto,
-			City:        user.City,
-			Province:    user.Province,
-			PostalCode:  user.PostalCode,
-			Addres:      user.Addres,
-			CompanyLogo: user.CompanyLogo,
-			CompanyName: user.CompanyName,
-		})
-	}
-
-	profilePageProps.ProfilePageInfoProps = userInfo[0]
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, profile.PersonalProfile(profilePageProps))
 	c.Render(http.StatusOK, r)

@@ -2,23 +2,7 @@ package profile
 
 import "nextgen/templates/dashboard/dashboardcomponents"
 
-type ProfilePageInfoProps struct {
-	FirstName   string
-	LastName    string
-	Username    string
-	Email       string
-	PhoneNumber string
-	About       string
-	UserPhoto   string
-	CoverPhoto  string
-	City        string
-	Province    string
-	PostalCode  string
-	Addres      string
-	CompanyLogo string
-	CompanyName string
-	IsLoggedIn  bool
-}
+
 
 type ProfilePageHeaderProp struct {
 	Url   string
@@ -28,18 +12,16 @@ type ProfilePageHeaderProp struct {
 
 
 type ProfilePageProps struct {
-	ProfilePageHeaderProp   []ProfilePageHeaderProp
 	LayoutProp           dashboardcomponents.LayoutProp
-	ProfilePageInfoProps ProfilePageInfoProps
+	ProfilePageHeaderProp []ProfilePageHeaderProp
 }
 
 templ PersonalProfile(profilePageProps ProfilePageProps) {
-	@dashboardcomponents.Layout(PersonalProfilePageContent(profilePageProps.ProfilePageInfoProps, profilePageProps.ProfilePageHeaderProp), profilePageProps.LayoutProp)
+	@dashboardcomponents.Layout(PersonalProfilePageContent(profilePageProps), profilePageProps.LayoutProp)
 }
 
-templ PersonalProfilePageContent(user ProfilePageInfoProps, profilePageHeaderProps []ProfilePageHeaderProp) {
-	@ProfilePageHeader(profilePageHeaderProps)
-
+templ PersonalProfilePageContent(profilePageProps ProfilePageProps) {
+	@ProfilePageHeader(profilePageProps.ProfilePageHeaderProp)
 	<div class="mt-2">
 		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center ">
 			<form class="p-12 m-4 w-full bg-gray-200 rounded-2xl">
@@ -51,20 +33,20 @@ templ PersonalProfilePageContent(user ProfilePageInfoProps, profilePageHeaderPro
 							<div class="sm:col-span-2">
 								<label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
 								<div class="mt-2">
-									<input type="text" name="username" id="username" autocomplete="user-name" placeholder={ user.Username } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input type="text" name="username" id="username" autocomplete="user-name" placeholder={ profilePageProps.LayoutProp.UserInfoProps.Username } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 							<div class="col-span-full">
 								<label for="about" class="block text-sm font-medium leading-6 text-gray-900">About</label>
 								<div class="mt-2">
-									<textarea id="about" name="about" rows="3" placeholder={ user.About } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+									<textarea id="about" name="about" rows="3" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
 								</div>
 								<p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
 							</div>
 							<div class="col-span-full">
 								<label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>
 								<div class="mt-2 flex items-center gap-x-3">
-									<svg src={ user.UserPhoto } class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+									<svg src="" class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 										<path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
 									</svg>
 									<button type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
@@ -97,43 +79,43 @@ templ PersonalProfilePageContent(user ProfilePageInfoProps, profilePageHeaderPro
 							<div class="sm:col-span-3">
 								<label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
 								<div class="mt-2">
-									<input type="text" name="first-name" id="first-name" autocomplete="given-name" placeholder={ user.FirstName } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input type="text" name="first-name" id="first-name" autocomplete="given-name" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 							<div class="sm:col-span-3">
 								<label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
 								<div class="mt-2">
-									<input type="text" name="last-name" id="last-name" autocomplete="family-name" placeholder={ user.LastName } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input type="text" name="last-name" id="last-name" autocomplete="family-name" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 							<div class="sm:col-span-4">
 								<label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
 								<div class="mt-2">
-									<input id="email" name="email" type="email" autocomplete="email" placeholder={ user.Email } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input id="email" name="email" type="email" autocomplete="email" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 							<div class="sm:col-span-2 sm:col-start-1">
 								<label for="city" class="block text-sm font-medium leading-6 text-gray-900">City</label>
 								<div class="mt-2">
-									<input type="text" name="city" id="city" autocomplete="address-level2" placeholder={ user.City } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input type="text" name="city" id="city" autocomplete="address-level2" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 							<div class="sm:col-span-2">
 								<label for="region" class="block text-sm font-medium leading-6 text-gray-900">State / Province</label>
 								<div class="mt-2">
-									<input type="text" name="region" id="region" autocomplete="address-level1" placeholder={ user.Province } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input type="text" name="region" id="region" autocomplete="address-level1" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 							<div class="sm:col-span-2">
 								<label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">ZIP / Postal code</label>
 								<div class="mt-2">
-									<input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" placeholder={ user.PostalCode } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 							<div class="col-span-full">
 								<label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Street address</label>
 								<div class="mt-2">
-									<input type="text" name="street-address" id="street-address" autocomplete="street-address" placeholder={ user.Addres } class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+									<input type="text" name="street-address" id="street-address" autocomplete="street-address" placeholder="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 								</div>
 							</div>
 						</div>
@@ -205,12 +187,11 @@ templ PersonalProfilePageContent(user ProfilePageInfoProps, profilePageHeaderPro
 }
 
 templ CompanyProfile(profilePageProps ProfilePageProps) {
-	@dashboardcomponents.Layout(CompanyProfilePageContent(profilePageProps.ProfilePageInfoProps, profilePageProps.ProfilePageHeaderProp), profilePageProps.LayoutProp)
+	@dashboardcomponents.Layout(CompanyProfilePageContent(profilePageProps), profilePageProps.LayoutProp)
 }
 
-templ CompanyProfilePageContent(user ProfilePageInfoProps, profilePageHeaderProps []ProfilePageHeaderProp ) {
-	@ProfilePageHeader(profilePageHeaderProps)
-
+templ CompanyProfilePageContent(profilePageProps ProfilePageProps) {
+	@ProfilePageHeader(profilePageProps.ProfilePageHeaderProp)
 	<div class="mt-2">
 		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center ">
 			<form class="p-12 m-4 w-full bg-gray-200 rounded-2xl">

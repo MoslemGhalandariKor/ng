@@ -27,7 +27,7 @@ func LoginHandler(c *gin.Context) {
 	SetSession(c, "Email", user.Email)
 	SetSession(c, "Username", user.Username)
 	helpers.SetFlash(c, "flash", helpers.FlashMessage{Type: "success", Message: "Successfully logged in"})
-	c.Redirect(http.StatusFound, "/home")
+	c.Redirect(http.StatusFound, "/dashboard")
 }
 
 func RegisterHandler(c *gin.Context) {
