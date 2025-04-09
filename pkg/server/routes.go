@@ -12,6 +12,7 @@ import (
 	dashboardmiddleware "nextgen/pkg/web/dashboard/middleware"
 	"nextgen/pkg/web/dashboard/product"
 	"nextgen/pkg/web/dashboard/profile"
+	"nextgen/pkg/web/dashboard/sell"
 	"nextgen/pkg/web/dashboard/team"
 	"nextgen/pkg/web/dashboard/warehouse"
 )
@@ -78,7 +79,9 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/add-category", product.AddCategoryPage)
 	dashboardRoutes.POST("/add-category", product_management.AddCategoryHandler)
 	dashboardRoutes.POST("/delete-category/:id", product_management.DeleteCategoryHandler)
-	dashboardRoutes.GET("/sellingPage", product.SellingPage)
+
+	// Sell Routes
+	dashboardRoutes.GET("/sellingPage", sell.SellingPage)
 	// Warehouse Routes
 	dashboardRoutes.GET("/warehouses", warehouse.WarehousesPage)
 	dashboardRoutes.GET("/add-warehouse", warehouse.AddWarehousePage)
@@ -88,7 +91,6 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/loyalty", dashboard.LoyaltyPage)
 	dashboardRoutes.GET("/campaign", dashboard.CampaignPage)
 	dashboardRoutes.GET("/settings", dashboard.SettingsPage)
-	
 
 }
 

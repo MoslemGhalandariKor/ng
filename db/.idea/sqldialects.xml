@@ -4,11 +4,14 @@
     <file url="file://$PROJECT_DIR$/functions/FNC_GENERATE_ROW_ID.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/functions/fnc_format_uuid.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/functions/fnc_to_base36.sql" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/packages/product/PKG_PRODUCT_MANAGEMENT_BODY.sql" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/packages/product/PKG_PRODUCT_MANAGEMENT_SPEC.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/packages/product/PKG_BRAND_MANAGEMENT/sequences/SEQ_BRAND_MANAGEMENT_LOG.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/packages/product/PKG_BRAND_MANAGEMENT/tables/TBL_BRAND_MANAGEMENT_LOG.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/packages/product/PKG_PRODUCT_MANAGEMENT/pkg/PKG_PRODUCT_MANAGEMENT_BODY.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/packages/product/PKG_PRODUCT_MANAGEMENT/pkg/PKG_PRODUCT_MANAGEMENT_SPEC.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/packages/product/PKG_PRODUCT_MANAGEMENT/sequences/SEQ_PRODUCT_MANAGEMENT_LOG.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/packages/product/PKG_PRODUCT_MANAGEMENT/tables/TBL_PRODUCT_MANAGEMENT_LOG.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/sequences/seq_loy_row_id.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/tables/app/A_URL_CONFIG.SQL" dialect="Oracle" />
-    <file url="file://$PROJECT_DIR$/tables/product/TBL_PRODUCT_MANAGEMENT_LOG.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/tables/product/n_prod_category.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/tables/product/n_prod_product.sql" dialect="Oracle" />
     <file url="file://$PROJECT_DIR$/tables/product/n_prod_product_variant.sql" dialect="Oracle" />
