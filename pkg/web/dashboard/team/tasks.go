@@ -36,7 +36,7 @@ func TasksPage(c *gin.Context) {
 		teamPageHeaderProps = append(teamPageHeaderProps, *value)
 	}
 	sort.Slice(teamPageHeaderProps, func(i, j int) bool {
-		return teamPageHeaderProps[i].Url > teamPageHeaderProps[j].Url
+		return teamPageHeaderProps[i].PositionNumber < teamPageHeaderProps[j].PositionNumber
 	})
 
 	taskPageProps.TeamPageHeaderProps = teamPageHeaderProps
@@ -91,7 +91,7 @@ func AddTaskPage(c *gin.Context) {
 		teamPageHeaderProps = append(teamPageHeaderProps, *value)
 	}
 	sort.Slice(teamPageHeaderProps, func(i, j int) bool {
-		return teamPageHeaderProps[i].Url > teamPageHeaderProps[j].Url
+		return teamPageHeaderProps[i].PositionNumber < teamPageHeaderProps[j].PositionNumber
 	})
 
 	addTaskPageContents.TeamPageHeaderProps = teamPageHeaderProps
@@ -124,7 +124,7 @@ func AddTaskPage(c *gin.Context) {
 
 	addTaskPageContents.AddTaskPageFormProp = addTaskPageFormProp
 
-	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addtask", Method: "POST"}
+	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addtask", Method: "POST", Buttonlabel: "Add Task"}
 	addTaskPageContents.FormLayoutSimpleProp = addEmployeeFormProp
 
 	addTaskPageProp.AddTaskPageContentsProps = addTaskPageContents

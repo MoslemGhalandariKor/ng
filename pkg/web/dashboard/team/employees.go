@@ -15,18 +15,22 @@ import (
 
 var TeamPageHeaderProps = map[string]*team.TeamPageHeaderProp{
 	"EmployeesPage": &team.TeamPageHeaderProp{
+		PositionNumber: 1,
 		Label: "Employees",
 		Url:   "/dashboard/employee/employees",
 		Class: ""},
 	"AddEmployeePage": &team.TeamPageHeaderProp{
+		PositionNumber: 2,
 		Label: "Add Employee",
 		Url:   "/dashboard/employee/add-employee",
 		Class: ""},
 	"TasksPage": &team.TeamPageHeaderProp{
+		PositionNumber: 3,
 		Label: "Tasks",
 		Url:   "/dashboard/employee/tasks",
 		Class: ""},
 	"AddTasksPage": &team.TeamPageHeaderProp{
+		PositionNumber: 4,
 		Label: "Add Tasks",
 		Url:   "/dashboard/employee/add-task",
 		Class: ""},
@@ -55,7 +59,7 @@ func EmployeesPage(c *gin.Context) {
 		teamPageHeaderProps = append(teamPageHeaderProps, *value)
 	}
 	sort.Slice(teamPageHeaderProps, func(i, j int) bool {
-		return teamPageHeaderProps[i].Url > teamPageHeaderProps[j].Url
+		return teamPageHeaderProps[i].PositionNumber < teamPageHeaderProps[j].PositionNumber
 	})
 
 	employeePageProp.TeamPageHeaderProps = teamPageHeaderProps
@@ -114,7 +118,7 @@ func AddEmployeePage(c *gin.Context) {
 		teamPageHeaderProps = append(teamPageHeaderProps, *value)
 	}
 	sort.Slice(teamPageHeaderProps, func(i, j int) bool {
-		return teamPageHeaderProps[i].Url > teamPageHeaderProps[j].Url
+		return teamPageHeaderProps[i].PositionNumber < teamPageHeaderProps[j].PositionNumber
 	})
 
 	addEmployeePageContents.TeamPageHeaderProps = teamPageHeaderProps
@@ -157,7 +161,7 @@ func AddEmployeePage(c *gin.Context) {
 
 	addEmployeePageContents.AddEmployeePageFormProp = addEmployeePageFormProp
 
-	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addemployee", Method: "POST"}
+	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addemployee", Method: "POST", Buttonlabel: "Add Employee"}
 	addEmployeePageContents.FormLayoutSimpleProp = addEmployeeFormProp
 
 	inputEmployeePhoto := components.InputFileForUserProp{Name: "employeephoto", Label: "Upload Employee Photo"}

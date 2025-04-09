@@ -1,13 +1,14 @@
 package components
 
 type FormLayoutSimpleProp struct {
-	Action string
-	Method string
+	Action      string
+	Method      string
+	Buttonlabel string
 }
 
 templ FormLayoutSimple(contents templ.Component, prop FormLayoutSimpleProp) {
 	<form class="" action={ templ.URL(prop.Action) } method={ prop.Method } enctype="multipart/form-data">
 		@contents
-		<button type="submit" class=" mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+		<button type="submit" class=" mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{ prop.Buttonlabel }</button>
 	</form>
 }

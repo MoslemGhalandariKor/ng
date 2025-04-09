@@ -10,8 +10,6 @@ func GetAllCategoriesService() (categories []CategoryView, err error) {
 
 }
 
-
-
 func GetAllProductsService() (products []ProductView, err error) {
 
 	products, err = GetAllProducts()

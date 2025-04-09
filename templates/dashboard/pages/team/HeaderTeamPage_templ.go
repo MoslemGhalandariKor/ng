@@ -11,9 +11,10 @@ import templruntime "github.com/a-h/templ/runtime"
 import "nextgen/templates/dashboard/dashboardcomponents"
 
 type TeamPageHeaderProp struct {
-	Url   string
-	Label string
-	Class string
+	Url            string
+	Label          string
+	Class          string
+	PositionNumber int
 }
 
 type TeamPageProp struct {
@@ -85,7 +86,7 @@ func TeamPageHeader(props []TeamPageHeaderProp) templ.Component {
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(prop.Label)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/HeaderTeamPage.templ`, Line: 21, Col: 70}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/HeaderTeamPage.templ`, Line: 22, Col: 70}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {

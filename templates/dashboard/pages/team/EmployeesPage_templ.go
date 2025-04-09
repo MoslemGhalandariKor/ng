@@ -86,7 +86,7 @@ func EmployeesPageContent(employeePageProp EmployeePageProp) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2 w-full\"><div class=\" border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center \"><div class=\"p-12 m-4 bg-gray-200 dark:bg-gray-200 rounded-2xl\"><div class=\"space-y-7  m-2 pl-4  bg-gray-200 rounded-lg justify-center\"><div class=\"sm:flex sm:items-center\"><div class=\"sm:flex-auto\"><p class=\"mt-4 text-sm text-gray-700 \">A list of all the users in your account including their name, title, email and role.</p></div></div><div class=\"mt-8 flow-root\"><div class=\"-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8\"><div class=\"inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8\"><div class=\"overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg\"><table class=\"min-w-full divide-y divide-gray-300\"><thead class=\"bg-gray-50\"><tr><th scope=\"col\" class=\"py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6\">Name</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">Username</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">PhoneNumber</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">Role</th><th scope=\"col\" class=\"relative py-3.5 pl-3 pr-4 sm:pr-6\"><span class=\"sr-only\">Edit</span></th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2 w-full\"><div class=\" border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center \"><div class=\"p-12 m-4 bg-gray-200 dark:bg-gray-200 rounded-2xl\"><div class=\"space-y-7  m-2 pl-4  bg-gray-200 rounded-lg justify-center\"><div class=\"sm:flex sm:items-center\"><div class=\"sm:flex-auto\"><p class=\"mt-4 text-sm text-gray-700 \">list of all the employees in your account including their name, title, email and role.</p></div></div><div class=\"mt-8 flow-root\"><div class=\"-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8\"><div class=\"inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8\"><div class=\"overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg\"><table class=\"min-w-full divide-y divide-gray-300\"><thead class=\"bg-gray-50\"><tr><th scope=\"col\" class=\"py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6\">Name</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">Username</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">PhoneNumber</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">Role</th><th scope=\"col\" class=\"relative py-3.5 pl-3 pr-4 sm:pr-6\"><span class=\"sr-only\">Edit</span></th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -132,7 +132,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(employee.FirstName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 119, Col: 109}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 79, Col: 109}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -145,7 +145,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(employee.LastName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 119, Col: 131}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 79, Col: 131}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -158,7 +158,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 120, Col: 83}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 80, Col: 83}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -171,7 +171,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(employee.PhoneNumber)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 121, Col: 86}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 81, Col: 86}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -184,7 +184,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Role)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 122, Col: 79}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 82, Col: 79}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -197,7 +197,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 124, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 84, Col: 48}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -210,20 +210,20 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 124, Col: 88}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 84, Col: 88}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\" class=\"block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800\" type=\"button\">More Info</button><!-- Main modal --><div id=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\" class=\"block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\" type=\"button\">More Info</button><!-- Main modal --><div id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 128, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 88, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -236,7 +236,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 137, Col: 259}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 97, Col: 259}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -249,7 +249,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(employee.FirstName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 153, Col: 336}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 113, Col: 336}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -262,7 +262,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(employee.LastName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 161, Col: 345}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 121, Col: 345}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -275,7 +275,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var15 string
 		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Address)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 169, Col: 340}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 129, Col: 340}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 		if templ_7745c5c3_Err != nil {
@@ -288,7 +288,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(employee.PhoneNumber)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 177, Col: 354}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 137, Col: 354}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -301,7 +301,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Email)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 185, Col: 335}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 145, Col: 335}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
@@ -314,7 +314,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var18 string
 		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(employee.NationalId)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 193, Col: 351}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 153, Col: 351}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 		if templ_7745c5c3_Err != nil {
@@ -327,7 +327,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var19 string
 		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Salary)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 201, Col: 339}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 161, Col: 339}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
@@ -340,7 +340,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var20 string
 		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 209, Col: 343}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 169, Col: 343}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 		if templ_7745c5c3_Err != nil {
@@ -353,7 +353,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var21 string
 		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Role)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 217, Col: 331}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 177, Col: 331}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 		if templ_7745c5c3_Err != nil {
@@ -366,7 +366,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var22 string
 		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Birthday)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 225, Col: 347}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 185, Col: 347}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
@@ -379,7 +379,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		var templ_7745c5c3_Var23 string
 		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Photo)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 232, Col: 37}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 192, Col: 37}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
@@ -394,7 +394,7 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800\">Delete</button></form><form action=\"\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800\">Edit</button></form></div></div></div></div></td></tr>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\">Delete</button></form><form action=\"\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\">Edit</button></form></div></div></div></div></td></tr>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -402,5 +402,4 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 	})
 }
 
-// href={ templ.URL(post.Link) }
 var _ = templruntime.GeneratedTemplate

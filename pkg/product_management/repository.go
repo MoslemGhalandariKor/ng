@@ -48,22 +48,24 @@ func AddProduct(product Product) (ResponseCode int, ResponseDesc string) {
 func GetAllProducts() (products []ProductView, err error) {
 
 	q := `
-		SELECT 	P.ROW_ID,
-      			P.NAME,
-       			P.DESCRIPTION,
-				P.PROD_SIZE,
-				P.PROD_LENGTH,
-				P.PROD_MATERIAL,
-				P.PROD_COLOR,
-				P.IMAGE_SRC,				
-				P.BARCODE,
-				C.NAME,
-				P.BRAND_ID,
-				P.STATUS,
-				P.PRICE
-  		FROM 	N_PROD_PRODUCT P,
-			    N_PROD_CATEGORY C
-	   WHERE P.CATEGORY_ID = C.ROW_ID	
+    SELECT P.ROW_ID,
+           P.NAME,
+           P.DESCRIPTION,
+           P.PROD_SIZE,
+           P.PROD_LENGTH,
+           P.PROD_MATERIAL,
+           P.PROD_COLOR,
+           P.IMAGE_SRC,
+           P.BARCODE,
+           C.NAME,
+           P.BRAND_ID,
+           P.STATUS,
+           P.PRICE,
+           U.URL || TO_CHAR(P.ROW_ID) AS DELETE_PRODUCT_URL
+      FROM N_PROD_PRODUCT P, N_PROD_CATEGORY C, A_URL_CONFIG U
+     WHERE P.CATEGORY_ID = C.ROW_ID
+       AND U.METHODE = 'DELETE_PRODUCT_BY_ID'
+       AND U.METHODE_TYPE = 'DELETE'
 `
 
 	rows, err := ora.OraDB.Query(q)
@@ -74,7 +76,7 @@ func GetAllProducts() (products []ProductView, err error) {
 
 	for rows.Next() {
 		var product ProductView
-		if err := rows.Scan(&product.RowID, &product.Name, &product.Description, &product.ProdSize, &product.ProdLength, &product.ProdMaterial, &product.ProdColor, &product.ImageSrc,  &product.Barcode, &product.CategoryName, &product.BrandName, &product.Status, &product.Price); err != nil {
+		if err := rows.Scan(&product.RowID, &product.Name, &product.Description, &product.ProdSize, &product.ProdLength, &product.ProdMaterial, &product.ProdColor, &product.ImageSrc,  &product.Barcode, &product.CategoryName, &product.BrandName, &product.Status, &product.Price, &product.DeleteProductUrl); err != nil {
 			log.Fatal(err)
 		}
 		products = append(products, product)

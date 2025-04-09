@@ -2,12 +2,10 @@ package product
 
 import (
 	"fmt"
-	// "fmt"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/pkg/product_management"
 	"github.com/gin-gonic/gin"
-	// product_management "nextgen/pkg/product_management"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/product"
@@ -110,7 +108,7 @@ func AddProductPage(c *gin.Context) {
 
 	addProductPageProps.AddProductPageContentsProps.ProductPageHeaderProps = productPageHeaderProps
 
-	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
+	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST", Buttonlabel: "Add Product"}
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
 
 	categoryName, _ := product_management.GetAllCategoriesService()

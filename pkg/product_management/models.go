@@ -25,20 +25,21 @@ type Product struct {
 }
 
 type ProductView struct {
-	RowID        string
-	Name         string
-	Description  string
-	Price        string
-	Amount       string
-	ProdSize     string
-	ProdLength   string
-	ProdMaterial string
-	ProdColor    string
-	ImageSrc     string
-	Barcode      string
-	CategoryName string
-	BrandName    string
-	Status       string
+	RowID            string
+	Name             string
+	Description      string
+	Price            string
+	Amount           string
+	ProdSize         string
+	ProdLength       string
+	ProdMaterial     string
+	ProdColor        string
+	ImageSrc         string
+	Barcode          string
+	CategoryName     string
+	BrandName        string
+	Status           string
+	DeleteProductUrl string
 }
 
 type Category struct {

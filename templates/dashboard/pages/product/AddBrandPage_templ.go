@@ -9,24 +9,17 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"nextgen/pkg/product_management"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
-	"nextgen/templates/dashboard/pages/product/productcategorycomponents"
 )
 
-type AddProductPageProps struct {
-	LayoutProp                  dashboardcomponents.LayoutProp
-	AddProductPageContentsProps AddProductPageContentsProps
-}
-
-type AddProductPageContentsProps struct {
+type AddBrandPageProps struct {
+	LayoutProp             dashboardcomponents.LayoutProp
 	ProductPageHeaderProps []ProductPageHeaderProp
 	FormLayoutSimpleProp   components.FormLayoutSimpleProp
-	CategoryInfo           []product_management.CategoryView
 }
 
-func AddProductPage(addProductPageProps AddProductPageProps) templ.Component {
+func AddBrandPage(addBrandPageProps AddBrandPageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -47,7 +40,7 @@ func AddProductPage(addProductPageProps AddProductPageProps) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = dashboardcomponents.Layout(AddProductPageContents(addProductPageProps.AddProductPageContentsProps), addProductPageProps.LayoutProp).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = dashboardcomponents.Layout(AddBrandPageContent(addBrandPageProps), addBrandPageProps.LayoutProp).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -55,7 +48,7 @@ func AddProductPage(addProductPageProps AddProductPageProps) templ.Component {
 	})
 }
 
-func AddProductPageContents(addProductPageContentsProp AddProductPageContentsProps) templ.Component {
+func AddBrandPageContent(addBrandPageProps AddBrandPageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -76,11 +69,11 @@ func AddProductPageContents(addProductPageContentsProp AddProductPageContentsPro
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = ProductPageHeader(addProductPageContentsProp.ProductPageHeaderProps).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = ProductPageHeader(addBrandPageProps.ProductPageHeaderProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.FormLayoutSimple(AddProductPageForm(addProductPageContentsProp), addProductPageContentsProp.FormLayoutSimpleProp).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.FormLayoutSimple(AddBrandPageForm(), addBrandPageProps.FormLayoutSimpleProp).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -88,7 +81,7 @@ func AddProductPageContents(addProductPageContentsProp AddProductPageContentsPro
 	})
 }
 
-func AddProductPageForm(categoryInfo AddProductPageContentsProps) templ.Component {
+func AddBrandPageForm() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -109,7 +102,7 @@ func AddProductPageForm(categoryInfo AddProductPageContentsProps) templ.Componen
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = productcategorycomponents.FashionAndClothingPage(categoryInfo.CategoryInfo).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><div class=\"p-4 flow-root\"><div class=\"relative p-4 bg-white sm:p-5 p-4 shadow sm:rounded-lg overflow-hidden ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"grid gap-4 sm:col-span-3 md:gap-6 sm:grid-cols-3\"><div><label for=\"brandname\" class=\"block mb-2 text-sm font-medium text-gray-900 \">Brand name</label> <input type=\"text\" name=\"brandname\" id=\"brand_name\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5\" placeholder=\"Type brand name here\" required=\"\"></div><div><label for=\"brandcountry\" class=\"block mb-2 text-sm font-medium text-gray-900 \">Brand country</label> <input type=\"text\" name=\"brandcountry\" id=\"brand_country\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5\" placeholder=\"Type brand country here\" required=\"\"></div><div><label for=\"fulldes\" class=\"block mb-2 text-sm font-medium text-gray-900 \">Full description</label> <input type=\"text\" name=\"fulldes\" id=\"full_description\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5\" placeholder=\"Type full description\" required=\"\"></div><div><label for=\"shortdes\" class=\"block mb-2 text-sm font-medium text-gray-900 \">Short description</label> <input type=\"text\" name=\"shortdes\" id=\"short_description\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5\" placeholder=\"Type short description here\" required=\"\"></div><div><label class=\"block mb-2 text-sm font-medium text-gray-900\" for=\"logo_file_input\">Upload logo file</label> <input class=\"block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none \" aria-describedby=\"file_input_help\" id=\"logo_file_input\" type=\"file\"></div></div></div></div></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

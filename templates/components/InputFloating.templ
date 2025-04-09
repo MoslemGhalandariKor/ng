@@ -5,7 +5,6 @@ type InputFloatingProps struct {
 	Type        string
 	Label       string
 	Required    bool
-	
 	PlaceHolder string
 }
 
@@ -34,4 +33,18 @@ templ InputFloatingPair(props InputFloatingProps, props2 InputFloatingProps) {
 			<label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{ props.Label }</label>
 		</div>
 	</div>
+}
+
+templ InputForUser(props InputFloatingProps) {
+	if props.Required {
+		<div>
+			<label for={ props.Name } class="block mb-2 text-sm font-medium text-gray-900 ">{ props.Label }</label>
+			<input type={ props.Type } name={ props.Name } id={ props.Name } class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={ props.PlaceHolder } required/>
+		</div>
+	} else {
+		<div>
+			<label for={ props.Name } class="block mb-2 text-sm font-medium text-gray-900 ">{ props.Label }</label>
+			<input type={ props.Type } name={ props.Name } id={ props.Name } class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={ props.PlaceHolder } />
+		</div>
+	}
 }

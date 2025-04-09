@@ -75,10 +75,15 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/products", product.ProductsPage)
 	dashboardRoutes.GET("/add-product", product.AddProductPage)
 	dashboardRoutes.POST("/add-product", product_management.AddProductHandler)
+	dashboardRoutes.POST("/delete-product/:id", product_management.DeleteProductHandler)
 	dashboardRoutes.GET("/categories", product.CategoryPage)
 	dashboardRoutes.GET("/add-category", product.AddCategoryPage)
 	dashboardRoutes.POST("/add-category", product_management.AddCategoryHandler)
 	dashboardRoutes.POST("/delete-category/:id", product_management.DeleteCategoryHandler)
+	dashboardRoutes.GET("brands", product.BrandPage)
+	dashboardRoutes.GET("/add-brand", product.AddBrandPage)
+	// dashboardRoutes.POST("/add-brands", product_management.AddBrandHandler)
+	// dashboardRoutes.POST("/delete-brands/:id", product_management.DeleteBrandHandler)
 
 	// Sell Routes
 	dashboardRoutes.GET("/sellingPage", sell.SellingPage)
