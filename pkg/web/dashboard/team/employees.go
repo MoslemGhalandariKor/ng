@@ -47,7 +47,7 @@ func EmployeesPage(c *gin.Context) {
 
 	teamPageHeaderProps := make([]team.TeamPageHeaderProp, 0)
 	for key, value := range TeamPageHeaderProps {
-		if key == "EmployeesPaage" {
+		if key == "EmployeesPage" {
 			value.Class = currentHeaderElementClass
 		} else {
 			value.Class = headerElementsClass

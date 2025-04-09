@@ -1,18 +1,18 @@
-package product
+package sell
 
 import (
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
-	"nextgen/templates/dashboard/dashboardcomponents"
-	"nextgen/templates/dashboard/pages/product"
-	"nextgen/templates/components"
-	"github.com/gin-gonic/gin"
 	"nextgen/pkg/product_management"
+	"nextgen/templates/components"
+	"nextgen/templates/dashboard/dashboardcomponents"
+	"nextgen/templates/dashboard/pages/selling"
 )
 
 func SellingPage(c *gin.Context) {
 
-	sellingPageProps := product.SellingPageProps{}
+	sellingPageProps := selling.SellingPageProps{}
 	layoutProp, exists := c.Get("LayoutProp")
 
 	if !exists {
@@ -27,6 +27,6 @@ func SellingPage(c *gin.Context) {
 	products, _ := product_management.GetAllProductsService()
 	sellingPageProps.Products = products
 
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.SellingPage(sellingPageProps))
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, selling.SellingPage(sellingPageProps))
 	c.Render(http.StatusOK, r)
 }
