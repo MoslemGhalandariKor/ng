@@ -61,3 +61,26 @@ type CategoryView struct {
 	ParentCategoryName string
 	DeleteCategoryUrl  string
 }
+
+type Brand struct {
+	RowID            string    `form:"row_id"`           // VARCHAR2(15)
+	Created          time.Time `form:"created"`          // TIMESTAMP(6)
+	CreatedBy        string    `form:"created_by"`       // VARCHAR2(400)
+	LastUpd          time.Time `form:"last_upd"`         // TIMESTAMP(6)
+	LastUpdBy        string    `form:"last_upd_by"`      // VARCHAR2(400)
+	BrandName        string    `form:"brandname"`        // VARCHAR2(400)
+	BrandCountry     string    `form:"brandcountry"`     // VARCHAR2(400)
+	FullDescription  string    `form:"fulldescription"`  // VARCHAR2(4000)
+	ShortDescription string    `form:"shortdescription"` // VARCHAR2(4000)
+	BrandLogo        string    `form:"brandlogo"`        // VARCHAR2(4000)
+}
+
+type BrandView struct {
+	RowID            string
+	BrandName        string
+	BrandCountry     string
+	FullDescription  string
+	ShortDescription string
+	BrandLogo        string
+	DeleteBrandUrl  string
+}

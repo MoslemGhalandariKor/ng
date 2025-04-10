@@ -55,7 +55,7 @@ func DeleteProductHandler(c *gin.Context) {
 	idParam := c.Param("id")
 
 	_, _ = DeleteProductById(idParam)
-	c.Redirect(http.StatusFound, "/dashboard/Product")
+	c.Redirect(http.StatusFound, "/dashboard/Products")
 }
 
 func AddCategoryHandler(c *gin.Context) {
@@ -71,9 +71,32 @@ func AddCategoryHandler(c *gin.Context) {
 	}
 
 }
+
 func DeleteCategoryHandler(c *gin.Context) {
 	idParam := c.Param("id")
 
 	_, _ = DeleteCategoryById(idParam)
 	c.Redirect(http.StatusFound, "/dashboard/categories")
 }
+
+func AddBrandHandler(c *gin.Context) {
+	var brand Brand
+	c.Bind(&brand)
+
+	responseCode, responseDesc := AddBrand(brand)
+
+	if responseCode != 0 {
+		log.Panic(responseDesc)
+	} else {
+		c.Redirect(http.StatusFound, "/dashboard/brands")
+	}
+
+}
+
+func DeleteBrandHandler(c *gin.Context) {
+	idParam := c.Param("id")
+
+	_, _ = DeleteBrandById(idParam)
+	c.Redirect(http.StatusFound, "/dashboard/brands")
+}
+

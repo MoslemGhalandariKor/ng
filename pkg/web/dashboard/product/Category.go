@@ -73,8 +73,10 @@ func AddCategoryPage(c *gin.Context) {
 	})
 	addCategoryPageProps.ProductPageHeaderProps = addCategoryPageHeaderProps
 
-	addCategoryFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-category", Method: "POST", Buttonlabel: "Add Category"}
+	addCategoryFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-category", Method: "POST",}
 	addCategoryPageProps.FormLayoutSimpleProp = addCategoryFormProp
+
+	
 	categories, _ := product_management.GetAllCategoriesService()
 	addCategoryPageProps.Categories = categories
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddCategoryPage(addCategoryPageProps))

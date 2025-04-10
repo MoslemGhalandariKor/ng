@@ -74,7 +74,7 @@ func WarehousesPageContent(warehousesPageProps WarehousesPageProps) templ.Compon
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<!-- Content block --><div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><section class=\"py-10 md:py-12\"><div class=\"mx-auto  max-w-7xl space-y-12\"><div class=\"max-w-2xl xl:col-span-2\"><h2 class=\"text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl\">Warehouses Information</h2></div><div class=\"\"><ul class=\"grid grid-cols-2 gap-4 \">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<!-- Content block --><div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search for task\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><ul class=\"grid grid-cols-2 gap-4 \">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -84,7 +84,7 @@ func WarehousesPageContent(warehousesPageProps WarehousesPageProps) templ.Compon
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</ul></div></div></section></div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</ul></div></div></div></section></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -133,7 +133,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.Imagescr)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 58, Col: 96}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 92, Col: 96}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -146,7 +146,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 60, Col: 105}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 94, Col: 105}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -159,7 +159,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseManager)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 61, Col: 80}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 95, Col: 80}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -172,7 +172,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseAddress)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 67, Col: 40}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 101, Col: 40}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -185,7 +185,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.NumberOfWorkers)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 72, Col: 61}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 106, Col: 61}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -198,7 +198,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.Status)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 76, Col: 52}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 110, Col: 52}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -211,7 +211,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.Amount)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 80, Col: 52}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 114, Col: 52}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -224,7 +224,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.LastUpdated)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 84, Col: 57}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 118, Col: 57}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -237,7 +237,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 88, Col: 44}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 122, Col: 44}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -250,7 +250,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 88, Col: 94}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 122, Col: 94}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -263,7 +263,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 88, Col: 144}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 122, Col: 144}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -276,20 +276,20 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 		var templ_7745c5c3_Var15 string
 		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 92, Col: 41}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 126, Col: 41}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "\" tabindex=\"-1\" aria-hidden=\"true\" class=\"  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full\"><div class=\"max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6\"><div><h1 class=\"text-2xl font-bold text-gray-800 mb-4\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "\" tabindex=\"-1\" aria-hidden=\"true\" class=\"  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full\"><div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6\"><div><h1 class=\"text-2xl font-bold text-gray-800 mb-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInfo.WarehouseName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 95, Col: 86}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 134, Col: 91}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -315,7 +315,7 @@ func WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) templ.Component
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</thead> <tbody></tbody></table></div></div></div></div></div></div></li>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</thead> <tbody></tbody></table></div></div></div></section></div></div></div></div></div></div></div></li>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -359,7 +359,7 @@ func WarehouseInventory(warehouseInventory WarehouseInventoryProps) templ.Compon
 		var templ_7745c5c3_Var18 string
 		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInventory.ItemName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 149, Col: 75}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 189, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 		if templ_7745c5c3_Err != nil {
@@ -372,7 +372,7 @@ func WarehouseInventory(warehouseInventory WarehouseInventoryProps) templ.Compon
 		var templ_7745c5c3_Var19 string
 		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInventory.Quantity)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 150, Col: 75}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 190, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
@@ -385,7 +385,7 @@ func WarehouseInventory(warehouseInventory WarehouseInventoryProps) templ.Compon
 		var templ_7745c5c3_Var20 string
 		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInventory.ItemSize)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 151, Col: 75}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 191, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 		if templ_7745c5c3_Err != nil {
@@ -398,7 +398,7 @@ func WarehouseInventory(warehouseInventory WarehouseInventoryProps) templ.Compon
 		var templ_7745c5c3_Var21 string
 		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInventory.ItemColor)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 152, Col: 76}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 192, Col: 76}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 		if templ_7745c5c3_Err != nil {
@@ -411,7 +411,7 @@ func WarehouseInventory(warehouseInventory WarehouseInventoryProps) templ.Compon
 		var templ_7745c5c3_Var22 string
 		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseInventory.ItemStatus)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 153, Col: 77}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 193, Col: 77}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
@@ -461,7 +461,7 @@ func WarehouseEmployee(warehouseEmployee WarehouseEmployeeProps) templ.Component
 		var templ_7745c5c3_Var24 string
 		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseEmployee.EmployeeName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 168, Col: 79}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 206, Col: 79}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
@@ -474,7 +474,7 @@ func WarehouseEmployee(warehouseEmployee WarehouseEmployeeProps) templ.Component
 		var templ_7745c5c3_Var25 string
 		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseEmployee.EmployeePhonenumber)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 169, Col: 86}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 207, Col: 86}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 		if templ_7745c5c3_Err != nil {
@@ -487,7 +487,7 @@ func WarehouseEmployee(warehouseEmployee WarehouseEmployeeProps) templ.Component
 		var templ_7745c5c3_Var26 string
 		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseEmployee.EmployeeAddress)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 170, Col: 82}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 208, Col: 82}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
@@ -500,7 +500,7 @@ func WarehouseEmployee(warehouseEmployee WarehouseEmployeeProps) templ.Component
 		var templ_7745c5c3_Var27 string
 		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseEmployee.EmployeeRole)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 171, Col: 79}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 209, Col: 79}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 		if templ_7745c5c3_Err != nil {
@@ -513,7 +513,7 @@ func WarehouseEmployee(warehouseEmployee WarehouseEmployeeProps) templ.Component
 		var templ_7745c5c3_Var28 string
 		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(warehouseEmployee.EmployeeStatus)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 172, Col: 81}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/WarehousesPage.templ`, Line: 210, Col: 81}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 		if templ_7745c5c3_Err != nil {

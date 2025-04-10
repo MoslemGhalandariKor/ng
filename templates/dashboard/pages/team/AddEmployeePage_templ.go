@@ -116,7 +116,7 @@ func AddEmployeePageForm(addEmployeePageFormProps AddEmployeePageFormProps) temp
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><div class=\"p-4 flow-root\"><div class=\"relative p-4 bg-white sm:p-5 p-4 shadow sm:rounded-lg overflow-hidden ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-2\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"p-4\"><div class=\"p-4 flow-root\"><div class=\"relative p-4 bg-white sm:p-5 p-4 shadow sm:rounded-lg overflow-hidden ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -152,7 +152,7 @@ func AddEmployeePageForm(addEmployeePageFormProps AddEmployeePageFormProps) temp
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></div></div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></div><div class=\"pt-6 text-center flex justify-between\"><button type=\"submit\" class=\"bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow\">Add Employee</button></div></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

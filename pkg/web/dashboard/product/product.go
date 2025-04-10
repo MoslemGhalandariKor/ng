@@ -108,7 +108,7 @@ func AddProductPage(c *gin.Context) {
 
 	addProductPageProps.AddProductPageContentsProps.ProductPageHeaderProps = productPageHeaderProps
 
-	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST", Buttonlabel: "Add Product"}
+	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
 
 	categoryName, _ := product_management.GetAllCategoriesService()

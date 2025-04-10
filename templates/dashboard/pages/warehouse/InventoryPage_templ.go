@@ -75,7 +75,7 @@ func InventoryPageContent(inventoryPageProps InventoryPageProps) templ.Component
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><div class=\"max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg\"><h2 class=\"text-2xl font-bold mb-4 text-center\">Clothing Inventory</h2><!-- Add New Product Button --><button id=\"addNewButton\" class=\"bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded mb-4\">+ Add New Product</button><!-- Inventory Table --><div class=\"overflow-x-auto\"><table class=\"w-full border-collapse border border-gray-300\" id=\"inventoryTable\"><thead class=\"bg-gray-200\"><tr><th class=\"border p-2\">Name</th><th class=\"border p-2\">Stock</th><th class=\"border p-2\">Color</th><th class=\"border p-2\">Size</th><th class=\"border p-2\">Material</th><th class=\"border p-2\">User</th><th class=\"border p-2\">Price</th><th class=\"border p-2\">Warehouse</th><th class=\"border p-2\">Actions</th></tr></thead> <tbody id=\"inventoryBody\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><!-- Search in  --><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search in Search\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><!-- Title --><h2 class=\"text-2xl font-bold mb-4 text-center\">Warehouse Inventory</h2><!-- Add New Product Button --><button id=\"addNewButton\" class=\" ml-12 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mb-4\">+ Add New Product</button><!-- Inventory Table --><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Stock</th><th scope=\"col\" class=\" px-6 py-3\">Color</th><th scope=\"col\" class=\" px-6 py-3\">Size</th><th scope=\"col\" class=\" px-6 py-3\">Material</th><th scope=\"col\" class=\" px-6 py-3\">User</th><th scope=\"col\" class=\" px-6 py-3\">Price</th><th scope=\"col\" class=\" px-6 py-3\">Warehouse</th><th scope=\"col\" class=\" px-6 py-3\">Actions</th></tr></thead> <tbody>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -85,7 +85,7 @@ func InventoryPageContent(inventoryPageProps InventoryPageProps) templ.Component
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</tbody></table></div><!-- Add/Edit Form --><div id=\"productForm\" class=\"hidden mt-6\"><h3 class=\"text-xl font-bold mb-2\" id=\"formTitle\">Add New Product</h3><form id=\"productFormElement\" class=\"grid grid-cols-2 gap-4\"><input type=\"hidden\" id=\"editIndex\"><div><label class=\"block text-sm font-semibold\">Name</label> <input type=\"text\" id=\"productName\" class=\"w-full p-2 border rounded-lg\" required></div><div><label class=\"block text-sm font-semibold\">Stock</label> <input type=\"number\" id=\"productStock\" class=\"w-full p-2 border rounded-lg\" required></div><div><label class=\"block text-sm font-semibold\">Color</label> <input type=\"text\" id=\"productColor\" class=\"w-full p-2 border rounded-lg\" required></div><div><label class=\"block text-sm font-semibold\">Size</label> <input type=\"text\" id=\"productSize\" class=\"w-full p-2 border rounded-lg\" required></div><div><label class=\"block text-sm font-semibold\">Material</label> <input type=\"text\" id=\"productMaterial\" class=\"w-full p-2 border rounded-lg\" required></div><div><label class=\"block text-sm font-semibold\">User</label> <input type=\"text\" id=\"productUser\" class=\"w-full p-2 border rounded-lg\" required></div><div><label class=\"block text-sm font-semibold\">Price ($)</label> <input type=\"number\" id=\"productPrice\" class=\"w-full p-2 border rounded-lg\" required></div><div><label class=\"block text-sm font-semibold\">Warehouse</label> <input type=\"text\" id=\"productWarehouse\" class=\"w-full p-2 border rounded-lg\" required></div><div class=\"col-span-2\"><button type=\"submit\" class=\"w-full bg-blue-500 text-white p-2 rounded-lg\">Save Product</button></div></form></div></div></div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</tbody></table></div></div><!-- Add/Edit Form --></div></section></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -114,85 +114,85 @@ func ProductList(product product_management.ProductView) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<tr class=\"bg-white\"><td class=\"border p-2 text-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<tr class=\"bg-white border-b border-gray-200\"><th scope=\"row\" class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap \">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 195, Col: 51}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 207, Col: 95}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</td><td class=\"border p-2 text-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</th><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(product.Amount)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 196, Col: 53}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 208, Col: 40}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</td><td class=\"border p-2 text-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</td><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdColor)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 197, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 209, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</td><td class=\"border p-2 text-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</td><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdSize)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 198, Col: 55}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 210, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</td><td class=\"border p-2 text-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</td><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdMaterial)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 199, Col: 59}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 211, Col: 46}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</td><td class=\"border p-2 text-center\">Admin</td><td class=\"border p-2 text-center\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</td><td class=\"px-6 py-4\">Admin</td><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(product.Price)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 201, Col: 52}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 213, Col: 39}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</td><td class=\"border p-2 text-center\">Warehouse A</td><td class=\"border p-2 text-center\"><button class=\"edit-btn bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded\">Edit</button> <button class=\"delete-btn bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded\">Delete</button></td></tr>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</td><td class=\"px-6 py-4\">Warehouse A</td><td class=\"relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 flex justify-between\"><button class=\"py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 hover:text-gray-600 bg-gray-200 hover:bg-gray-300 rounded-lg  focus:z-10 focus:ring-4 focus:ring-gray-200 focus:outline-none\">Edit</button> <button class=\"py-2 px-3 flex items-center text-sm font-medium text-center text-gray-100 bg-red-600 hover:bg-red-700 rounded-lg  focus:z-10 focus:ring-4 focus:ring-red-200 focus:outline-none\">Delete</button></td></tr>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

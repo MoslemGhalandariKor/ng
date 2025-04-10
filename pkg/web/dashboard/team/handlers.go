@@ -35,6 +35,7 @@ func DeleteEmployeeHandler(c *gin.Context) {
 
 	_, _ = DeleteEmployeeByID(id)
 	c.Redirect(http.StatusFound, "/dashboard/employee/employees")
+	
 }
 
 func AddTaskHandler(c *gin.Context) {

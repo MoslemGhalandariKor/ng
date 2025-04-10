@@ -15,6 +15,7 @@ import (
 	"nextgen/pkg/web/dashboard/sell"
 	"nextgen/pkg/web/dashboard/team"
 	"nextgen/pkg/web/dashboard/warehouse"
+	"nextgen/pkg/web/dashboard/customer"
 )
 
 type Routes struct {
@@ -61,9 +62,11 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.Use(auth.AuthMiddleware)
 	dashboardRoutes.Use(dashboardmiddleware.LayoutPropMiddelware)
 	dashboardRoutes.GET("/", dashboard.DashboardPage)
+
 	// Profile Routes
 	dashboardRoutes.GET("/personal-profile", profile.PersonalProfilePage)
 	dashboardRoutes.GET("/company-profile", profile.CompanyProfilePage)
+
 	// Employees Routes
 	dashboardRoutes.GET("/employee/employees", team.EmployeesPage)
 	dashboardRoutes.GET("/employee/add-employee", team.AddEmployeePage)
@@ -71,6 +74,7 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/employee/tasks", team.TasksPage)
 	dashboardRoutes.GET("/employee/add-task", team.AddTaskPage)
 	dashboardRoutes.POST("/employee/delete-task/:id", team.DeleteTaskHandler)
+
 	// Products Routes
 	dashboardRoutes.GET("/products", product.ProductsPage)
 	dashboardRoutes.GET("/add-product", product.AddProductPage)
@@ -82,15 +86,21 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.POST("/delete-category/:id", product_management.DeleteCategoryHandler)
 	dashboardRoutes.GET("brands", product.BrandPage)
 	dashboardRoutes.GET("/add-brand", product.AddBrandPage)
-	// dashboardRoutes.POST("/add-brands", product_management.AddBrandHandler)
-	// dashboardRoutes.POST("/delete-brands/:id", product_management.DeleteBrandHandler)
+	dashboardRoutes.POST("/add-brand", product_management.AddBrandHandler)
+	dashboardRoutes.POST("/delete-brand/:id", product_management.DeleteBrandHandler)
 
 	// Sell Routes
 	dashboardRoutes.GET("/sellingPage", sell.SellingPage)
+
 	// Warehouse Routes
 	dashboardRoutes.GET("/warehouses", warehouse.WarehousesPage)
 	dashboardRoutes.GET("/add-warehouse", warehouse.AddWarehousePage)
 	dashboardRoutes.GET("/inventory", warehouse.InventoryPage)
+
+	// Customers Routes
+	dashboardRoutes.GET("/customers", customer.CustomerPage)
+	dashboardRoutes.GET("/add-customer", customer.AddCustomerPage)
+
 	// Extra Routes
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
 	dashboardRoutes.GET("/loyalty", dashboard.LoyaltyPage)

@@ -8,6 +8,7 @@ import (
 	"nextgen/templates/dashboard/pages/product"
 	"sort"
 	"nextgen/templates/components"
+	"nextgen/pkg/product_management"
 )
 
 func BrandPage(c *gin.Context) {
@@ -33,6 +34,10 @@ func BrandPage(c *gin.Context) {
 		return productPageHeaderProps[i].PositionNumber < productPageHeaderProps[j].PositionNumber
 	})
 	brandPageProps.ProductPageHeaderProps = productPageHeaderProps
+
+	brands, _ := product_management.GetAllBrandsService()
+	brandPageProps.Brands = brands
+
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.BrandPage(brandPageProps))
 	c.Render(http.StatusOK, r)
@@ -63,9 +68,10 @@ func AddBrandPage(c *gin.Context) {
 	})
 	addBrandPageProps.ProductPageHeaderProps = productPageHeaderProps
 
-	addCategoryFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-br1and", Method: "POST", Buttonlabel: "Add Brand"}
+	addCategoryFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-brand", Method: "POST"}
 	addBrandPageProps.FormLayoutSimpleProp = addCategoryFormProp
 
+	
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddBrandPage(addBrandPageProps))
 	c.Render(http.StatusOK, r)
 

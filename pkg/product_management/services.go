@@ -17,3 +17,11 @@ func GetAllProductsService() (products []ProductView, err error) {
 	return products, err
 
 }
+
+func GetAllBrandsService() (brands []BrandView, err error) {
+
+	brands, err = GetAllBrands()
+
+	return brands, err
+
+}

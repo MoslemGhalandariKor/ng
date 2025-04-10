@@ -161,7 +161,7 @@ func AddEmployeePage(c *gin.Context) {
 
 	addEmployeePageContents.AddEmployeePageFormProp = addEmployeePageFormProp
 
-	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addemployee", Method: "POST", Buttonlabel: "Add Employee"}
+	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addemployee", Method: "POST"}
 	addEmployeePageContents.FormLayoutSimpleProp = addEmployeeFormProp
 
 	inputEmployeePhoto := components.InputFileForUserProp{Name: "employeephoto", Label: "Upload Employee Photo"}

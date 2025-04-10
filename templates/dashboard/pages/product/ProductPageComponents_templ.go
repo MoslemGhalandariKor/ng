@@ -42,14 +42,14 @@ func ProductList(product product_management.ProductView) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<tbody><tr class=\"bg-white border-b border-gray-200\"><th scope=\"row\" class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap \">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<tr><th scope=\"row\" class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap \">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 20, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 19, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -62,7 +62,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(product.CategoryName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 23, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 22, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -75,7 +75,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(product.Price)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 29, Col: 19}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 28, Col: 19}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -88,7 +88,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(genereateUpdateId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 33, Col: 80}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 32, Col: 80}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -101,7 +101,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(genereateUpdateId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 33, Col: 134}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 32, Col: 134}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -114,7 +114,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(genereateUpdateId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 33, Col: 185}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 32, Col: 185}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -127,7 +127,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(genereatePrvId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 40, Col: 77}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 39, Col: 77}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -140,7 +140,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(genereatePrvId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 40, Col: 128}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 39, Col: 128}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -153,7 +153,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(genereatePrvId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 40, Col: 176}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 39, Col: 176}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -166,7 +166,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 47, Col: 79}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 46, Col: 79}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -179,13 +179,13 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 47, Col: 134}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 46, Col: 134}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\" class=\"py-2 px-3 flex items-center text-sm font-medium text-center text-gray-100 bg-red-600 hover:bg-red-700 rounded-lg border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 focus:outline-none\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 mr-2 -ml-0.5\" viewbox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\"><path fill-rule=\"evenodd\" d=\"M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z\" clip-rule=\"evenodd\"></path></svg> Delete</button></div></td></tr></tbody>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\" class=\"py-2 px-3 flex items-center text-sm font-medium text-center text-gray-100 bg-red-600 hover:bg-red-700 rounded-lg border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 focus:outline-none\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 mr-2 -ml-0.5\" viewbox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\"><path fill-rule=\"evenodd\" d=\"M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z\" clip-rule=\"evenodd\"></path></svg> Delete</button></div></td></tr>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -250,7 +250,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var15 string
 		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(genereateUpdateId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 294, Col: 55}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 292, Col: 55}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 		if templ_7745c5c3_Err != nil {
@@ -263,7 +263,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(genereateUpdateId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 296, Col: 78}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 294, Col: 78}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -276,7 +276,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(genereateUpdateId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 296, Col: 129}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 294, Col: 129}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
@@ -289,7 +289,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var18 string
 		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 306, Col: 346}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 304, Col: 346}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 		if templ_7745c5c3_Err != nil {
@@ -302,7 +302,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var19 string
 		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 371, Col: 320}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 369, Col: 320}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
@@ -315,7 +315,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var20 string
 		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 378, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 376, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 		if templ_7745c5c3_Err != nil {
@@ -328,7 +328,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var21 string
 		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 378, Col: 59}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 376, Col: 59}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 		if templ_7745c5c3_Err != nil {
@@ -341,7 +341,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var22 string
 		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 387, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 385, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
@@ -354,7 +354,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var23 string
 		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 387, Col: 59}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 385, Col: 59}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
@@ -367,7 +367,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var24 string
 		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 396, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 394, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
@@ -380,7 +380,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var25 string
 		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 396, Col: 59}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 394, Col: 59}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 		if templ_7745c5c3_Err != nil {
@@ -393,7 +393,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var26 string
 		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 405, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 403, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
@@ -406,7 +406,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var27 string
 		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 405, Col: 59}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 403, Col: 59}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 		if templ_7745c5c3_Err != nil {
@@ -419,7 +419,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var28 string
 		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(product.BrandName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 446, Col: 348}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 444, Col: 348}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 		if templ_7745c5c3_Err != nil {
@@ -432,7 +432,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var29 string
 		templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(product.CategoryName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 450, Col: 354}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 448, Col: 354}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 		if templ_7745c5c3_Err != nil {
@@ -445,7 +445,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var30 string
 		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdLength)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 454, Col: 368}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 452, Col: 368}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 		if templ_7745c5c3_Err != nil {
@@ -458,7 +458,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var31 string
 		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(product.Barcode)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 458, Col: 355}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 456, Col: 355}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 		if templ_7745c5c3_Err != nil {
@@ -471,7 +471,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var32 string
 		templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinStringErrs(product.Status)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 462, Col: 352}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 460, Col: 352}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
 		if templ_7745c5c3_Err != nil {
@@ -484,7 +484,7 @@ func UpdateProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var33 string
 		templ_7745c5c3_Var33, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdColor)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 466, Col: 365}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 464, Col: 365}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var33))
 		if templ_7745c5c3_Err != nil {
@@ -526,7 +526,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var35 string
 		templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.JoinStringErrs(genereatePrvId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 483, Col: 40}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 481, Col: 40}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var35))
 		if templ_7745c5c3_Err != nil {
@@ -539,7 +539,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var36 string
 		templ_7745c5c3_Var36, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 485, Col: 124}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 483, Col: 124}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var36))
 		if templ_7745c5c3_Err != nil {
@@ -552,7 +552,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var37 string
 		templ_7745c5c3_Var37, templ_7745c5c3_Err = templ.JoinStringErrs(product.Price)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 486, Col: 83}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 484, Col: 83}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var37))
 		if templ_7745c5c3_Err != nil {
@@ -565,7 +565,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var38 string
 		templ_7745c5c3_Var38, templ_7745c5c3_Err = templ.JoinStringErrs(genereatePrvId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 488, Col: 75}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 486, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var38))
 		if templ_7745c5c3_Err != nil {
@@ -578,7 +578,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var39 string
 		templ_7745c5c3_Var39, templ_7745c5c3_Err = templ.JoinStringErrs(genereatePrvId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 488, Col: 123}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 486, Col: 123}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var39))
 		if templ_7745c5c3_Err != nil {
@@ -591,7 +591,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var40 string
 		templ_7745c5c3_Var40, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 496, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 494, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var40))
 		if templ_7745c5c3_Err != nil {
@@ -604,7 +604,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var41 string
 		templ_7745c5c3_Var41, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 499, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 497, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var41))
 		if templ_7745c5c3_Err != nil {
@@ -617,7 +617,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var42 string
 		templ_7745c5c3_Var42, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 502, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 500, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var42))
 		if templ_7745c5c3_Err != nil {
@@ -630,7 +630,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var43 string
 		templ_7745c5c3_Var43, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 505, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 503, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var43))
 		if templ_7745c5c3_Err != nil {
@@ -643,7 +643,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var44 string
 		templ_7745c5c3_Var44, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 508, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 506, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var44))
 		if templ_7745c5c3_Err != nil {
@@ -656,7 +656,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var45 string
 		templ_7745c5c3_Var45, templ_7745c5c3_Err = templ.JoinStringErrs(product.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 511, Col: 31}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 509, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var45))
 		if templ_7745c5c3_Err != nil {
@@ -669,7 +669,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var46 string
 		templ_7745c5c3_Var46, templ_7745c5c3_Err = templ.JoinStringErrs(product.Description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 514, Col: 198}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 512, Col: 198}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var46))
 		if templ_7745c5c3_Err != nil {
@@ -682,7 +682,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var47 string
 		templ_7745c5c3_Var47, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdMaterial)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 516, Col: 258}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 514, Col: 258}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var47))
 		if templ_7745c5c3_Err != nil {
@@ -695,7 +695,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var48 string
 		templ_7745c5c3_Var48, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdSize)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 529, Col: 251}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 527, Col: 251}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var48))
 		if templ_7745c5c3_Err != nil {
@@ -708,7 +708,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var49 string
 		templ_7745c5c3_Var49, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdLength)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 530, Col: 260}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 528, Col: 260}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var49))
 		if templ_7745c5c3_Err != nil {
@@ -721,7 +721,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var50 string
 		templ_7745c5c3_Var50, templ_7745c5c3_Err = templ.JoinStringErrs(product.BrandName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 531, Col: 252}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 529, Col: 252}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var50))
 		if templ_7745c5c3_Err != nil {
@@ -734,7 +734,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var51 string
 		templ_7745c5c3_Var51, templ_7745c5c3_Err = templ.JoinStringErrs(product.Barcode)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 532, Col: 252}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 530, Col: 252}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var51))
 		if templ_7745c5c3_Err != nil {
@@ -747,7 +747,7 @@ func PreviewProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var52 string
 		templ_7745c5c3_Var52, templ_7745c5c3_Err = templ.JoinStringErrs(product.CategoryName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 533, Col: 258}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 531, Col: 258}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var52))
 		if templ_7745c5c3_Err != nil {
@@ -789,7 +789,7 @@ func DeleteProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var54 string
 		templ_7745c5c3_Var54, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 554, Col: 43}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 552, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var54))
 		if templ_7745c5c3_Err != nil {
@@ -802,7 +802,7 @@ func DeleteProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var55 string
 		templ_7745c5c3_Var55, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 557, Col: 236}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 555, Col: 236}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var55))
 		if templ_7745c5c3_Err != nil {
@@ -824,7 +824,7 @@ func DeleteProduct(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var57 string
 		templ_7745c5c3_Var57, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteId(product.RowID))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 572, Col: 66}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/ProductPageComponents.templ`, Line: 570, Col: 66}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var57))
 		if templ_7745c5c3_Err != nil {

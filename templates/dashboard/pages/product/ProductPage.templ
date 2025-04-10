@@ -51,9 +51,11 @@ templ ProductPageContent(productPageProps ProductPageProps) {
 												<th scope="col" class=" px-6 py-3">Action</th>
 											</tr>
 										</thead>
-										for _, product := range productPageProps.Products {
-											@ProductList(product)
-										}
+										<tbody class="divide-y divide-gray-200 bg-white">
+											for _, product := range productPageProps.Products {
+												@ProductList(product)
+											}
+										</tbody>
 									</table>
 								</div>
 							</div>
@@ -68,7 +70,7 @@ templ ProductPageContent(productPageProps ProductPageProps) {
 					for _, product := range productPageProps.Products {
 						@PreviewProduct(product)
 					}
-					<!-- Delete Product -->					
+					<!-- Delete Product -->
 					for _, product := range productPageProps.Products {
 						@DeleteProduct(product)
 					}

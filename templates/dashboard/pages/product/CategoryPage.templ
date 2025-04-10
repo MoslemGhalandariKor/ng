@@ -49,9 +49,11 @@ templ CategoryPageContent(categoryPageProps CategoryPageProps) {
 												<th scope="col" class=" px-6 py-3">Action</th>
 											</tr>
 										</thead>
-										for _, categoryInfo := range categoryPageProps.Categories {
-											@CategoryInfo(categoryInfo)
-										}
+										<tbody class="divide-y divide-gray-200 bg-white">
+											for _, categoryInfo := range categoryPageProps.Categories {
+												@CategoryInfo(categoryInfo)
+											}
+										</tbody>
 									</table>
 								</div>
 							</div>
@@ -68,7 +70,6 @@ templ CategoryPageContent(categoryPageProps CategoryPageProps) {
 }
 
 templ CategoryInfo(category product_management.CategoryView) {
-	<tbody class="divide-y divide-gray-200 bg-white">
 		<tr class="bg-white border-b border-gray-200">
 			<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">{ category.Name }</th>
 			<td class="px-6 py-4">{ category.Description }</td>
@@ -82,7 +83,6 @@ templ CategoryInfo(category product_management.CategoryView) {
 				</button>
 			</td>
 		</tr>
-	</tbody>
 }
 
 templ DeleteCategory(category product_management.CategoryView) {

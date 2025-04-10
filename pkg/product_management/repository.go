@@ -195,3 +195,91 @@ func DeleteCategoryById(category_id string) (ResponseCode int, ResponseDesc stri
 
 	return p_response_code, p_response_desc
 }
+
+func AddBrand(brand Brand) (ResponseCode int, ResponseDesc string) {
+	ctx := context.Background()
+
+	var p_response_code int
+	var p_response_desc string
+
+	q := `BEGIN 
+		    PKG_PRODUCT_MANAGEMENT.PRC_ADD_BRAND(:1, :2, :3, :4, :5, :6, :7); 
+		  END;`
+
+	_, err := ora.OraDB.ExecContext(ctx,
+		q,
+		brand.BrandName,
+		brand.BrandCountry,
+		brand.FullDescription,
+		brand.ShortDescription,
+		brand.BrandLogo,
+		
+		sql.Out{Dest: &p_response_code},
+		sql.Out{Dest: &p_response_desc},
+	)
+
+	if err != nil {
+		log.Fatalf("Failed to execute procedure: %v", err)
+	}
+	fmt.Printf("Mapped Output P_RESPONSE_CODE: %d\n", p_response_code)
+	fmt.Printf("Mapped Output P_RESPONSE_DESC: %s\n", p_response_desc)
+
+	return p_response_code, p_response_desc
+}
+
+func GetAllBrands() (brands []BrandView, err error) {
+
+	q := `
+SELECT B.ROW_ID,
+       B.BRAND_NAME,
+       B.BRAND_COUNTRY,
+       B.FULL_DESCRIPTION,
+       B.SHORT_DESCRIPTION,
+       B.BRAND_LOGO,
+       U.URL || TO_CHAR(B.ROW_ID) AS DELETE_BRAND_URL
+  FROM N_PROD_BRAND B, A_URL_CONFIG U
+ WHERE U.METHODE = 'DELETE_BRAND_BY_ID'
+   AND U.METHODE_TYPE = 'DELETE'
+`
+
+	rows, err := ora.OraDB.Query(q)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var brand BrandView
+		if err := rows.Scan(&brand.RowID, &brand.BrandName, &brand.BrandCountry, &brand.FullDescription, &brand.ShortDescription, &brand.BrandLogo, &brand.DeleteBrandUrl); err != nil {
+			log.Fatal(err)
+		}
+		brands = append(brands, brand)
+	}
+	return brands, nil
+}
+
+func DeleteBrandById(brand_id string) (ResponseCode int, ResponseDesc string) {
+	ctx := context.Background()
+
+	var p_response_code int
+	var p_response_desc string
+
+	q := `BEGIN 
+		    PKG_PRODUCT_MANAGEMENT.PRC_DELETE_BRAND(:1, :2, :3); 
+		  END;`
+
+	_, err := ora.OraDB.ExecContext(ctx,
+		q,
+		brand_id,
+		sql.Out{Dest: &p_response_code},
+		sql.Out{Dest: &p_response_desc},
+	)
+
+	if err != nil {
+		log.Fatalf("Failed to execute procedure: %v", err)
+	}
+	fmt.Printf("Mapped Output P_RESPONSE_CODE: %d\n", p_response_code)
+	fmt.Printf("Mapped Output P_RESPONSE_DESC: %s\n", p_response_desc)
+
+	return p_response_code, p_response_desc
+}

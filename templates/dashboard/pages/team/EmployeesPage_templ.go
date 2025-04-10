@@ -22,14 +22,23 @@ type EmployeeInfoProps struct {
 	Role        string
 	Birthday    string
 	Photo       string
+	Gender      string
+	JoinDate    string
 	DeleteUrl   string
+}
+
+func genereateDeleteEmployee(prodId string) string {
+	return prodId + "delete"
+}
+
+func genereateFullInfo(prodId string) string {
+	return prodId + "fullinfo"
 }
 
 type EmployeePageProp struct {
 	LayoutProp          dashboardcomponents.LayoutProp
 	TeamPageHeaderProps []TeamPageHeaderProp
 	EmployeesInfoProps  []EmployeeInfoProps
-	// AddEmployeePageProp []AddEmployeePageProp
 }
 
 func EmployeesPage(employeePageProp EmployeePageProp) templ.Component {
@@ -86,7 +95,7 @@ func EmployeesPageContent(employeePageProp EmployeePageProp) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2 w-full\"><div class=\" border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center \"><div class=\"p-12 m-4 bg-gray-200 dark:bg-gray-200 rounded-2xl\"><div class=\"space-y-7  m-2 pl-4  bg-gray-200 rounded-lg justify-center\"><div class=\"sm:flex sm:items-center\"><div class=\"sm:flex-auto\"><p class=\"mt-4 text-sm text-gray-700 \">list of all the employees in your account including their name, title, email and role.</p></div></div><div class=\"mt-8 flow-root\"><div class=\"-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8\"><div class=\"inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8\"><div class=\"overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg\"><table class=\"min-w-full divide-y divide-gray-300\"><thead class=\"bg-gray-50\"><tr><th scope=\"col\" class=\"py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6\">Name</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">Username</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">PhoneNumber</th><th scope=\"col\" class=\"px-3 py-3.5 text-left text-sm font-semibold text-gray-900\">Role</th><th scope=\"col\" class=\"relative py-3.5 pl-3 pr-4 sm:pr-6\"><span class=\"sr-only\">Edit</span></th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search for employee\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Username</th><th scope=\"col\" class=\" px-6 py-3\">PhoneNumber</th><th scope=\"col\" class=\" px-6 py-3\">Role</th><th scope=\"col\" class=\" px-6 py-3\">Action</th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -96,7 +105,17 @@ func EmployeesPageContent(employeePageProp EmployeePageProp) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</tbody></table></div></div></div></div></div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</tbody></table></div></div></div></section><!-- Delete Category -->")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, employee := range employeePageProp.EmployeesInfoProps {
+			templ_7745c5c3_Err = DeleteEmployee(employee).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -125,276 +144,448 @@ func EmployeesInfo(employee EmployeeInfoProps) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<tr><td class=\"whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<tr class=\"bg-white border-b border-gray-200\"><th scope=\"row\" class=\"px-6 py-4 font-medium text-gray-900 whitespace-nowrap \">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(employee.FirstName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 79, Col: 109}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 97, Col: 101}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, " ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, " ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(employee.LastName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 79, Col: 131}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 97, Col: 123}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</td><td class=\"whitespace-nowrap px-3 py-4 text-sm text-gray-500\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</th><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 80, Col: 83}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 98, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</td><td class=\"whitespace-nowrap px-3 py-4 text-sm text-gray-500\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</td><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(employee.PhoneNumber)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 81, Col: 86}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 99, Col: 46}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</td><td class=\"whitespace-nowrap px-3 py-4 text-sm text-gray-500\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</td><td class=\"px-6 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Role)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 82, Col: 79}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 100, Col: 39}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</td><td class=\"relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6\"><button data-modal-target=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</td><td class=\"relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6\"><button data-modal-target=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var9 string
-		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
+		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(genereateFullInfo(employee.Username))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 84, Col: 48}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 102, Col: 67}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\" data-modal-toggle=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\" data-modal-toggle=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var10 string
-		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
+		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(genereateFullInfo(employee.Username))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 84, Col: 88}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 102, Col: 126}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\" class=\"block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\" type=\"button\">More Info</button><!-- Main modal --><div id=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\" class=\"block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\" type=\"button\">More Info</button><!-- Main modal --><div id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var11 string
-		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
+		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(genereateFullInfo(employee.Username))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 88, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 106, Col: 49}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\" aria-hidden=\"true\" class=\" hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full\"><div class=\"relative p-4 w-full max-w-2xl max-h-full\"><!-- Modal content --><div class=\"relative bg-white rounded-lg  dark:bg-gray-700\"><!-- Modal header --><div class=\"flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600\"><h3 class=\"text-xl font-semibold text-gray-900 dark:text-white\">Employee Information</h3><button type=\"button\" class=\"text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white\" data-modal-hide=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\" aria-hidden=\"true\" class=\" hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full\"><div class=\"relative p-4 w-2/3 max-h-full\"><!-- Modal content --><div class=\"relative rounded-lg  bg-gray-700\"><!-- Modal header --><div class=\"flex text-center p-4 md:p-5 border-b rounded-t border-gray-600\"><h3 class=\"text-xl font-semibold text-white w-full\">Employee Full Information</h3><button type=\"button\" class=\"text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white\" data-modal-hide=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var12 string
-		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
+		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(genereateFullInfo(employee.Username))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 97, Col: 259}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 115, Col: 278}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\"><svg class=\"w-3 h-3\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 14\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6\"></path></svg> <span class=\"sr-only\">Close modal</span></button></div><!-- Modal body --><div class=\" border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 justify-center \"><div class=\"p-12 m-4 bg-gray-200 dark:bg-gray-200 rounded-2xl\"><div class=\"space-y-7  m-2 pl-4  bg-gray-200 rounded-lg justify-center\"><div class=\" grid gap-4 sm:grid-cols-2 sm:gap-6 \"><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"name\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Name</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"name\" id=\"name\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "\"><svg class=\"w-3 h-3\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 14 14\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6\"></path></svg> <span class=\"sr-only\">Close modal</span></button></div><!-- Modal body --><div class=\" border-2 border-dashed rounded-lg border-gray-700 \"><div class=\"p-4 m-4 bg-gray-200 rounded-2xl\"><div class=\"m-2 pl-4  bg-gray-200 rounded-lg\"><div><!-- Personal Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4 text-center\">Personal Information</h2><div class=\"flex justify-between pb-2\"><label for=\"name\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Name</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(employee.FirstName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 113, Col: 336}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 139, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"last_name\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Last Name</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"last_name\" id=\"last_name\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"last_name\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Last Name</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(employee.LastName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 121, Col: 345}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 152, Col: 33}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"address\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Address</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"address\" id=\"address\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "</p></div></div><div class=\" relative flex justify-between pb-2\"><label for=\"birthday\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Birthday</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var15 string
-		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Address)
+		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Birthday)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 129, Col: 340}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 165, Col: 33}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"phone_number\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Phone Number</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"phone_number\" id=\"phone_number\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"national_id\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">National Id</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var16 string
-		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(employee.PhoneNumber)
+		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(employee.NationalId)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 137, Col: 354}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 178, Col: 35}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"email\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Email</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"email\" name=\"email\" id=\"email\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"gender\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Gender</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var17 string
-		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Email)
+		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Gender)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 145, Col: 335}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 191, Col: 31}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"national_id\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">National Id</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"national_id\" id=\"national_id\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</p></div></div><div class=\"flex justify-between pt-4\"><label for=\"photo\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Photo</label><div class=\"mt-2 w-1/2 sm:mt-0\"><img src=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var18 string
-		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(employee.NationalId)
+		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Photo)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 153, Col: 351}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 202, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"salary\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Salary</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"number\" name=\"salary\" id=\"salary\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\" alt=\"employee photo\" class=\"h-12 w-12 text-gray-300\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"> <path fill-rule=\"evenodd\" d=\"M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z\" clip-rule=\"evenodd\"></path> <button type=\"button\" class=\"rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50\">Change</button></div></div></div><!-- Contact Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4 text-center\">Contact Information</h2><div class=\"flex justify-between pb-2\"><label for=\"phone_number\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Phone Number</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var19 string
-		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Salary)
+		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(employee.PhoneNumber)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 161, Col: 339}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 233, Col: 36}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"username\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">UserName</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"username\" id=\"username\" autocomplete=\"given-name\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"phone_number\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Phone Number</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var20 string
-		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
+		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(employee.PhoneNumber)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 169, Col: 343}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 246, Col: 36}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "\"></div></div></div><div class=\"space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\"sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"role\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Role</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"role\" id=\"role\" autocomplete=\"given-role\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"email\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Email</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var21 string
-		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Role)
+		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Email)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 177, Col: 331}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 259, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "\"></div></div></div><div class=\"relative space-y-8 border-b border-gray-900/10  pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0\"><div class=\" relative sm:grid sm:grid-cols-3 sm:items-start sm:gap-2 sm:py-4\"><label for=\"birthday\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Birthday</label><div class=\"mt-2 sm:col-span-2 sm:mt-0\"><input type=\"text\" name=\"birthday\" id=\"birthday\" autocomplete=\"given-birthday\" class=\" p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\" placeholder=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</p></div></div></div><!-- Address Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4\">Address Information</h2><div class=\"flex justify-between pb-2\"><label for=\"address\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Street</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var22 string
-		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Birthday)
+		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Address)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 185, Col: 347}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 276, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "\"></div></div></div><div class=\"col-span-full flex justify-between border-t border-b p-8 border-gray-900/10\"><label for=\"photo\" class=\"block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Photo</label><div class=\" flex items-center gap-x-3\"><img src=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"address\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">City</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var23 string
-		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Photo)
+		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Address)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 192, Col: 37}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 289, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "\" alt=\"employee photo\" class=\"h-12 w-12 text-gray-300\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"> <path fill-rule=\"evenodd\" d=\"M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z\" clip-rule=\"evenodd\"></path> <button type=\"button\" class=\"rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50\">Change</button></div></div></div></div></div></div><!-- Modal footer --><div class=\"flex justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600\"><form action=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"address\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Postal Code</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var24 templ.SafeURL = templ.URL(employee.DeleteUrl)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var24)))
+		var templ_7745c5c3_Var24 string
+		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Address)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 302, Col: 32}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\">Delete</button></form><form action=\"\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\">Edit</button></form></div></div></div></div></td></tr>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</p></div></div><div class=\"flex justify-between pb-2\"><label for=\"address\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Phone Number</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var25 string
+		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Address)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 315, Col: 32}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</p></div></div></div><!-- Job Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4\">Job Information</h2><div class=\"flex justify-between \"><label for=\"salary\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Salary</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var26 string
+		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Salary)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 332, Col: 31}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"role\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Role</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var27 string
+		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Role)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 345, Col: 29}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"username\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">UserName</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var28 string
+		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(employee.Username)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 358, Col: 33}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"join_date\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Join Date</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var29 string
+		templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(employee.JoinDate)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 371, Col: 33}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</p></div></div></div></div></div></div></div><!-- Modal footer --><div class=\"flex justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600\"><form action=\"\" method=\"post\"><button type=\"button\" data-modal-target=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var30 string
+		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteEmployee(employee.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 383, Col: 93}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "\" data-modal-toggle=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var31 string
+		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteEmployee(employee.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 383, Col: 159}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "\" class=\"py-2 px-3 flex items-center text-sm font-medium text-center text-gray-100 bg-red-600 hover:bg-red-700 rounded-lg border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 focus:outline-none\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 mr-2 -ml-0.5\" viewbox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\"><path fill-rule=\"evenodd\" d=\"M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z\" clip-rule=\"evenodd\"></path></svg> Delete</button></form><form action=\"\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\">Edit</button></form></div></div></div></div></td></tr>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func DeleteEmployee(employee EmployeeInfoProps) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var32 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var32 == nil {
+			templ_7745c5c3_Var32 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "<div id=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var33 string
+		templ_7745c5c3_Var33, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteEmployee(employee.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 402, Col: 54}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var33))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "\" tabindex=\"-1\" class=\"fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full\"><div class=\"relative w-full h-auto max-w-md max-h-full\"><div class=\"relative bg-gray-200 shadow border-2 border-gray-900 border-solid rounded-2xl\"><button type=\"button\" class=\"absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center\" data-modal-toggle=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var34 string
+		templ_7745c5c3_Var34, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteEmployee(employee.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 405, Col: 247}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var34))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "\"><svg aria-hidden=\"true\" class=\"w-5 h-5\" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" clip-rule=\"evenodd\"></path></svg> <span class=\"sr-only\">Close modal</span></button><div class=\"p-6 text-center\"><svg aria-hidden=\"true\" class=\"mx-auto mb-4 text-gray-400 w-14 h-14\" fill=\"none\" stroke=\"currentColor\" viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg><h3 class=\"mb-5 text-lg font-normal text-gray-500\">Are you sure you want to delete this category?</h3><div class=\"flex justify-between\"><form action=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var35 templ.SafeURL = templ.URL(employee.DeleteUrl)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var35)))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "\" method=\"POST\"><button data-modal-hide=\"\" type=\"submit\" class=\"text-white w-28 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg  text-sm font-medium px-5 py-2.5 focus:z-10\">Delete</button></form><button data-modal-toggle=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var36 string
+		templ_7745c5c3_Var36, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteEmployee(employee.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/EmployeesPage.templ`, Line: 420, Col: 77}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var36))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "\" type=\"button\" class=\"text-gray-500 w-28 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10\">No, cancel</button></div></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

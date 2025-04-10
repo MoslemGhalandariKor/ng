@@ -1,14 +1,15 @@
 package warehouse
 
 import (
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
+	"nextgen/pkg/product_management"
+	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/warehouse"
 	"sort"
-	"github.com/gin-gonic/gin"
-	"nextgen/templates/components"
-	"nextgen/pkg/product_management"
+	"fmt"
 )
 
 var WarehouseHeaderPageProps = map[string]*warehouse.WarehouseHeaderPageProps{
@@ -59,7 +60,6 @@ func WarehousesPage(c *gin.Context) {
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, warehouse.WarehpusesPage(warehousesPageProps))
 	c.Render(http.StatusOK, r)
 }
-
 
 func AddWarehousePage(c *gin.Context) {
 
@@ -121,6 +121,10 @@ func InventoryPage(c *gin.Context) {
 
 	products, _ := product_management.GetAllProductsService()
 	inventoryPageProps.Products = products
+
+	for _, prod := range inventoryPageProps.Products {
+		fmt.Println(prod)
+	}
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, warehouse.InventoryPage(inventoryPageProps))
 	c.Render(http.StatusOK, r)

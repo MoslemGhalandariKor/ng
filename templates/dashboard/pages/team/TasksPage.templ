@@ -60,9 +60,11 @@ templ TasksPageContent(tasksPageProp TasksPageProp) {
 												<th scope="col" class=" px-6 py-3">Action</th>
 											</tr>
 										</thead>
-										for _, task := range tasksPageProp.TaskInfoProps {
-											@TasksInfo(task)
-										}
+										<tbody class="divide-y divide-gray-200 bg-white">
+											for _, task := range tasksPageProp.TaskInfoProps {
+												@TasksInfo(task)
+											}
+										</tbody>
 									</table>
 								</div>
 							</div>
@@ -79,7 +81,6 @@ templ TasksPageContent(tasksPageProp TasksPageProp) {
 }
 
 templ TasksInfo(task TaskInfoProps) {
-	<tbody class="divide-y divide-gray-200 bg-white">
 		<tr class="bg-white border-b border-gray-200">
 			<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">{ task.FirstName } { task.LastName }</th>
 			<td class="px-6 py-4">{ task.Task }{ task.Task }</td>
@@ -94,7 +95,6 @@ templ TasksInfo(task TaskInfoProps) {
 				</button>
 			</td>
 		</tr>
-	</tbody>
 }
 
 templ DeleteTask(task TaskInfoProps) {

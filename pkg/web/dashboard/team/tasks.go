@@ -124,7 +124,7 @@ func AddTaskPage(c *gin.Context) {
 
 	addTaskPageContents.AddTaskPageFormProp = addTaskPageFormProp
 
-	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addtask", Method: "POST", Buttonlabel: "Add Task"}
+	addEmployeeFormProp := components.FormLayoutSimpleProp{Action: "/accounts/addtask", Method: "POST"}
 	addTaskPageContents.FormLayoutSimpleProp = addEmployeeFormProp
 
 	addTaskPageProp.AddTaskPageContentsProps = addTaskPageContents

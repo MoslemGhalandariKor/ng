@@ -20,17 +20,51 @@ templ WarehousesPageContent(warehousesPageProps WarehousesPageProps) {
 		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
 			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
 				<div class="space-y-12 p-4">
-					<section class="py-10 md:py-12">
-						<div class="mx-auto  max-w-7xl space-y-12">
-							<div class="max-w-2xl xl:col-span-2">
-								<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Warehouses Information</h2>
+					<section class="bg-gray-200 rounded-2xl p-4">
+						<div
+							class="bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl"
+						>
+							<div
+								class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  "
+							>
+								<div class="w-full">
+									<form class="flex items-center">
+										<label for="simple-search" class="sr-only">Search</label>
+										<div class="relative w-full">
+											<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+												<svg
+													aria-hidden="true"
+													class="w-5 h-5 text-gray-500 "
+													fill="currentColor"
+													viewbox="0 0 20 20"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														fill-rule="evenodd"
+														clip-rule="evenodd"
+														d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+													></path>
+												</svg>
+											</div>
+											<input
+												type="text"
+												id="simple-search"
+												placeholder="Search for task"
+												required=""
+												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500"
+											/>
+										</div>
+									</form>
+								</div>
 							</div>
-							<div class="">
-								<ul class="grid grid-cols-2 gap-4 ">
-									for _, warehouseInfo := range warehousesPageProps.WarehousesInfoBlock {
-										@WarehousesInfoBlock(warehouseInfo)
-									}
-								</ul>
+							<div class="overflow-x-auto">
+								<div class="relative overflow-x-auto">
+									<ul class="grid grid-cols-2 gap-4 ">
+										for _, warehouseInfo := range warehousesPageProps.WarehousesInfoBlock {
+											@WarehousesInfoBlock(warehouseInfo)
+										}
+									</ul>
+								</div>
 							</div>
 						</div>
 					</section>
@@ -41,16 +75,16 @@ templ WarehousesPageContent(warehousesPageProps WarehousesPageProps) {
 }
 
 type WarehousesInfoBlockProps struct {
-	Imagescr         string
-	WarehouseName    string
-	WarehouseManager string
-	WarehouseAddress string
-	NumberOfWorkers  string
-	Status           string
-	Amount           string
-	LastUpdated      string
-    WarehouseInventoryProps []WarehouseInventoryProps
-    WarehouseEmployeeProps  []WarehouseEmployeeProps
+	Imagescr                string
+	WarehouseName           string
+	WarehouseManager        string
+	WarehouseAddress        string
+	NumberOfWorkers         string
+	Status                  string
+	Amount                  string
+	LastUpdated             string
+	WarehouseInventoryProps []WarehouseInventoryProps
+	WarehouseEmployeeProps  []WarehouseEmployeeProps
 }
 
 templ WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) {
@@ -90,40 +124,50 @@ templ WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) {
 				</button>
 				<!-- Main modal -->
 				<div id={ warehouseInfo.WarehouseName } tabindex="-1" aria-hidden="true" class="  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-					<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-						<div>
-							<h1 class="text-2xl font-bold text-gray-800 mb-4">{ warehouseInfo.WarehouseName }</h1>
-						</div>
-						<div class="space-y-24">
-							<div class="mb-4">
-								<h2 class="text-lg font-semibold text-gray-700">Inventory Status</h2>
-								<table class="w-full border-collapse border border-gray-300">
-									<thead>
-										<tr class="bg-gray-200">
-											<th class="border border-gray-300 px-4 py-2">Item</th>
-											<th class="border border-gray-300 px-4 py-2">Quantity</th>
-											<th class="border border-gray-300 px-4 py-2">Size</th>
-											<th class="border border-gray-300 px-4 py-2">Color</th>
-											<th class="border border-gray-300 px-4 py-2">Status</th>
-										</tr>
-									</thead>
-									<tbody>
-										for _, warehouseInventory := range warehouseInfo.WarehouseInventoryProps {
-											@WarehouseInventory(warehouseInventory)
-										}
-									</tbody>
-								</table>
-							</div>
-							<div class="mb-4">
-								<h2 class="text-lg font-semibold text-gray-700">Employee Status</h2>
-								<table class="w-full border-collapse border border-gray-300">
-									<thead>
-										for _, warehouseEmployee := range warehouseInfo.WarehouseEmployeeProps {
-											@WarehouseEmployee(warehouseEmployee)
-										}
-									</thead>
-									<tbody></tbody>
-								</table>
+					<div class="mt-2">
+						<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
+							<div class=" m-2 w-full bg-gray-200 rounded-2xl">
+								<div class="space-y-12 p-4">
+									<section class="bg-gray-200 rounded-2xl p-4">
+										<div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
+											<div>
+												<h1 class="text-2xl font-bold text-gray-800 mb-4">{ warehouseInfo.WarehouseName }</h1>
+											</div>
+											<div class="space-y-24">
+												<div class="mb-4">
+													<h2 class="text-lg font-semibold text-gray-700">Inventory Status</h2>
+													<table class="w-full border-collapse border border-gray-300">
+														<thead>
+															<tr class="bg-gray-200">
+																<th class="border border-gray-300 px-4 py-2">Item</th>
+																<th class="border border-gray-300 px-4 py-2">Quantity</th>
+																<th class="border border-gray-300 px-4 py-2">Size</th>
+																<th class="border border-gray-300 px-4 py-2">Color</th>
+																<th class="border border-gray-300 px-4 py-2">Status</th>
+															</tr>
+														</thead>
+														<tbody>
+															for _, warehouseInventory := range warehouseInfo.WarehouseInventoryProps {
+																@WarehouseInventory(warehouseInventory)
+															}
+														</tbody>
+													</table>
+												</div>
+												<div class="mb-4">
+													<h2 class="text-lg font-semibold text-gray-700">Employee Status</h2>
+													<table class="w-full border-collapse border border-gray-300">
+														<thead>
+															for _, warehouseEmployee := range warehouseInfo.WarehouseEmployeeProps {
+																@WarehouseEmployee(warehouseEmployee)
+															}
+														</thead>
+														<tbody></tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -133,17 +177,13 @@ templ WarehousesInfoBlock(warehouseInfo WarehousesInfoBlockProps) {
 	</li>
 }
 
-
-type WarehouseInventoryProps struct{
-ItemName string
-Quantity string
-ItemSize string
-ItemColor string
-ItemStatus string
-
+type WarehouseInventoryProps struct {
+	ItemName   string
+	Quantity   string
+	ItemSize   string
+	ItemColor  string
+	ItemStatus string
 }
-
-
 
 templ WarehouseInventory(warehouseInventory WarehouseInventoryProps) {
 	<td class="border border-gray-300 px-4 py-2">{ warehouseInventory.ItemName }</td>
@@ -153,15 +193,13 @@ templ WarehouseInventory(warehouseInventory WarehouseInventoryProps) {
 	<td class="border border-gray-300 px-4 py-2">{ warehouseInventory.ItemStatus }</td>
 }
 
-type WarehouseEmployeeProps struct{
-EmployeeName string
-EmployeePhonenumber string
-EmployeeAddress string
-EmployeeRole string
-EmployeeStatus string
-
+type WarehouseEmployeeProps struct {
+	EmployeeName        string
+	EmployeePhonenumber string
+	EmployeeAddress     string
+	EmployeeRole        string
+	EmployeeStatus      string
 }
-
 
 templ WarehouseEmployee(warehouseEmployee WarehouseEmployeeProps) {
 	<tr>
