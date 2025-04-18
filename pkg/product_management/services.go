@@ -1,7 +1,5 @@
 package product_management
 
-
-
 func GetAllCategoriesService() (categories []CategoryView, err error) {
 
 	categories, err = GetAllCategories()
@@ -10,9 +8,24 @@ func GetAllCategoriesService() (categories []CategoryView, err error) {
 
 }
 
+func GetCategoriesByPatternService(pattern string) (categories []CategoryView, err error) {
+
+	categories, err = GetCategoriesByPattern(pattern)
+
+	return categories, err
+
+}
+
 func GetAllProductsService() (products []ProductView, err error) {
 
 	products, err = GetAllProducts()
+
+	return products, err
+
+}
+func GetProductByNameService(productName string) (products []ProductView, err error) {
+
+	products, err = GetProductByName(productName)
 
 	return products, err
 

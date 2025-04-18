@@ -44,7 +44,40 @@ func AddProduct(product Product) (ResponseCode int, ResponseDesc string) {
 
 	return p_response_code, p_response_desc
 }
+func GetProductByName(productName string) (products []ProductView, err error) {
+	ctx := context.Background()
+	q := `
+    SELECT P.ROW_ID,
+           P.NAME,
+           P.DESCRIPTION,
+           P.PROD_SIZE,
+           P.PROD_LENGTH,
+           P.PROD_MATERIAL,
+           P.PROD_COLOR,
+           P.IMAGE_SRC,
+           P.BARCODE,
+           P.BRAND_ID,
+           P.STATUS,
+           P.PRICE
+      FROM N_PROD_PRODUCT P
+     WHERE  P.NAME = :1
+`
 
+	rows, err := ora.OraDB.QueryContext(ctx, q, productName)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var product ProductView
+		if err := rows.Scan(&product.RowID, &product.Name, &product.Description, &product.ProdSize, &product.ProdLength, &product.ProdMaterial, &product.ProdColor, &product.ImageSrc, &product.Barcode, &product.BrandName, &product.Status, &product.Price); err != nil {
+			log.Fatal(err)
+		}
+		products = append(products, product)
+	}
+	return products, nil
+}
 func GetAllProducts() (products []ProductView, err error) {
 
 	q := `
@@ -76,7 +109,7 @@ func GetAllProducts() (products []ProductView, err error) {
 
 	for rows.Next() {
 		var product ProductView
-		if err := rows.Scan(&product.RowID, &product.Name, &product.Description, &product.ProdSize, &product.ProdLength, &product.ProdMaterial, &product.ProdColor, &product.ImageSrc,  &product.Barcode, &product.CategoryName, &product.BrandName, &product.Status, &product.Price, &product.DeleteProductUrl); err != nil {
+		if err := rows.Scan(&product.RowID, &product.Name, &product.Description, &product.ProdSize, &product.ProdLength, &product.ProdMaterial, &product.ProdColor, &product.ImageSrc, &product.Barcode, &product.CategoryName, &product.BrandName, &product.Status, &product.Price, &product.DeleteProductUrl); err != nil {
 			log.Fatal(err)
 		}
 		products = append(products, product)
@@ -170,6 +203,40 @@ LEFT JOIN N_PROD_CATEGORY C1
 	return categories, nil
 }
 
+func GetCategoriesByPattern(pattern string) (categories []CategoryView, err error) {
+	ctx := context.Background()
+	q := `
+SELECT C.ROW_ID,
+       C.NAME,
+       C.DESCRIPTION,
+       C1.NAME AS PARENT_NAME,
+       U.URL || TO_CHAR(C.ROW_ID) AS DELETE_CATEGORY_URL
+  FROM N_PROD_CATEGORY C
+LEFT JOIN A_URL_CONFIG U
+    ON U.METHODE = 'DELETE_CATEGORY_BY_ID'
+   AND U.METHODE_TYPE = 'DELETE'
+LEFT JOIN N_PROD_CATEGORY C1
+    ON C1.ROW_ID = C.PARENT_ID
+ WHERE LOWER(C.NAME) LIKE LOWER(:1)
+`
+	p := "%" + pattern + "%"
+	rows, err := ora.OraDB.QueryContext(ctx, q, p)
+	fmt.Println(p)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var category CategoryView
+		if err := rows.Scan(&category.RowID, &category.Name, &category.Description, &category.ParentCategoryName, &category.DeleteCategoryUrl); err != nil {
+			log.Fatal(err)
+		}
+		categories = append(categories, category)
+	}
+	return categories, nil
+}
+
 func DeleteCategoryById(category_id string) (ResponseCode int, ResponseDesc string) {
 	ctx := context.Background()
 
@@ -213,7 +280,7 @@ func AddBrand(brand Brand) (ResponseCode int, ResponseDesc string) {
 		brand.FullDescription,
 		brand.ShortDescription,
 		brand.BrandLogo,
-		
+
 		sql.Out{Dest: &p_response_code},
 		sql.Out{Dest: &p_response_desc},
 	)

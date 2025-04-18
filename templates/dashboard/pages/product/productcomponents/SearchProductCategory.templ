@@ -1,0 +1,55 @@
+package productcomponents
+
+import (
+    "nextgen/pkg/product_management"
+)
+
+templ SearchProductCategory(categoryInfo []product_management.CategoryView ){
+
+<div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+<button id="dropdownSearchButton" data-dropdown-toggle="dropdownSearch" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center " type="button">Dropdown search <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+  </svg></button>
+
+<!-- Dropdown menu -->
+<div id="dropdownSearch" class="z-10 hidden bg-white rounded-lg shadow-sm w-60 dark:bg-gray-700">
+    <div class="p-3">
+      <label for="input-group-search" class="sr-only">Search</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+        </svg>
+        </div>
+        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               id="input-category-pattern-search"
+               name="input-category-pattern-search"
+               placeholder="Search category"
+               type="text"
+               hx-get="/dashboard/category-search"
+               hx-trigger="keyup changed delay:100ms"
+               hx-target="#category_search">
+
+      </div>
+    </div>
+    @ProductCategories(categoryInfo)
+
+</div>
+
+</div>
+}
+
+templ ProductCategories(categoryInfo []product_management.CategoryView ){
+  <div id="category_search">
+      <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+        for _, category := range categoryInfo {
+          <li>
+            <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-600">
+              <input name="categories[]" id={ category.RowID } type="checkbox" value={ category.RowID } class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+              <label for={ category.RowID } class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm dark:text-gray-300">{ category.Name }</label>
+            </div>
+          </li>
+	    }
+	  </ul>
+    </div>
+}

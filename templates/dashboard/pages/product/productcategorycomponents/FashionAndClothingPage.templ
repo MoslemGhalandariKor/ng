@@ -1,6 +1,9 @@
 package productcategorycomponents
 
-import "nextgen/pkg/product_management"
+import (
+    "nextgen/pkg/product_management"
+    "nextgen/templates/dashboard/pages/product/productcomponents"
+)
 
 templ FashionAndClothingPage(categoryInfo []product_management.CategoryView) {
 	<div class="mt-2">
@@ -15,25 +18,19 @@ templ FashionAndClothingPage(categoryInfo []product_management.CategoryView) {
 							// 	<h3 class="text-lg font-semibold text-gray-900">Add Product</h3>
 							// </div>
 							<!-- Modal body -->
+
 							<div class=" gap-4 mb-4 sm:grid-cols-2 space-y-4">
 								<div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4">
 									<label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 ">
 										Product
 										Category :
 									</label>
-									<div>
-										<select
-											id="category_id"
-											name="category_id"
-											class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-										>
-											<option selected="">Select category</option>
-											for _, category := range categoryInfo {
-												<option value={ category.RowID }>{ category.Name }</option>
-											}
-										</select>
-									</div>
-								</div>
+									@productcomponents.SearchProductCategory(categoryInfo)
+							    </div>
+							</div>
+
+							<div class=" gap-4 mb-4 sm:grid-cols-2 space-y-4">
+
 								<div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4">
 									<div>
 										<label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">

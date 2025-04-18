@@ -2,13 +2,15 @@ package product
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/pkg/product_management"
-	"github.com/gin-gonic/gin"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/product"
+	"nextgen/templates/dashboard/pages/product/productcomponents"
+	"nextgen/templates/dashboard/pages/selling"
 	"sort"
 )
 
@@ -77,7 +79,7 @@ func ProductsPage(c *gin.Context) {
 	for _, prod := range productPageProps.Products {
 		fmt.Println(prod)
 	}
-	
+
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.ProductPage(productPageProps))
 	c.Render(http.StatusOK, r)
 }
@@ -111,10 +113,43 @@ func AddProductPage(c *gin.Context) {
 	addProductFormProp := components.FormLayoutSimpleProp{Action: "/dashboard/add-product", Method: "POST"}
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
 
-	categoryName, _ := product_management.GetAllCategoriesService()
-	addProductPageProps.AddProductPageContentsProps.CategoryInfo = categoryName
+	categories, _ := product_management.GetAllCategoriesService()
+	addProductPageProps.AddProductPageContentsProps.CategoryInfo = categories
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))
+	c.Render(http.StatusOK, r)
+
+}
+
+func ProductCategorySearch(c *gin.Context) {
+	q := c.Query("input-category-pattern-search")
+	fmt.Println(q)
+	var (
+		categories []product_management.CategoryView
+		err        error
+	)
+
+	if len(q) == 0 {
+		categories, err = product_management.GetAllCategories()
+	} else {
+		categories, err = product_management.GetCategoriesByPatternService(q)
+	}
+	if err != nil {
+		fmt.Println("Error:", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
+		return
+	}
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductCategories(categories))
+	c.Render(http.StatusOK, r)
+}
+func GetProductByNameHandler(c *gin.Context) {
+	productName := c.Query("product-name")
+	fmt.Println(productName)
+	var (
+		products []product_management.ProductView
+	)
+	products, _ = product_management.GetProductByNameService(productName)
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, selling.ProductRow(products))
 	c.Render(http.StatusOK, r)
 
 }
