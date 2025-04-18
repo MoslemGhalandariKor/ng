@@ -83,7 +83,7 @@ func TasksPageContent(tasksPageProp TasksPageProp) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search for task\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Task</th><th scope=\"col\" class=\" px-6 py-3\">Role</th><th scope=\"col\" class=\" px-6 py-3\">Deadline</th><th scope=\"col\" class=\" px-6 py-3\">Action</th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><section class=\"bg-gray-200 rounded-2xl p-8\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search for task\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Task</th><th scope=\"col\" class=\" px-6 py-3\">Role</th><th scope=\"col\" class=\" px-6 py-3\">Deadline</th><th scope=\"col\" class=\" px-6 py-3\">Action</th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -103,7 +103,7 @@ func TasksPageContent(tasksPageProp TasksPageProp) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -139,7 +139,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(task.FirstName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 85, Col: 98}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 83, Col: 97}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -152,7 +152,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(task.LastName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 85, Col: 116}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 83, Col: 115}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -165,7 +165,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(task.Task)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 86, Col: 36}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 84, Col: 35}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -174,7 +174,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(task.Task)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 86, Col: 49}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 84, Col: 48}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -187,7 +187,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(task.Role)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 87, Col: 36}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 85, Col: 35}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -200,7 +200,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(task.Deadline)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 88, Col: 40}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 86, Col: 39}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -213,7 +213,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteTask(task.DeleteUrl))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 90, Col: 81}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 88, Col: 80}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -226,7 +226,7 @@ func TasksInfo(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteTask(task.DeleteUrl))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 90, Col: 139}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 88, Col: 138}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -268,7 +268,7 @@ func DeleteTask(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteTask(task.DeleteUrl))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 101, Col: 46}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 99, Col: 46}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -281,7 +281,7 @@ func DeleteTask(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteTask(task.DeleteUrl))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 104, Col: 239}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 102, Col: 239}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
@@ -303,7 +303,7 @@ func DeleteTask(task TaskInfoProps) templ.Component {
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteTask(task.DeleteUrl))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 119, Col: 69}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/team/TasksPage.templ`, Line: 117, Col: 69}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {

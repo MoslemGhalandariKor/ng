@@ -1,0 +1,15 @@
+package dashboardcomponents
+
+templ DashboradBgComponent(contents templ.Component) {
+	<div class="mt-2">
+		<div class=" flex rounded-lg justify-center ">
+			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
+				<section class="bg-gray-200 rounded-2xl p-8">
+					<div class="p-4 bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl">
+						@contents
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+}

@@ -1,0 +1,25 @@
+package loyalty
+
+import (
+	
+	"nextgen/templates/dashboard/dashboardcomponents"
+)
+
+type CampaignPageProps struct {
+	LayoutProp             dashboardcomponents.LayoutProp
+	LoyaltyPageHeaderProps []LoyaltyPageHeaderProp
+}
+
+templ CampaignPage(campaignPageProps CampaignPageProps) {
+	@dashboardcomponents.Layout(CampaignPageContent(campaignPageProps), campaignPageProps.LayoutProp)
+}
+
+templ CampaignPageContent(campaignPageProps CampaignPageProps) {
+	@LoyaltyPageHeader(campaignPageProps.LoyaltyPageHeaderProps)
+	
+}
+
+
+
+
+

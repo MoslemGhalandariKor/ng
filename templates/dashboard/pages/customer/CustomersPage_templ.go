@@ -19,21 +19,23 @@ func genereateFullInfo(prodId string) string {
 }
 
 type CustomerInfoProps struct {
-	FirstName    string
-	LastName     string
-	Street       string
-	City         string
-	PostalCode   string
-	PhoneNumber  string
-	Email        string
-	Username     string
-	Birthday     string
-	Loyaltypoint string
-	Waletbalance string
-	JoinDate     string
-	DeleteUrl    string
-	Gender       string
-	CustomerId   string
+	FirstName      string
+	LastName       string
+	Street         string
+	City           string
+	PostalCode     string
+	PhoneNumber    string
+	Email          string
+	Username       string
+	Birthday       string
+	Loyaltypoint   string
+	Loyaltyrewards string
+	Loyaltytier    string
+	Waletbalance   string
+	JoinDate       string
+	DeleteUrl      string
+	Gender         string
+	CustomerId     string
 }
 
 type CustomerPageProps struct {
@@ -96,7 +98,7 @@ func CustomerPageContent(customerPageProps CustomerPageProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"space-y-12 p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search for customer\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Username</th><th scope=\"col\" class=\" px-6 py-3\">Phone Number</th><th scope=\"col\" class=\" px-6 py-3\">Loyalty Point</th><th scope=\"col\" class=\" px-6 py-3\">Walet balance</th><th scope=\"col\" class=\" px-6 py-3\">Actions</th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><section class=\"bg-gray-200 rounded-2xl p-8\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search for customer\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Username</th><th scope=\"col\" class=\" px-6 py-3\">Phone Number</th><th scope=\"col\" class=\" px-6 py-3\">Loyalty Point</th><th scope=\"col\" class=\" px-6 py-3\">Walet balance</th><th scope=\"col\" class=\" px-6 py-3\">Actions</th></tr></thead> <tbody class=\"divide-y divide-gray-200 bg-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -116,7 +118,7 @@ func CustomerPageContent(customerPageProps CustomerPageProps) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -353,7 +355,7 @@ func CustomerInfo(customer CustomerInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</p></div></div></div><!-- Address Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4\">Address Information</h2><div class=\"flex justify-between pb-2\"><label for=\"address\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Street</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</p></div></div></div><!-- Address Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4 text-center\">Address Information</h2><div class=\"flex justify-between pb-2\"><label for=\"address\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Street</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -392,85 +394,111 @@ func CustomerInfo(customer CustomerInfoProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</p></div></div></div><!-- Account Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4\">Account Information</h2><div class=\"flex justify-between \"><label for=\"loyalty-point\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Loyalty Point</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</p></div></div></div><!-- Account Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4 text-center\">Account Information</h2><div class=\"flex justify-between pt-2\"><label for=\"customer-id\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Customer Id</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var23 string
-		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(customer.Loyaltypoint)
+		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(customer.CustomerId)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 272, Col: 38}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 272, Col: 36}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"walet-balance\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Walet Balance</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"join_date\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Join Date</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var24 string
-		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(customer.Waletbalance)
+		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(customer.JoinDate)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 285, Col: 38}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 285, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"customer-id\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Customer Id</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "</p></div></div></div><!-- Club Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6 \"><h2 class=\"text-xl font-semibold text-gray-700 mb-4 text-center\">Customer Club Information</h2><div class=\"flex justify-between \"><label for=\"loyalty-point\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Loyalty Point</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var25 string
-		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(customer.CustomerId)
+		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(customer.Loyaltypoint)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 298, Col: 36}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 302, Col: 38}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"join_date\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Join Date</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"walet-balance\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Walet Balance</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var26 string
-		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(customer.JoinDate)
+		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(customer.Waletbalance)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 311, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 315, Col: 38}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</p></div></div></div></div></div></div></div><!-- Modal footer --><div class=\"flex justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600\"><form action=\"\" method=\"post\"><button type=\"button\" data-modal-target=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"walet-balance\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Loyalty Rewards</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var27 string
-		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
+		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(customer.Loyaltyrewards)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 323, Col: 94}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 328, Col: 40}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "\" data-modal-toggle=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "</p></div></div><div class=\"flex justify-between pt-2\"><label for=\"walet-balance\" class=\"pl-4 block text-sm font-medium leading-6 text-gray-900  sm:pt-1.5\">Loyalty Tier</label><div class=\"mt-2 w-1/2 sm:mt-0\"><p class=\"h-9 bg-gray-100 p-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var28 string
-		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
+		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(customer.Loyaltytier)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 323, Col: 160}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 341, Col: 37}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "\" class=\"py-2 px-3 flex items-center text-sm font-medium text-center text-gray-100 bg-red-600 hover:bg-red-700 rounded-lg border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 focus:outline-none\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 mr-2 -ml-0.5\" viewbox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\"><path fill-rule=\"evenodd\" d=\"M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z\" clip-rule=\"evenodd\"></path></svg> Delete</button></form><form action=\"\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\">Edit</button></form></div></div></div></div></div></td></tr>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</p></div></div></div></div></div></div></div><!-- Modal footer --><div class=\"flex justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600\"><form action=\"\" method=\"post\"><button type=\"button\" data-modal-target=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var29 string
+		templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 353, Col: 94}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "\" data-modal-toggle=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var30 string
+		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 353, Col: 160}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "\" class=\"py-2 px-3 flex items-center text-sm font-medium text-center text-gray-100 bg-red-600 hover:bg-red-700 rounded-lg border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 focus:outline-none\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-4 w-4 mr-2 -ml-0.5\" viewbox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\"><path fill-rule=\"evenodd\" d=\"M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z\" clip-rule=\"evenodd\"></path></svg> Delete</button></form><form action=\"\" method=\"post\"><button data-modal-hide=\"default-modal\" type=\"submit\" class=\"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center\">Edit</button></form></div></div></div></div></div></td></tr>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -494,60 +522,60 @@ func DeleteCustomer(customer CustomerInfoProps) templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var29 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var29 == nil {
-			templ_7745c5c3_Var29 = templ.NopComponent
+		templ_7745c5c3_Var31 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var31 == nil {
+			templ_7745c5c3_Var31 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "<div id=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "<div id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var30 string
-		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
+		var templ_7745c5c3_Var32 string
+		templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 343, Col: 54}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 373, Col: 54}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "\" tabindex=\"-1\" class=\"fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full\"><div class=\"relative w-full h-auto max-w-md max-h-full\"><div class=\"relative bg-gray-200 shadow border-2 border-gray-900 border-solid rounded-2xl\"><button type=\"button\" class=\"absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center\" data-modal-toggle=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var31 string
-		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 346, Col: 247}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "\"><svg aria-hidden=\"true\" class=\"w-5 h-5\" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" clip-rule=\"evenodd\"></path></svg> <span class=\"sr-only\">Close modal</span></button><div class=\"p-6 text-center\"><svg aria-hidden=\"true\" class=\"mx-auto mb-4 text-gray-400 w-14 h-14\" fill=\"none\" stroke=\"currentColor\" viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg><h3 class=\"mb-5 text-lg font-normal text-gray-500\">Are you sure you want to delete this category?</h3><div class=\"flex justify-between\"><form action=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var32 templ.SafeURL = templ.URL(customer.DeleteUrl)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var32)))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "\" method=\"POST\"><button data-modal-hide=\"\" type=\"submit\" class=\"text-white w-28 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg  text-sm font-medium px-5 py-2.5 focus:z-10\">Delete</button></form><button data-modal-toggle=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "\" tabindex=\"-1\" class=\"fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full\"><div class=\"relative w-full h-auto max-w-md max-h-full\"><div class=\"relative bg-gray-200 shadow border-2 border-gray-900 border-solid rounded-2xl\"><button type=\"button\" class=\"absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center\" data-modal-toggle=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var33 string
 		templ_7745c5c3_Var33, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 361, Col: 77}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 376, Col: 247}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var33))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "\" type=\"button\" class=\"text-gray-500 w-28 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10\">No, cancel</button></div></div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "\"><svg aria-hidden=\"true\" class=\"w-5 h-5\" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" d=\"M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z\" clip-rule=\"evenodd\"></path></svg> <span class=\"sr-only\">Close modal</span></button><div class=\"p-6 text-center\"><svg aria-hidden=\"true\" class=\"mx-auto mb-4 text-gray-400 w-14 h-14\" fill=\"none\" stroke=\"currentColor\" viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z\"></path></svg><h3 class=\"mb-5 text-lg font-normal text-gray-500\">Are you sure you want to delete this category?</h3><div class=\"flex justify-between\"><form action=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var34 templ.SafeURL = templ.URL(customer.DeleteUrl)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(string(templ_7745c5c3_Var34)))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "\" method=\"POST\"><button data-modal-hide=\"\" type=\"submit\" class=\"text-white w-28 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg  text-sm font-medium px-5 py-2.5 focus:z-10\">Delete</button></form><button data-modal-toggle=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var35 string
+		templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.JoinStringErrs(genereateDeleteCustomer(customer.DeleteUrl))
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/customer/CustomersPage.templ`, Line: 391, Col: 77}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var35))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "\" type=\"button\" class=\"text-gray-500 w-28 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10\">No, cancel</button></div></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

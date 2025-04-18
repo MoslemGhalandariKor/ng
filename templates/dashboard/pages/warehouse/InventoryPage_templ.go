@@ -75,7 +75,7 @@ func InventoryPageContent(inventoryPageProps InventoryPageProps) templ.Component
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><!-- Search in  --><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search in Search\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><!-- Title --><h2 class=\"text-2xl font-bold mb-4 text-center\">Warehouse Inventory</h2><!-- Add New Product Button --><button id=\"addNewButton\" class=\" ml-12 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mb-4\">+ Add New Product</button><!-- Inventory Table --><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Stock</th><th scope=\"col\" class=\" px-6 py-3\">Color</th><th scope=\"col\" class=\" px-6 py-3\">Size</th><th scope=\"col\" class=\" px-6 py-3\">Material</th><th scope=\"col\" class=\" px-6 py-3\">User</th><th scope=\"col\" class=\" px-6 py-3\">Price</th><th scope=\"col\" class=\" px-6 py-3\">Warehouse</th><th scope=\"col\" class=\" px-6 py-3\">Actions</th></tr></thead> <tbody>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><section class=\"bg-gray-200 rounded-2xl p-8\"><div class=\"bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl\"><!-- Search in  --><div class=\"flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4  \"><div class=\"w-full md:w-1/2\"><form class=\"flex items-center\"><label for=\"simple-search\" class=\"sr-only\">Search</label><div class=\"relative w-full\"><div class=\"absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none\"><svg aria-hidden=\"true\" class=\"w-5 h-5 text-gray-500 \" fill=\"currentColor\" viewbox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z\"></path></svg></div><input type=\"text\" id=\"simple-search\" placeholder=\"Search in Search\" required=\"\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2   dark:focus:ring-primary-500 dark:focus:border-primary-500\"></div></form></div></div><!-- Title --><h2 class=\"text-2xl font-bold mb-4 text-center\">Warehouse Inventory</h2><!-- Add New Product Button --><button id=\"addNewButton\" class=\" rounded-xl ml-12 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded mb-4\">+ Add New Product</button><!-- Inventory Table --><div class=\"overflow-x-auto\"><div class=\"relative overflow-x-auto\"><table class=\"w-full text-sm text-left rtl:text-right text-gray-500\"><thead class=\"text-xs text-gray-700 uppercase bg-gray-200 \"><tr><th scope=\"col\" class=\" px-6 py-3\">Name</th><th scope=\"col\" class=\" px-6 py-3\">Stock</th><th scope=\"col\" class=\" px-6 py-3\">Color</th><th scope=\"col\" class=\" px-6 py-3\">Size</th><th scope=\"col\" class=\" px-6 py-3\">Material</th><th scope=\"col\" class=\" px-6 py-3\">User</th><th scope=\"col\" class=\" px-6 py-3\">Price</th><th scope=\"col\" class=\" px-6 py-3\">Warehouse</th><th scope=\"col\" class=\" px-6 py-3\">Actions</th></tr></thead> <tbody>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -85,7 +85,7 @@ func InventoryPageContent(inventoryPageProps InventoryPageProps) templ.Component
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</tbody></table></div></div><!-- Add/Edit Form --></div></section></div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</tbody></table></div></div><!-- Add/Edit Form --></div></section></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -121,7 +121,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(product.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 207, Col: 95}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 205, Col: 95}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -134,7 +134,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(product.Amount)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 208, Col: 40}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 206, Col: 40}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -147,7 +147,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdColor)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 209, Col: 43}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 207, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -160,7 +160,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdSize)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 210, Col: 42}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 208, Col: 42}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -173,7 +173,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(product.ProdMaterial)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 211, Col: 46}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 209, Col: 46}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -186,7 +186,7 @@ func ProductList(product product_management.ProductView) templ.Component {
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(product.Price)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 213, Col: 39}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/warehouse/InventoryPage.templ`, Line: 211, Col: 39}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {

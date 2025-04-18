@@ -22,11 +22,10 @@ templ AddWarehousePageContent(addWarehousePageProps AddWarehousePageProps) {
 
 templ AddWarehousePageForm() {
 	<div class="mt-2">
-		<div class=" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center ">
+		<div class=" flex rounded-lg justify-center ">
 			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
-				<div class="p-4">
-					<div class="p-4 flow-root">
-						<div class="relative p-4 bg-white sm:p-5 p-4 shadow sm:rounded-lg overflow-hidden ring-1 ring-black ring-opacity-5 rounded-2xl">
+				<section class="bg-gray-200 rounded-2xl p-8">
+					<div class="relative p-4 bg-white sm:p-5 p-4 shadow sm:rounded-lg overflow-hidden ring-1 ring-black ring-opacity-5 rounded-2xl">
 							<div class="grid gap-4 sm:col-span-3 md:gap-6 sm:grid-cols-3">
 								<div>
 									<label for="warehouse_name" class="block mb-2 text-sm font-medium text-gray-900 ">Warehouse Name</label>
@@ -62,17 +61,17 @@ templ AddWarehousePageForm() {
 									/>
 								</div>
 							</div>
+							<div class="pt-6 text-center flex justify-between">
+								<button
+									type="submit"
+									class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow"
+								>
+									Add Warehouse 
+								</button>
+							</div>
 						</div>
-					</div>
-					<div class="pt-6 text-center flex justify-between">
-						<button
-							type="submit"
-							class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow"
-						>
-							Add Warehouse 
-						</button>
-					</div>
-				</div>
+					
+				</section>
 			</div>
 		</div>
 	</div>

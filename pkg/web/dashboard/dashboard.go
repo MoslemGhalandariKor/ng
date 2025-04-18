@@ -8,6 +8,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+
+
+
+
+
 func DashboardPage(c *gin.Context) {
 
 	layoutProp, exists := c.Get("LayoutProp")
@@ -31,27 +36,6 @@ func CalendarPage(c *gin.Context) {
 	c.Render(http.StatusOK, r)
 }
 
-func LoyaltyPage(c *gin.Context) {
-	layoutProp, exists := c.Get("LayoutProp")
-
-	if !exists {
-		layoutProp = dashboardcomponents.LayoutProp{}
-	}
-
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.LoyaltyPage(layoutProp.(dashboardcomponents.LayoutProp)))
-	c.Render(http.StatusOK, r)
-}
-
-func CampaignPage(c *gin.Context) {
-	layoutProp, exists := c.Get("LayoutProp")
-
-	if !exists {
-		layoutProp = dashboardcomponents.LayoutProp{}
-	}
-
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.CampaignPage(layoutProp.(dashboardcomponents.LayoutProp)))
-	c.Render(http.StatusOK, r)
-}
 
 func SettingsPage(c *gin.Context) {
 	layoutProp, exists := c.Get("LayoutProp")

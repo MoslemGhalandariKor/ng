@@ -73,7 +73,7 @@ func AddCustomerPageContent(addCustomerPageProps AddCustomerPageProps) templ.Com
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.FormLayoutSimple(AddCustomerPageForm(), addCustomerPageProps.FormLayoutSimpleProp).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = dashboardcomponents.DashboradBgComponent(AddCustomerPageForm(addCustomerPageProps)).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -81,7 +81,7 @@ func AddCustomerPageContent(addCustomerPageProps AddCustomerPageProps) templ.Com
 	})
 }
 
-func AddCustomerPageForm() templ.Component {
+func AddCustomerPageForm(addCustomerPageProps AddCustomerPageProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -102,7 +102,36 @@ func AddCustomerPageForm() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"mt-2\"><div class=\" flex  border-2 border-gray-200 border-dashed rounded-lg justify-center \"><div class=\" m-2 w-full bg-gray-200 rounded-2xl\"><div class=\"p-4\"><section class=\"bg-gray-200 rounded-2xl p-4\"><div class=\"bg-white p-8 rounded-2xl shadow-md\"><h1 class=\"text-3xl font-bold mb-6 text-center text-gray-800\">Add New Customer</h1><form action=\"#\" method=\"POST\" class=\"space-y-6\"><!-- Personal Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Personal Information</h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div><label class=\"block mb-1 font-medium\">First Name</label> <input type=\"text\" name=\"first_name\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Last Name</label> <input type=\"text\" name=\"last_name\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Date of Birth</label> <input type=\"date\" name=\"dob\" class=\"w-full border rounded-lg px-3 py-2\"></div><div><label class=\"block mb-1 font-medium\">Gender</label> <select name=\"gender\" class=\"w-full border rounded-lg px-3 py-2\"><option value=\"\">Select Gender</option> <option>Male</option> <option>Female</option> <option>Other</option></select></div></div></div><!-- Contact Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Contact Information </h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div><label class=\"block mb-1 font-medium\">Email</label> <input type=\"email\" name=\"email\" class=\"w-full border rounded-lg px-3 py-2\"></div><div><label class=\"block mb-1 font-medium\">Phone Number</label> <input type=\"tel\" name=\"phone\" class=\"w-full border rounded-lg px-3 py-2\" required></div></div></div><!-- Address Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Address Information</h2><div class=\"space-y-4\"><div><label class=\"block mb-1 font-medium\">Street Address</label> <input type=\"text\" name=\"street\" class=\"w-full border rounded-lg px-3 py-2\"></div><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4\"><div><label class=\"block mb-1 font-medium\">City</label> <input type=\"text\" name=\"city\" class=\"w-full border rounded-lg px-3 py-2\"></div><div><label class=\"block mb-1 font-medium\">Postal Code</label> <input type=\"text\" name=\"zip\" class=\"w-full border rounded-lg px-3 py-2\"></div></div></div></div><!-- Account Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Account Settings</h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div><label class=\"block mb-1 font-medium\">Username</label> <input type=\"text\" name=\"username\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Password</label> <input type=\"password\" name=\"password\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Customer Id</label> <input type=\"customer-id,\" name=\"password\" class=\"w-full border rounded-lg px-3 py-2\" required></div></div><div class=\"mt-4\"><label class=\"inline-flex items-center\"><input type=\"checkbox\" name=\"newsletter\" class=\"form-checkbox h-5 w-5 text-indigo-600\"> <span class=\"ml-2 text-gray-600\">Subscribe to newsletter</span></label></div></div><!-- Submit Button --><div class=\"pt-6 text-center flex justify-between\"><button type=\"submit\" class=\"bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow\">Add Customer</button></div></form></div></section></div></div></div></div>")
+		templ_7745c5c3_Err = components.FormLayoutSimple(AddCustomerPageFormContent(), addCustomerPageProps.FormLayoutSimpleProp).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func AddCustomerPageFormContent() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var4 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var4 == nil {
+			templ_7745c5c3_Var4 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div><h1 class=\"text-3xl font-bold mb-6 text-center text-gray-800\">Add New Customer</h1><form action=\"#\" method=\"POST\" class=\"space-y-6\"><!-- Personal Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Personal Information</h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div><label class=\"block mb-1 font-medium\">First Name</label> <input type=\"text\" name=\"first_name\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Last Name</label> <input type=\"text\" name=\"last_name\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Date of Birth</label> <input type=\"date\" name=\"dob\" class=\"w-full border rounded-lg px-3 py-2\"></div><div><label class=\"block mb-1 font-medium\">Gender</label> <select name=\"gender\" class=\"w-full border rounded-lg px-3 py-2\"><option value=\"\">Select Gender</option> <option>Male</option> <option>Female</option> <option>Other</option></select></div></div></div><!-- Contact Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Contact Information </h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div><label class=\"block mb-1 font-medium\">Email</label> <input type=\"email\" name=\"email\" class=\"w-full border rounded-lg px-3 py-2\"></div><div><label class=\"block mb-1 font-medium\">Phone Number</label> <input type=\"tel\" name=\"phone\" class=\"w-full border rounded-lg px-3 py-2\" required></div></div></div><!-- Address Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Address Information</h2><div class=\"space-y-4\"><div><label class=\"block mb-1 font-medium\">Street Address</label> <input type=\"text\" name=\"street\" class=\"w-full border rounded-lg px-3 py-2\"></div><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4\"><div><label class=\"block mb-1 font-medium\">City</label> <input type=\"text\" name=\"city\" class=\"w-full border rounded-lg px-3 py-2\"></div><div><label class=\"block mb-1 font-medium\">Postal Code</label> <input type=\"text\" name=\"zip\" class=\"w-full border rounded-lg px-3 py-2\"></div></div></div></div><!-- Account Info --><div class=\"bg-gray-100 p-4 rounded-lg border-2 border-dashed rounded-lg border-gray-700 mb-6\"><h2 class=\"text-xl font-semibold mb-4 text-gray-700\">Account Settings</h2><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div><label class=\"block mb-1 font-medium\">Username</label> <input type=\"text\" name=\"username\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Password</label> <input type=\"password\" name=\"password\" class=\"w-full border rounded-lg px-3 py-2\" required></div><div><label class=\"block mb-1 font-medium\">Customer Id</label> <input type=\"customer-id,\" name=\"password\" class=\"w-full border rounded-lg px-3 py-2\" required></div></div><div class=\"mt-4\"><label class=\"inline-flex items-center\"><input type=\"checkbox\" name=\"newsletter\" class=\"form-checkbox h-5 w-5 text-indigo-600\"> <span class=\"ml-2 text-gray-600\">Subscribe to newsletter</span></label></div></div><!-- Submit Button --><div class=\"pt-6 text-center flex justify-between\"><button type=\"submit\" class=\"bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow\">Add Customer</button></div></form></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

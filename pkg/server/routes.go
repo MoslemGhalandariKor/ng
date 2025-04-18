@@ -9,13 +9,14 @@ import (
 	appmiddleware "nextgen/pkg/web/app/middleware"
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard"
+	"nextgen/pkg/web/dashboard/customer"
+	"nextgen/pkg/web/dashboard/loyalty"
 	dashboardmiddleware "nextgen/pkg/web/dashboard/middleware"
 	"nextgen/pkg/web/dashboard/product"
 	"nextgen/pkg/web/dashboard/profile"
 	"nextgen/pkg/web/dashboard/sell"
 	"nextgen/pkg/web/dashboard/team"
 	"nextgen/pkg/web/dashboard/warehouse"
-	"nextgen/pkg/web/dashboard/customer"
 )
 
 type Routes struct {
@@ -101,10 +102,12 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/customers", customer.CustomerPage)
 	dashboardRoutes.GET("/add-customer", customer.AddCustomerPage)
 
+	// Loyalty Routes
+	dashboardRoutes.GET("/loyalty", loyalty.LoyaltyPage)
+	dashboardRoutes.GET("/campaign", loyalty.CampaignPage)
+
 	// Extra Routes
 	dashboardRoutes.GET("/calendar", dashboard.CalendarPage)
-	dashboardRoutes.GET("/loyalty", dashboard.LoyaltyPage)
-	dashboardRoutes.GET("/campaign", dashboard.CampaignPage)
 	dashboardRoutes.GET("/settings", dashboard.SettingsPage)
 
 }
