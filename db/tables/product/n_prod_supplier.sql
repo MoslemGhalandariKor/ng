@@ -12,3 +12,5 @@ CREATE TABLE n_prod_supplier (
     country VARCHAR2(100) -- Country of the supplier
 
 );
+
+

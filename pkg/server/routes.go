@@ -10,7 +10,6 @@ import (
 	"nextgen/pkg/web/blog"
 	"nextgen/pkg/web/dashboard"
 	"nextgen/pkg/web/dashboard/customer"
-	"nextgen/pkg/web/dashboard/loyalty"
 	dashboardmiddleware "nextgen/pkg/web/dashboard/middleware"
 	"nextgen/pkg/web/dashboard/product"
 	"nextgen/pkg/web/dashboard/profile"
@@ -81,12 +80,14 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/add-product", product.AddProductPage)
 	dashboardRoutes.POST("/add-product", product_management.AddProductHandler)
 	dashboardRoutes.POST("/delete-product/:id", product_management.DeleteProductHandler)
+	dashboardRoutes.GET("/get-product", product.GetProductByNameHandler)
 	dashboardRoutes.GET("/categories", product.CategoryPage)
 	dashboardRoutes.GET("/add-category", product.AddCategoryPage)
 	dashboardRoutes.POST("/add-category", product_management.AddCategoryHandler)
 	dashboardRoutes.POST("/delete-category/:id", product_management.DeleteCategoryHandler)
-	dashboardRoutes.GET("brands", product.BrandPage)
+	dashboardRoutes.GET("/brands", product.BrandPage)
 	dashboardRoutes.GET("/add-brand", product.AddBrandPage)
+	dashboardRoutes.GET("/category-search", product.ProductCategorySearch)
 	dashboardRoutes.POST("/add-brand", product_management.AddBrandHandler)
 	dashboardRoutes.POST("/delete-brand/:id", product_management.DeleteBrandHandler)
 
