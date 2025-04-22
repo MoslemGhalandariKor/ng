@@ -8,7 +8,16 @@ package productcomponents
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func SearchProductCategory(searchProductProps SearchProductProps) templ.Component {
+import (
+	"nextgen/pkg/product_management"
+)
+
+type SearchProductProps struct {
+	BrandInfo    []product_management.BrandView
+	CategoryInfo []product_management.CategoryView
+}
+
+func SearchProductBrand(searchProductProps SearchProductProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,11 +38,11 @@ func SearchProductCategory(searchProductProps SearchProductProps) templ.Componen
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5\"><button id=\"dropdownCategorySearchButton\" data-dropdown-toggle=\"dropdownCategorySearch\" class=\"inline-flex items-center text-sm font-medium text-center ml-6 \" type=\"button\">Choose Category <svg class=\"w-2.5 h-2.5 ms-2.5\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m1 1 4 4 4-4\"></path></svg></button><!-- Dropdown menu --><div id=\"dropdownCategorySearch\" class=\"z-10 rounded-lg hidden shadow-md w-60 bg-gray-200 ring-1 ring-black ring-opacity-5\"><div class=\"p-3\"><label for=\"input-group-search\" class=\"sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500 \" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5\" id=\"input_category_pattern_search\" name=\"input_category_pattern_search\" placeholder=\"Search category\" type=\"text\" hx-get=\"/dashboard/category-search\" hx-trigger=\"keyup changed delay:100ms\" hx-target=\"#category_search\"></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5\"><button id=\"dropdownBrandSearchButton\" data-dropdown-toggle=\"dropdownBrandSearch\" class=\"inline-flex items-center text-sm font-medium text-center ml-6 \" type=\"button\">Choose Brand <svg class=\"w-2.5 h-2.5 ms-2.5\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m1 1 4 4 4-4\"></path></svg></button><!-- Dropdown menu --><div id=\"dropdownBrandSearch\" class=\"z-10 rounded-lg hidden shadow-md w-60 bg-gray-200 ring-1 ring-black ring-opacity-5\"><div class=\"p-3\"><label for=\"input-group-search\" class=\"sr-only\">Search</label><div class=\"relative\"><div class=\"absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none\"><svg class=\"w-4 h-4 text-gray-500 \" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"><path stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z\"></path></svg></div><input class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5\" id=\"input_brand_pattern_search\" name=\"input_brand_pattern_search\" placeholder=\"Search brand\" type=\"text\" hx-get=\"/dashboard/brand-search\" hx-trigger=\"keyup changed delay:100ms\" hx-target=\"#brand_search\"></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = ProductCategories(searchProductProps).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = ProductBrands(searchProductProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -45,7 +54,7 @@ func SearchProductCategory(searchProductProps SearchProductProps) templ.Componen
 	})
 }
 
-func ProductCategories(categoryInfo SearchProductProps) templ.Component {
+func ProductBrands(brandInfo SearchProductProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -70,15 +79,15 @@ func ProductCategories(categoryInfo SearchProductProps) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, category := range categoryInfo.CategoryInfo {
+		for _, brand := range brandInfo.BrandInfo {
 			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<li><div class=\"flex items-center p-2 rounded-sm hover:bg-gray-100 \"><input name=\"categories[]\" id=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(category.RowID)
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(brand.RowID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductCategory.templ`, Line: 44, Col: 60}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 53, Col: 57}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -89,9 +98,9 @@ func ProductCategories(categoryInfo SearchProductProps) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var4 string
-			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(category.RowID)
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(brand.RowID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductCategory.templ`, Line: 44, Col: 101}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 53, Col: 95}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -102,9 +111,9 @@ func ProductCategories(categoryInfo SearchProductProps) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var5 string
-			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(category.RowID)
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(brand.RowID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductCategory.templ`, Line: 45, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 54, Col: 38}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -115,9 +124,9 @@ func ProductCategories(categoryInfo SearchProductProps) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var6 string
-			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(category.Name)
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(brand.BrandName)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductCategory.templ`, Line: 45, Col: 124}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 54, Col: 123}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {

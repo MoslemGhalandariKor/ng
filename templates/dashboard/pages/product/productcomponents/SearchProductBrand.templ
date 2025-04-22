@@ -1,14 +1,23 @@
 package productcomponents
 
-templ SearchProductCategory(searchProductProps SearchProductProps ){
+import (
+    "nextgen/pkg/product_management"
+)
+
+type SearchProductProps struct {
+	BrandInfo    []product_management.BrandView
+	CategoryInfo []product_management.CategoryView
+}
+
+templ SearchProductBrand(searchProductProps SearchProductProps ){
 
 <div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-<button id="dropdownCategorySearchButton" data-dropdown-toggle="dropdownCategorySearch" class="inline-flex items-center text-sm font-medium text-center ml-6 " type="button">Choose Category <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+<button id="dropdownBrandSearchButton" data-dropdown-toggle="dropdownBrandSearch" class="inline-flex items-center text-sm font-medium text-center ml-6 " type="button">Choose Brand <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
   </svg></button>
 
 <!-- Dropdown menu -->
-<div id="dropdownCategorySearch" class="z-10 rounded-lg hidden shadow-md w-60 bg-gray-200 ring-1 ring-black ring-opacity-5">
+<div id="dropdownBrandSearch" class="z-10 rounded-lg hidden shadow-md w-60 bg-gray-200 ring-1 ring-black ring-opacity-5">
     <div class="p-3">
       <label for="input-group-search" class="sr-only">Search</label>
       <div class="relative">
@@ -18,31 +27,31 @@ templ SearchProductCategory(searchProductProps SearchProductProps ){
         </svg>
         </div>
         <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-               id="input_category_pattern_search"
-               name="input_category_pattern_search"
-               placeholder="Search category"
+               id="input_brand_pattern_search"
+               name="input_brand_pattern_search"
+               placeholder="Search brand"
                type="text"
-               hx-get="/dashboard/category-search"
+               hx-get="/dashboard/brand-search"
                hx-trigger="keyup changed delay:100ms"
-               hx-target="#category_search">
+               hx-target="#brand_search">
 
       </div>
     </div>
-    @ProductCategories(searchProductProps)
+    @ProductBrands(searchProductProps)
 
 </div>
 
 </div>
 }
 
-templ ProductCategories(categoryInfo SearchProductProps ){
+templ ProductBrands(brandInfo SearchProductProps ){
   <div id="category_search">
       <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 " aria-labelledby="dropdownSearchButton">
-        for _, category := range categoryInfo.CategoryInfo {
+        for _, brand := range brandInfo.BrandInfo {
           <li>
             <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 ">
-              <input name="categories[]" id={ category.RowID } type="checkbox" value={ category.RowID } class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500">
-              <label for={ category.RowID } class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm">{ category.Name }</label>
+              <input name="categories[]" id={ brand.RowID } type="checkbox" value={ brand.RowID } class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500">
+              <label for={ brand.RowID } class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm">{ brand.BrandName }</label>
             </div>
           </li>
 	    }

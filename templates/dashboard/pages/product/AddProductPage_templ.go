@@ -9,10 +9,10 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"nextgen/pkg/product_management"
 	"nextgen/templates/components"
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/product/productcategorycomponents"
+	"nextgen/templates/dashboard/pages/product/productcomponents"
 )
 
 type AddProductPageProps struct {
@@ -23,7 +23,7 @@ type AddProductPageProps struct {
 type AddProductPageContentsProps struct {
 	ProductPageHeaderProps []ProductPageHeaderProp
 	FormLayoutSimpleProp   components.FormLayoutSimpleProp
-	CategoryInfo           []product_management.CategoryView
+	SearchProductProps     productcomponents.SearchProductProps
 }
 
 func AddProductPage(addProductPageProps AddProductPageProps) templ.Component {
@@ -88,7 +88,7 @@ func AddProductPageContents(addProductPageContentsProp AddProductPageContentsPro
 	})
 }
 
-func AddProductPageForm(categoryInfo AddProductPageContentsProps) templ.Component {
+func AddProductPageForm(addProductPageContentsProps AddProductPageContentsProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -109,7 +109,7 @@ func AddProductPageForm(categoryInfo AddProductPageContentsProps) templ.Componen
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = productcategorycomponents.FashionAndClothingPage(categoryInfo.CategoryInfo).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = productcategorycomponents.FashionAndClothingPage(addProductPageContentsProps.SearchProductProps).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

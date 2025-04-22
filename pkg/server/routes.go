@@ -16,6 +16,7 @@ import (
 	"nextgen/pkg/web/dashboard/sell"
 	"nextgen/pkg/web/dashboard/team"
 	"nextgen/pkg/web/dashboard/warehouse"
+	"nextgen/pkg/web/dashboard/loyalty"
 )
 
 type Routes struct {

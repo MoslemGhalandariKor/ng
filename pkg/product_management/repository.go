@@ -325,6 +325,39 @@ SELECT B.ROW_ID,
 	return brands, nil
 }
 
+func GetBrandsByPattern(pattern string) (brands []BrandView, err error) {
+	ctx := context.Background()
+	q := `
+SELECT B.ROW_ID,
+       B.BRAND_NAME,
+       B.BRAND_COUNTRY,
+       B.FULL_DESCRIPTION,
+       B.SHORT_DESCRIPTION,
+       B.BRAND_LOGO,
+       U.URL || TO_CHAR(B.ROW_ID) AS DELETE_BRAND_URL
+  FROM N_PROD_BRAND B, A_URL_CONFIG U
+ WHERE U.METHODE = 'DELETE_BRAND_BY_ID'
+   AND U.METHODE_TYPE = 'DELETE'
+ WHERE LOWER(C.NAME) LIKE LOWER(:1)
+`
+	p := "%" + pattern + "%"
+	rows, err := ora.OraDB.QueryContext(ctx, q, p)
+	fmt.Println(p)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var brand BrandView
+		if err := rows.Scan(&brand.RowID, &brand.BrandName, &brand.BrandCountry, &brand.FullDescription, &brand.ShortDescription, &brand.BrandLogo, &brand.DeleteBrandUrl); err != nil {
+			log.Fatal(err)
+		}
+		brands = append(brands, brand)
+	}
+	return brands, nil
+}
+
 func DeleteBrandById(brand_id string) (ResponseCode int, ResponseDesc string) {
 	ctx := context.Background()
 

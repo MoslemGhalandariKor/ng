@@ -1,11 +1,8 @@
 package productcategorycomponents
 
-import (
-    "nextgen/pkg/product_management"
-    "nextgen/templates/dashboard/pages/product/productcomponents"
-)
+import "nextgen/templates/dashboard/pages/product/productcomponents"
 
-templ FashionAndClothingPage(categoryInfo []product_management.CategoryView) {
+templ FashionAndClothingPage(fashionAndClothingPageProps productcomponents.SearchProductProps) {
 	<div class="mt-2">
 		<div class=" flex rounded-lg justify-center ">
 			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
@@ -18,19 +15,25 @@ templ FashionAndClothingPage(categoryInfo []product_management.CategoryView) {
 							// 	<h3 class="text-lg font-semibold text-gray-900">Add Product</h3>
 							// </div>
 							<!-- Modal body -->
-
 							<div class=" gap-4 mb-4 sm:grid-cols-2 space-y-4">
 								<div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4">
-									<label for="category_id" class="block mb-2 text-sm font-medium text-gray-900 ">
-										Product
-										Category :
-									</label>
-									@productcomponents.SearchProductCategory(categoryInfo)
-							    </div>
+									<div class="ml-12">
+										<label for="category_id" class="block mb-2 pt-2 text-sm font-medium text-gray-900 ">
+											Product
+											Category :
+										</label>
+										@productcomponents.SearchProductCategory(fashionAndClothingPageProps)
+									</div>
+									<div class="ml-12">
+										<label for="category_id" class="block mb-2 pt-2 text-sm font-medium text-gray-900 ">
+											Product
+											Brand :
+										</label>
+										@productcomponents.SearchProductBrand(fashionAndClothingPageProps)
+									</div>
+								</div>
 							</div>
-
 							<div class=" gap-4 mb-4 sm:grid-cols-2 space-y-4">
-
 								<div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4">
 									<div>
 										<label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">
@@ -63,20 +66,21 @@ templ FashionAndClothingPage(categoryInfo []product_management.CategoryView) {
 											required=""
 										/>
 									</div>
-									<div>
-										<label
-											for="brand_id"
-											class="block mb-2 text-sm font-medium text-gray-900 "
-										>Brand</label>
-										<input
-											type="text"
-											name="brand_id"
-											id="brand_id"
-											class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-											placeholder="Nike"
-											required=""
-										/>
-									</div>
+									// <div>
+									// 	<label
+									// 		for="brand_id"
+									// 		class="block mb-2 text-sm font-medium text-gray-900 "
+									// 	>Brand</label>
+									// 	<input
+									// 		type="text"
+									// 		name="brand_id"
+									// 		id="brand_id"
+									// 		class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+									// 		placeholder="Nike"
+									// 		required=""
+									// 	/>
+									// </div>
+									
 								</div>
 								<div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4">
 									<div>
@@ -257,15 +261,15 @@ templ FashionAndClothingPage(categoryInfo []product_management.CategoryView) {
 									</label>
 								</div>
 							</div>
+							<div class="pt-6 text-center flex justify-between">
+								<button
+									type="submit"
+									class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow"
+								>
+									Add Product 
+								</button>
+							</div>
 						</div>
-					</div>
-					<div class="pt-6 text-center flex justify-between">
-						<button
-							type="submit"
-							class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow"
-						>
-							Add Product 
-						</button>
 					</div>
 				</div>
 			</div>

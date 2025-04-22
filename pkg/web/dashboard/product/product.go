@@ -2,7 +2,6 @@ package product
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/pkg/product_management"
@@ -12,6 +11,7 @@ import (
 	"nextgen/templates/dashboard/pages/product/productcomponents"
 	"nextgen/templates/dashboard/pages/selling"
 	"sort"
+	"github.com/gin-gonic/gin"
 )
 
 var ProductPageHeaderProps = map[string]*product.ProductPageHeaderProp{
@@ -114,7 +114,10 @@ func AddProductPage(c *gin.Context) {
 	addProductPageProps.AddProductPageContentsProps.FormLayoutSimpleProp = addProductFormProp
 
 	categories, _ := product_management.GetAllCategoriesService()
-	addProductPageProps.AddProductPageContentsProps.CategoryInfo = categories
+	addProductPageProps.AddProductPageContentsProps.SearchProductProps.CategoryInfo = categories
+
+	brands, _ := product_management.GetAllBrandsService()
+	addProductPageProps.AddProductPageContentsProps.SearchProductProps.BrandInfo = brands
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))
 	c.Render(http.StatusOK, r)
@@ -139,9 +142,32 @@ func ProductCategorySearch(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
 		return
 	}
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductCategories(categories))
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductCategories(productcomponents.SearchProductProps{CategoryInfo: categories}))
 	c.Render(http.StatusOK, r)
 }
+
+func ProductBrandSearch(c *gin.Context) {
+	q := c.Query("input-brand-pattern-search")
+	fmt.Println(q)
+	var (
+		brands []product_management.BrandView
+		err        error
+	)
+
+	if len(q) == 0 {
+		brands, err = product_management.GetAllBrands()
+	} else {
+		brands, err = product_management.GetBrandsByPatternService(q)
+	}
+	if err != nil {
+		fmt.Println("Error:", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
+		return
+	}
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductBrands(productcomponents.SearchProductProps{BrandInfo: brands}))
+	c.Render(http.StatusOK, r)
+}
+
 func GetProductByNameHandler(c *gin.Context) {
 	productName := c.Query("product-name")
 	fmt.Println(productName)

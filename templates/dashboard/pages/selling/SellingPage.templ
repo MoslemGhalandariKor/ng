@@ -21,7 +21,7 @@ templ SellingPageContent(sellingPageProps SellingPageProps) {
 }
 
 templ SellingPageForm(Products  []product_management.ProductView) {
-	<div class="mt-2">
+	<div class="mt-2 ">
 		<div class=" flex rounded-lg justify-center ">
 			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
 				<div class="">
@@ -48,7 +48,7 @@ templ SellingPageForm(Products  []product_management.ProductView) {
 												id="product-name"
 												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
 												placeholder="Type product name"
-												required=""
+												
 											/>
 										</div>
 										<div>
@@ -59,7 +59,7 @@ templ SellingPageForm(Products  []product_management.ProductView) {
 												id="product-barcode"
 												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
 												placeholder="Type product barcode"
-												required=""
+												
 											/>
 										</div>
 										<div>
@@ -296,13 +296,7 @@ templ SellingPageForm(Products  []product_management.ProductView) {
 							</div>
 						</div>
 					</div>
-					<div class="pt-6 text-center flex justify-between">
-						<button type="submit"
-							class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow">
-							Submit 
-						</button>
-					</div>
-				</section>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -315,7 +309,7 @@ templ ProductRow(products []product_management.ProductView) {
 
 	<tr>
 		<td class=" whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-			Name
+			{ product.Name }
 		</td>
 		<td class=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">{ product.Description }</td>
 		<td class=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">{ product.Price }</td>
@@ -344,7 +338,7 @@ templ ProductRow(products []product_management.ProductView) {
 			<button
 				data-modal-target=""
 				data-modal-toggle=""
-				class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2 text-center  dark:focus:ring-blue-800"
+				class="block text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2 text-center  dark:focus:ring-blue-800"
 				type="button"
 			>
 				Delete
@@ -367,7 +361,7 @@ templ CustomerRow() {
 			<button
 				data-modal-target=""
 				data-modal-toggle=""
-				class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2 text-center  dark:focus:ring-blue-800"
+				class="block text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2 text-center  dark:focus:ring-blue-800"
 				type="button"
 			>
 				Delete
