@@ -83,27 +83,7 @@ func HomePageContent(homePageProps HomePageProps) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div><div><section class=\"bg-gray-100 dark:bg-gray-900 relative p-20 dark:text-white\"><div class=\"flex relative w-90% \"><div class=\"pr-20 pl-64 text-left relative\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		for _, introLanding := range homePageProps.HomePageContent.IntroLanding {
-			templ_7745c5c3_Err = IntroLanding(introLanding).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\" w-96 bg-white dark:bg-gray-700 rounded-lg\"><div class=\"m-4  pb-2 border-b-4\"><p>Featured apps</p></div><ul>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		for _, featuredApp := range homePageProps.HomePageContent.FeaturedApps {
-			templ_7745c5c3_Err = FeaturedApps(featuredApp).Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</ul><div class=\" mt-2 p-4 border-t-4 text-center\"><a href=\"\" class=\"ml-4 hover:text-blue-600\"><span>EXPLORE ALL PRODUCTS</span></a></div></div></div></section><section class=\"bg-yellow-400 dark:bg-blue-900 flex\"><div class=\"m-20   \"><div class=\"pr-20 pl-32 text-left border-r-4 border-dashed border-gray-600 relative\"><h1 class=\"text-4xl mt-20 mb-12 max-w-4xl\">Your life's work, powered by our life's work</h1><p class=\"text-2xl max-w-2xl mb-8\">A unique and powerful software suite to transform the way you work. Designed for businesses of all sizes, built by a company that values your privacy.</p><div class=\"pt-12 pl-12\"><a href=\"\" class=\"p-4  bg-red-600 max-w-64 text-center text-white\">GET STARTED FOR FREE</a></div></div></div><div class=\"mt-20\"><div class=\"pr-20   \"><h1 class=\" text-2xl mt-20 ml-40 mb-12 w-96\">\"Zoho continues to modify, adapt, grow, and add things to the platform that our business sees value in.\"</h1></div><div class=\"pr-20 flex\"><div class=\"w-24\"><img src=\"../static/images/zh-video-poster-paul (1).png\" class=\"mt-12 ml-60\" alt=\"\"></div><div><h1 class=\"text-xl mt-20 ml-64  \">Paul Grimes</h1><small class=\"text-md ml-64\">Chief Operating Officer, Lubrication Engineers</small></div></div></div></section><section class=\"bg-gray-100 dark:bg-gray-500 flex-row\"><div class=\"pt-12 pb-12 text-center content-center\"><div><h1 class=\"text-2xl\">BRANDS THAT TRUST US</h1></div><div><ul class=\"flex justify-center mt-8 space-x-12\"><li class=\"w-32 mt-4\"><img src=\"../static/images/amazon.svg\" alt=\"\"></li><li class=\"w-16\"><img src=\"../static/images/hp.svg\" alt=\"\"></li><li class=\"w-32 mt-2\"><img src=\"../static/images/kpmg.svg\" alt=\"\"></li><li class=\"w-32 mt-4\"><img src=\"../static/images/netflix.svg\" alt=\"\"></li><li class=\"w-16\"><img src=\"../static/images/renault.svg\" alt=\"\"></li></ul></div><div><a href=\"\" class=\"mt-12 text-xl hover:text-white\">CUSTOMER STORIES</a></div></div></section></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div><div><section class=\"bg-gray-100 dark:bg-gray-900 relative p-20 dark:text-white\"><div class=\"flex relative w-90% justify-between \"><div class=\"text-left relative\"><h1 class=\"text-7xl mb-16 max-w-4xl\">Lorem ipsum dolor sit amet. </h1><p class=\"text-2xl max-w-2xl mb-8\">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. </p><div class=\"\"><a href=\"#\" class=\"p-4 bg-red-600 max-w-64 text-center text-white rounded-3xl\">GET STARTED FOR FREE</a></div><div><img src=\"#\" alt=\"\" class=\"max-w-4xl pt-12 bg-white rounded-3xl\"></div></div><div class=\" w-96 bg-white dark:bg-gray-700 rounded-lg\"><div class=\"m-4  pb-2 border-b-4\"><p>Featured apps</p></div><ul><li class=\"ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg\"><a href=\"#\"><h1 class=\"text-2xl\">Lorem ipsum.</h1><span><label for=\"\"></label> <small class=\"text-lg\">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small></span></a> <i class=\"fa fa-caret-right mt-8\"></i></li><li class=\"ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg\"><a href=\"#\"><h1 class=\"text-2xl\">Lorem ipsum.</h1><span><label for=\"\"></label> <small class=\"text-lg\">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small></span></a> <i class=\"fa fa-caret-right mt-8\"></i></li><li class=\"ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg\"><a href=\"#\"><h1 class=\"text-2xl\">Lorem ipsum.</h1><span><label for=\"\"></label> <small class=\"text-lg\">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small></span></a> <i class=\"fa fa-caret-right mt-8\"></i></li><li class=\"ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg\"><a href=\"#\"><h1 class=\"text-2xl\">Lorem ipsum.</h1><span><label for=\"\"></label> <small class=\"text-lg\">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small></span></a> <i class=\"fa fa-caret-right mt-8\"></i></li></ul><div class=\" mt-2 p-4 border-t-4 text-center\"><a href=\"\" class=\"ml-4 hover:text-blue-600\"><span>EXPLORE ALL PRODUCTS</span></a></div></div></div></section><section class=\"bg-yellow-400 dark:bg-blue-900 flex  text-white  \"><div class=\"m-20   \"><div class=\"pr-20 pl-32 text-left border-r-4 border-dashed border-gray-600 relative\"><h1 class=\"text-4xl mt-20 mb-12 max-w-4xl\">Your life's work, powered by our life's work</h1><p class=\"text-2xl max-w-2xl mb-8\">A unique and powerful software suite to transform the way you work. Designed for businesses of all sizes, built by a company that values your privacy.</p><div class=\"pt-12 pl-12\"><a href=\"\" class=\"p-4  bg-red-600 max-w-64 text-center text-white\">GET STARTED FOR FREE</a></div></div></div><div class=\"mt-20\"><div class=\"pr-20   \"><h1 class=\" text-2xl mt-20 ml-40 mb-12 w-96\">\"Zoho continues to modify, adapt, grow, and add things to the platform that our business sees value in.\"</h1></div><div class=\"pr-20 flex\"><div class=\"w-24\"><img src=\"../static/images/zh-video-poster-paul (1).png\" class=\"mt-12 ml-60\" alt=\"\"></div><div><h1 class=\"text-xl mt-20 ml-64  \">Paul Grimes</h1><small class=\"text-md ml-64\">Chief Operating Officer, Lubrication Engineers</small></div></div></div></section><section class=\"bg-gray-100 dark:bg-gray-500 flex-row\"><div class=\"pt-12 pb-12 text-center content-center\"><div><h1 class=\"text-2xl\">BRANDS THAT TRUST US</h1></div><div><ul class=\"flex justify-center mt-8 space-x-12\"><li class=\"w-32 mt-4\"><img src=\"../static/images/amazon.svg\" alt=\"\"></li><li class=\"w-16\"><img src=\"../static/images/hp.svg\" alt=\"\"></li><li class=\"w-32 mt-2\"><img src=\"../static/images/kpmg.svg\" alt=\"\"></li><li class=\"w-32 mt-4\"><img src=\"../static/images/netflix.svg\" alt=\"\"></li><li class=\"w-16\"><img src=\"../static/images/renault.svg\" alt=\"\"></li></ul></div><div><a href=\"\" class=\"mt-12 text-xl hover:text-white\">CUSTOMER STORIES</a></div></div></section></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -132,33 +112,33 @@ func IntroLanding(IntroLanding IntroLandingprops) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<h1 class=\"text-7xl mb-16 max-w-4xl\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<h1 class=\"text-7xl mb-16 max-w-4xl\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(IntroLanding.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 121, Col: 22}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 167, Col: 22}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</h1><p class=\"text-2xl max-w-2xl mb-8\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</h1><p class=\"text-2xl max-w-2xl mb-8\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(IntroLanding.Text)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 124, Col: 21}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 170, Col: 21}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p><div class=\"\"><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</p><div class=\"\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -167,20 +147,20 @@ func IntroLanding(IntroLanding IntroLandingprops) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\" class=\"p-4 bg-red-600 max-w-64 text-center text-white rounded-3xl\">GET STARTED FOR FREE</a></div><div><img src=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\" class=\"p-4 bg-red-600 max-w-64 text-center text-white rounded-3xl\">GET STARTED FOR FREE</a></div><div><img src=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(IntroLanding.Picture)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 130, Col: 33}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 176, Col: 33}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\" alt=\"\" class=\"max-w-4xl pt-12 bg-white rounded-3xl\"></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" alt=\"\" class=\"max-w-4xl pt-12 bg-white rounded-3xl\"></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -209,7 +189,7 @@ func FeaturedApps(FeaturedApps FeaturedAppsprops) templ.Component {
 			templ_7745c5c3_Var8 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<li class=\"ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg\"><a href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<li class=\"ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg\"><a href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -218,33 +198,33 @@ func FeaturedApps(FeaturedApps FeaturedAppsprops) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"><h1 class=\"text-2xl\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\"><h1 class=\"text-2xl\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var10 string
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(FeaturedApps.Title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 137, Col: 44}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 183, Col: 44}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</h1><span><label for=\"\"></label> <small class=\"text-lg\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</h1><span><label for=\"\"></label> <small class=\"text-lg\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(FeaturedApps.Intro)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 140, Col: 47}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/app/pages/HomePage.templ`, Line: 186, Col: 47}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</small></span></a> <i class=\"fa fa-caret-right mt-8\"></i></li>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</small></span></a> <i class=\"fa fa-caret-right mt-8\"></i></li>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

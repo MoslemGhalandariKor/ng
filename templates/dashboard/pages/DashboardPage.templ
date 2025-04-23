@@ -12,255 +12,16 @@ templ DashboardPage(layoutProp dashboardcomponents.LayoutProp) {
 }
 
 templ DashboardContent() {
-	<div class="mt-2">
-		<div class=" flex rounded-lg justify-center ">
-			<div class=" m-2 w-full bg-gray-200 rounded-2xl">
-				<section class="bg-gray-200 rounded-2xl p-8">
-					<div class=" p-4 bg-white relative shadow-md sm:rounded-lg overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl">
+	
+	<div class="mt-2 px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-center">
+			<div class="w-full max-w-7xl m-2 bg-gray-200 rounded-2xl">
+				<section class="bg-gray-200 rounded-2xl p-4 sm:p-6 md:p-8">
+					<div class="p-4 bg-white relative shadow-md sm:rounded-lg overflow-hidden ring-1 ring-black ring-opacity-5 rounded-2xl">
 						<!-- Dashboard Content -->
-						// <main class="">
-						// 	<header>
-						// 		<div class="grid grid-cols-1 bg-gray-400 m-2 rounded-2xl sm:grid-cols-2 lg:grid-cols-4">
-						// 			<div class="border-r border-gray-700 px-4 py-6 sm:px-6 lg:px-8">
-						// 				<p class="text-sm font-medium leading-6 text-gray-900">Employees</p>
-						// 				<p class="mt-2 flex items-baseline gap-x-2">
-						// 					<span class="text-4xl font-semibold tracking-tight text-white">405</span>
-						// 				</p>
-						// 			</div>
-						// 			<div class="border-r border-gray-700 px-4 py-6 sm:border-l sm:px-6 lg:px-8">
-						// 				<p class="text-sm font-medium leading-6 text-gray-900">Average deploy time</p>
-						// 				<p class="mt-2 flex items-baseline gap-x-2">
-						// 					<span class="text-4xl font-semibold tracking-tight text-white">3.65</span>
-						// 					<span class="text-sm text-gray-900">mins</span>
-						// 				</p>
-						// 			</div>
-						// 			<div class="border-r border-gray-700 px-4 py-6 sm:px-6 lg:border-l lg:px-8">
-						// 				<p class="text-sm font-medium leading-6 text-gray-900">Number of servers</p>
-						// 				<p class="mt-2 flex items-baseline gap-x-2">
-						// 					<span class="text-4xl font-semibold tracking-tight text-white">3</span>
-						// 				</p>
-						// 			</div>
-						// 			<div class="border-l border-gray-700 px-4 py-6 sm:border-l sm:px-6 lg:px-8">
-						// 				<p class="text-sm font-medium leading-6 text-gray-900">Success rate</p>
-						// 				<p class="mt-2 flex items-baseline gap-x-2">
-						// 					<span class="text-4xl font-semibold tracking-tight text-white">98.5%</span>
-						// 				</p>
-						// 			</div>
-						// 		</div>
-						// 	</header>
-						// 	<!-- Invoice list -->
-						// 	<div class="border-t border-white/10 pt-4 m-2 rounded-2xl bg-gray-500">
-						// 		<h2 class="px-4 text-base font-semibold leading-7 text-white sm:px-6 lg:px-8">Latest Invoice</h2>
-						// 		<table class="mt-6 w-full whitespace-nowrap text-left">
-						// 			<colgroup>
-						// 				<col class="w-full sm:w-4/12"/>
-						// 				<col class="lg:w-4/12"/>
-						// 				<col class="lg:w-2/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 			</colgroup>
-						// 			<thead class="border-b border-white/10 text-sm leading-6 text-white">
-						// 				<tr>
-						// 					<th scope="col" class="py-2 pl-4 pr-8 font-semibold sm:pl-6 lg:pl-8">Customer</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell">Price</th>
-						// 					<th scope="col" class="py-2 pl-0 pr-4 text-right font-semibold sm:pr-8 sm:text-left lg:pr-20">Status</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">Duration</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8">Deployed at</th>
-						// 				</tr>
-						// 			</thead>
-						// 			<tbody class="divide-y divide-white/5">
-						// 				<tr>
-						// 					<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
-						// 						<div class="flex items-center gap-x-4">
-						// 							<img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-8 w-8 rounded-full bg-gray-800"/>
-						// 							<div class="truncate text-sm font-medium leading-6 text-white">Michael Foster</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-						// 						<div class="flex gap-x-3">
-						// 							<div class="font-mono text-sm leading-6 text-gray-400">2d89f0c8</div>
-						// 							<span class="inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-gray-400/20">main</span>
-						// 						</div>
-						// 					</td>
-						// 					<td class="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
-						// 						<div class="flex items-center justify-end gap-x-2 sm:justify-start">
-						// 							<time class="text-gray-400 sm:hidden" datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 							<div class="flex-none rounded-full bg-green-400/10 p-1 text-green-400">
-						// 								<div class="h-1.5 w-1.5 rounded-full bg-current"></div>
-						// 							</div>
-						// 							<div class="hidden text-white sm:block">Completed</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">25s</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
-						// 						<time datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 					</td>
-						// 				</tr>
-						// 				<!-- More items... -->
-						// 			</tbody>
-						// 		</table>
-						// 	</div>
-						// 	<!-- Product list -->
-						// 	<div class="border-t border-white/10 pt-4 m-2 rounded-2xl bg-gray-500">
-						// 		<h2 class="px-4 text-base font-semibold leading-7 text-white sm:px-6 lg:px-8">Latest Product</h2>
-						// 		<table class="mt-6 w-full whitespace-nowrap text-left">
-						// 			<colgroup>
-						// 				<col class="w-full sm:w-4/12"/>
-						// 				<col class="lg:w-4/12"/>
-						// 				<col class="lg:w-2/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 			</colgroup>
-						// 			<thead class="border-b border-white/10 text-sm leading-6 text-white">
-						// 				<tr>
-						// 					<th scope="col" class="py-2 pl-4 pr-8 font-semibold sm:pl-6 lg:pl-8">Name</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell">Number</th>
-						// 					<th scope="col" class="py-2 pl-0 pr-4 text-right font-semibold sm:pr-8 sm:text-left lg:pr-20">Warehouse</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">Add By</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8">Deployed at</th>
-						// 				</tr>
-						// 			</thead>
-						// 			<tbody class="divide-y divide-white/5">
-						// 				<tr>
-						// 					<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
-						// 						<div class="flex items-center gap-x-4">
-						// 							<img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-8 w-8 rounded-full bg-gray-800"/>
-						// 							<div class="truncate text-sm font-medium leading-6 text-white">Michael Foster</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-						// 						<div class="flex gap-x-3">
-						// 							<div class="font-mono text-sm leading-6 text-gray-400">2d89f0c8</div>
-						// 							<span class="inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-gray-400/20">main</span>
-						// 						</div>
-						// 					</td>
-						// 					<td class="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
-						// 						<div class="flex items-center justify-end gap-x-2 sm:justify-start">
-						// 							<time class="text-gray-400 sm:hidden" datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 							<div class="flex-none rounded-full bg-green-400/10 p-1 text-green-400">
-						// 								<div class="h-1.5 w-1.5 rounded-full bg-current"></div>
-						// 							</div>
-						// 							<div class="hidden text-white sm:block">Completed</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">25s</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
-						// 						<time datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 					</td>
-						// 				</tr>
-						// 				<!-- More items... -->
-						// 			</tbody>
-						// 		</table>
-						// 	</div>
-						// 	<!-- Customers list -->
-						// 	<div class="border-t border-white/10 pt-4 m-2 rounded-2xl bg-gray-500">
-						// 		<h2 class="px-4 text-base font-semibold leading-7 text-white sm:px-6 lg:px-8">Latest Customers</h2>
-						// 		<table class="mt-6 w-full whitespace-nowrap text-left">
-						// 			<colgroup>
-						// 				<col class="w-full sm:w-4/12"/>
-						// 				<col class="lg:w-4/12"/>
-						// 				<col class="lg:w-2/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 			</colgroup>
-						// 			<thead class="border-b border-white/10 text-sm leading-6 text-white">
-						// 				<tr>
-						// 					<th scope="col" class="py-2 pl-4 pr-8 font-semibold sm:pl-6 lg:pl-8">Name</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell">Balance</th>
-						// 					<th scope="col" class="py-2 pl-0 pr-4 text-right font-semibold sm:pr-8 sm:text-left lg:pr-20">Status</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">Loyalty Point</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8">Registered at</th>
-						// 				</tr>
-						// 			</thead>
-						// 			<tbody class="divide-y divide-white/5">
-						// 				<tr>
-						// 					<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
-						// 						<div class="flex items-center gap-x-4">
-						// 							<img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-8 w-8 rounded-full bg-gray-800"/>
-						// 							<div class="truncate text-sm font-medium leading-6 text-white">Michael Foster</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-						// 						<div class="flex gap-x-3">
-						// 							<div class="font-mono text-sm leading-6 text-gray-400">2d89f0c8</div>
-						// 							<span class="inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-gray-400/20">main</span>
-						// 						</div>
-						// 					</td>
-						// 					<td class="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
-						// 						<div class="flex items-center justify-end gap-x-2 sm:justify-start">
-						// 							<time class="text-gray-400 sm:hidden" datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 							<div class="flex-none rounded-full bg-green-400/10 p-1 text-green-400">
-						// 								<div class="h-1.5 w-1.5 rounded-full bg-current"></div>
-						// 							</div>
-						// 							<div class="hidden text-white sm:block">Completed</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">25s</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
-						// 						<time datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 					</td>
-						// 				</tr>
-						// 				<!-- More items... -->
-						// 			</tbody>
-						// 		</table>
-						// 	</div>
-						// 	<!-- Employees list -->
-						// 	<div class="border-t border-white/10 pt-4 m-2 rounded-2xl bg-gray-500">
-						// 		<h2 class="px-4 text-base font-semibold leading-7 text-white sm:px-6 lg:px-8">Latest Employees</h2>
-						// 		<table class="mt-6 w-full whitespace-nowrap text-left">
-						// 			<colgroup>
-						// 				<col class="w-full sm:w-4/12"/>
-						// 				<col class="lg:w-4/12"/>
-						// 				<col class="lg:w-2/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 				<col class="lg:w-1/12"/>
-						// 			</colgroup>
-						// 			<thead class="border-b border-white/10 text-sm leading-6 text-white">
-						// 				<tr>
-						// 					<th scope="col" class="py-2 pl-4 pr-8 font-semibold sm:pl-6 lg:pl-8">Name</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell">Role</th>
-						// 					<th scope="col" class="py-2 pl-0 pr-4 text-right font-semibold sm:pr-8 sm:text-left lg:pr-20">Status</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-8 font-semibold md:table-cell lg:pr-20">Duration</th>
-						// 					<th scope="col" class="hidden py-2 pl-0 pr-4 text-right font-semibold sm:table-cell sm:pr-6 lg:pr-8">Joined at</th>
-						// 				</tr>
-						// 			</thead>
-						// 			<tbody class="divide-y divide-white/5">
-						// 				<tr>
-						// 					<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
-						// 						<div class="flex items-center gap-x-4">
-						// 							<img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-8 w-8 rounded-full bg-gray-800"/>
-						// 							<div class="truncate text-sm font-medium leading-6 text-white">Michael Foster</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
-						// 						<div class="flex gap-x-3">
-						// 							<div class="font-mono text-sm leading-6 text-gray-400">2d89f0c8</div>
-						// 							<span class="inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-gray-400/20">main</span>
-						// 						</div>
-						// 					</td>
-						// 					<td class="py-4 pl-0 pr-4 text-sm leading-6 sm:pr-8 lg:pr-20">
-						// 						<div class="flex items-center justify-end gap-x-2 sm:justify-start">
-						// 							<time class="text-gray-400 sm:hidden" datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 							<div class="flex-none rounded-full bg-green-400/10 p-1 text-green-400">
-						// 								<div class="h-1.5 w-1.5 rounded-full bg-current"></div>
-						// 							</div>
-						// 							<div class="hidden text-white sm:block">Completed</div>
-						// 						</div>
-						// 					</td>
-						// 					<td class="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">25s</td>
-						// 					<td class="hidden py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:table-cell sm:pr-6 lg:pr-8">
-						// 						<time datetime="2023-01-23T11:00">45 minutes ago</time>
-						// 					</td>
-						// 				</tr>
-						// 				<!-- More items... -->
-						// 			</tbody>
-						// 		</table>
-						// 	</div>
-						// </main>
-						<!-- Dashboard Content -->
-						<main class="">
+						<main>
 							<!-- Stats Cards -->
-							<section class="grid grid-cols-4 gap-4">
+							<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 								<div class="bg-white p-6 rounded-xl shadow">
 									<h2 class="text-sm text-gray-500">Total Revenue</h2>
 									<p class="text-2xl font-bold mt-2">$25,300</p>
@@ -282,26 +43,27 @@ templ DashboardContent() {
 							<section class="bg-white p-6 rounded-xl shadow mt-6">
 								<h3 class="text-lg font-semibold mb-4">Recent Orders</h3>
 								<div class="overflow-x-auto">
-									<table class="w-full text-sm text-left rtl:text-right text-gray-500">
-										<thead class="text-xs text-gray-700 uppercase bg-gray-200 ">
+									<table class="w-full text-sm text-left text-gray-500">
+										<thead class="text-xs text-gray-700 uppercase bg-gray-200">
 											<tr class="text-gray-500 border-b">
-												<th scope="col" class=" px-6 py-3">Order ID</th>
-												<th scope="col" class=" px-6 py-3">Customer</th>
-												<th scope="col" class=" px-6 py-3">Date</th>
-												<th scope="col" class=" px-6 py-3">Amount</th>
-												<th scope="col" class=" px-6 py-3">Status</th>
-												<th scope="col" class=" px-6 py-3">User</th>
-												<th scope="col" class=" px-6 py-3">Action</th>
+												<th scope="col" class="px-4 sm:px-6 py-3">Order ID</th>
+												<th scope="col" class="px-4 sm:px-6 py-3">Customer</th>
+												<th scope="col" class="px-4 sm:px-6 py-3">Date</th>
+												<th scope="col" class="px-4 sm:px-6 py-3">Amount</th>
+												<th scope="col" class="px-4 sm:px-6 py-3">Status</th>
+												<th scope="col" class="px-4 sm:px-6 py-3">User</th>
+												<th scope="col" class="px-4 sm:px-6 py-3">Action</th>
 											</tr>
 										</thead>
 										<tbody class="divide-y divide-gray-200 bg-white">
+											<!-- Example Order Row -->
 											<tr class="bg-white border-b border-gray-200">
-												<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">#1023</th>
-												<td class="px-6 py-4">Jane Doe</td>
-												<td class="px-6 py-4">Apr 12, 2025</td>
-												<td class="px-6 py-4">$250</td>
-												<td class="px-6 py-4 text-green-600 font-semibold">Completed</td>
-												<td class="px-6 py-4">User 1</td>
+												<th scope="row" class="px-4 sm:px-6 py-4 font-medium text-gray-900 whitespace-nowrap">#1023</th>
+												<td class="px-4 sm:px-6 py-4">Jane Doe</td>
+												<td class="px-4 sm:px-6 py-4">Apr 12, 2025</td>
+												<td class="px-4 sm:px-6 py-4">$250</td>
+												<td class="px-6 sm:px-6 py-4 text-green-600 font-semibold">Completed</td>
+												<td class="px-4 sm:px-6 py-4">User 1</td>
 												<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 													<button data-modal-target="" data-modal-toggle="" class="block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
 														More Info
@@ -309,12 +71,12 @@ templ DashboardContent() {
 												</td>
 											</tr>
 											<tr class="bg-white border-b border-gray-200">
-												<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">#1223</th>
-												<td class="px-6 py-4">John Smith</td>
-												<td class="px-6 py-4">Apr 13, 2025</td>
-												<td class="px-6 py-4">$180</td>
-												<td class="px-6 py-4 text-yellow-600 font-semibold">Pending</td>
-												<td class="px-6 py-4">User 2</td>
+												<th scope="row" class="px-4 sm:px-6 py-4 font-medium text-gray-900 whitespace-nowrap">#1223</th>
+												<td class="px-6 sm:px-6 py-4">John Smith</td>
+												<td class="px-6 sm:px-6 py-4">Apr 13, 2025</td>
+												<td class="px-6 sm:px-6 py-4">$180</td>
+												<td class="px-6 sm:px-6 py-4 text-yellow-600 font-semibold">Pending</td>
+												<td class="px-6 sm:px-6 py-4">User 2</td>
 												<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 													<button data-modal-target="" data-modal-toggle="" class="block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
 														More Info
@@ -322,25 +84,26 @@ templ DashboardContent() {
 												</td>
 											</tr>
 											<tr class="bg-white border-b border-gray-200">
-												<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">#1123</th>
-												<td class="px-6 py-4">Emily Clark</td>
-												<td class="px-6 py-4">Apr 14, 2025</td>
-												<td class="px-6 py-4">$310</td>
-												<td class="px-6 py-4 text-red-600 font-semibold">Cancelled</td>
-												<td class="px-6 py-4">User 1</td>
+												<th scope="row" class="px-4 sm:px-6 py-4 font-medium text-gray-900 whitespace-nowrap">#1123</th>
+												<td class="px-6 sm:px-6 py-4">Emily Clark</td>
+												<td class="px-6 sm:px-6 py-4">Apr 14, 2025</td>
+												<td class="px-6 sm:px-6 py-4">$310</td>
+												<td class="px-6 sm:px-6 py-4 text-red-600 font-semibold">Cancelled</td>
+												<td class="px-6 sm:px-6 py-4">User 1</td>
 												<td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 													<button data-modal-target="" data-modal-toggle="" class="block text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
 														More Info
 													</button>
 												</td>
 											</tr>
+											<!-- Add other rows as needed -->
 										</tbody>
 									</table>
 								</div>
 							</section>
-							<!--  Chart -->
+							<!-- Chart Section (optional future content) -->
 							<section class="bg-white p-6 rounded-xl shadow mt-6">
-								
+								<!-- Chart content can go here -->
 							</section>
 						</main>
 					</div>

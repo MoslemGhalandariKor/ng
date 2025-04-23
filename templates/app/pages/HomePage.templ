@@ -33,20 +33,66 @@ templ HomePageContent(homePageProps HomePageProps) {
 	<div>
 		<div>
 			<section class="bg-gray-100 dark:bg-gray-900 relative p-20 dark:text-white">
-				<div class="flex relative w-90% ">
-					<div class="pr-20 pl-64 text-left relative">
-						for _, introLanding := range homePageProps.HomePageContent.IntroLanding {
-							@IntroLanding(introLanding)
-						}
+				<div class="flex relative w-90% justify-between ">
+					<div class="text-left relative">
+						<h1 class="text-7xl mb-16 max-w-4xl">
+							Lorem ipsum dolor sit amet. 
+						</h1>
+						<p class="text-2xl max-w-2xl mb-8">
+							Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. 
+						</p>
+						<div class="">
+							<a href="#" class="p-4 bg-red-600 max-w-64 text-center text-white rounded-3xl">GET STARTED FOR FREE</a>
+						</div>
+						<div>
+							<img src="#" alt="" class="max-w-4xl pt-12 bg-white rounded-3xl"/>
+						</div>
 					</div>
 					<div class=" w-96 bg-white dark:bg-gray-700 rounded-lg">
 						<div class="m-4  pb-2 border-b-4">
 							<p>Featured apps</p>
 						</div>
 						<ul>
-							for _, featuredApp := range homePageProps.HomePageContent.FeaturedApps {
-								@FeaturedApps(featuredApp)
-							}
+							<li class="ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg">
+								<a href="#">
+									<h1 class="text-2xl">Lorem ipsum.</h1>
+									<span>
+										<label for=""></label>
+										<small class="text-lg">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small>
+									</span>
+								</a>
+								<i class="fa fa-caret-right mt-8"></i>
+							</li>
+							<li class="ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg">
+								<a href="#">
+									<h1 class="text-2xl">Lorem ipsum.</h1>
+									<span>
+										<label for=""></label>
+										<small class="text-lg">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small>
+									</span>
+								</a>
+								<i class="fa fa-caret-right mt-8"></i>
+							</li>
+							<li class="ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg">
+								<a href="#">
+									<h1 class="text-2xl">Lorem ipsum.</h1>
+									<span>
+										<label for=""></label>
+										<small class="text-lg">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small>
+									</span>
+								</a>
+								<i class="fa fa-caret-right mt-8"></i>
+							</li>
+							<li class="ml-4 mr-4 p-4 flex hover:bg-gray-400 hover:rounded-lg">
+								<a href="#">
+									<h1 class="text-2xl">Lorem ipsum.</h1>
+									<span>
+										<label for=""></label>
+										<small class="text-lg">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</small>
+									</span>
+								</a>
+								<i class="fa fa-caret-right mt-8"></i>
+							</li>
 						</ul>
 						<div class=" mt-2 p-4 border-t-4 text-center">
 							<a href="" class="ml-4 hover:text-blue-600"><span>EXPLORE ALL PRODUCTS</span></a>
@@ -54,7 +100,7 @@ templ HomePageContent(homePageProps HomePageProps) {
 					</div>
 				</div>
 			</section>
-			<section class="bg-yellow-400 dark:bg-blue-900 flex">
+			<section class="bg-yellow-400 dark:bg-blue-900 flex  text-white  ">
 				<div class="m-20   ">
 					<div class="pr-20 pl-32 text-left border-r-4 border-dashed border-gray-600 relative">
 						<h1 class="text-4xl mt-20 mb-12 max-w-4xl">
