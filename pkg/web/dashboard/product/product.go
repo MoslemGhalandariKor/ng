@@ -2,6 +2,7 @@ package product
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/pkg/product_management"
@@ -151,7 +152,7 @@ func ProductBrandSearch(c *gin.Context) {
 	fmt.Println(q)
 	var (
 		brands []product_management.BrandView
-		err        error
+		err    error
 	)
 
 	if len(q) == 0 {
