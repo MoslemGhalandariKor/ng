@@ -86,11 +86,12 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/add-category", product.AddCategoryPage)
 	dashboardRoutes.POST("/add-category", product_management.AddCategoryHandler)
 	dashboardRoutes.POST("/delete-category/:id", product_management.DeleteCategoryHandler)
+	dashboardRoutes.GET("/category-search", product.ProductCategorySearch)
 	dashboardRoutes.GET("/brands", product.BrandPage)
 	dashboardRoutes.GET("/add-brand", product.AddBrandPage)
-	dashboardRoutes.GET("/category-search", product.ProductCategorySearch)
 	dashboardRoutes.POST("/add-brand", product_management.AddBrandHandler)
 	dashboardRoutes.POST("/delete-brand/:id", product_management.DeleteBrandHandler)
+	dashboardRoutes.GET("/brand-search", product.ProductBrandSearch)
 
 	// Sell Routes
 	dashboardRoutes.GET("/sellingPage", sell.SellingPage)

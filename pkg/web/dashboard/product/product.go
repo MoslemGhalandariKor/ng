@@ -125,7 +125,7 @@ func AddProductPage(c *gin.Context) {
 }
 
 func ProductCategorySearch(c *gin.Context) {
-	q := c.Query("input-category-pattern-search")
+	q := c.Query("input_category_pattern_search")
 	fmt.Println(q)
 	var (
 		categories []product_management.CategoryView
@@ -147,7 +147,7 @@ func ProductCategorySearch(c *gin.Context) {
 }
 
 func ProductBrandSearch(c *gin.Context) {
-	q := c.Query("input-brand-pattern-search")
+	q := c.Query("input_brand_pattern_search")
 	fmt.Println(q)
 	var (
 		brands []product_management.BrandView

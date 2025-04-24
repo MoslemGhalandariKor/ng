@@ -75,19 +75,19 @@ func ProductBrands(brandInfo SearchProductProps) templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div id=\"category_search\"><ul class=\"h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 \" aria-labelledby=\"dropdownSearchButton\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div id=\"brand_search\"><ul class=\"h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 \" aria-labelledby=\"dropdownSearchButton\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, brand := range brandInfo.BrandInfo {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<li><div class=\"flex items-center p-2 rounded-sm hover:bg-gray-100 \"><input name=\"categories[]\" id=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<li><div class=\"flex items-center p-2 rounded-sm hover:bg-gray-100 \"><input name=\"brands[]\" id=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(brand.RowID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 53, Col: 57}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 53, Col: 53}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -100,7 +100,7 @@ func ProductBrands(brandInfo SearchProductProps) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(brand.RowID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 53, Col: 95}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/dashboard/pages/product/productcomponents/SearchProductBrand.templ`, Line: 53, Col: 91}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
