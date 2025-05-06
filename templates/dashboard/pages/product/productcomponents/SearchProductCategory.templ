@@ -35,17 +35,31 @@ templ SearchProductCategory(searchProductProps SearchProductProps ){
 </div>
 }
 
-templ ProductCategories(categoryInfo SearchProductProps ){
-  <div id="category_search">
-      <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 " aria-labelledby="dropdownSearchButton">
-        for _, category := range categoryInfo.CategoryInfo {
-          <li>
-            <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 ">
-              <input name="categories[]" id={ category.RowID } type="checkbox" value={ category.RowID } class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500">
-              <label for={ category.RowID } class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm">{ category.Name }</label>
-            </div>
-          </li>
-	    }
-	  </ul>
-    </div>
+templ ProductCategories(searchProductProps SearchProductProps ){
+   if searchProductProps.SearchFlag == false{
+                 <div id="brand_search">
+                     <div class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 " aria-labelledby="dropdownSearchButton">
+                        <div class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm">
+                          { searchProductProps.Message }
+                        </div>
+               	  </div>
+                   </div>
+
+
+    }else{
+      <div id="category_search">
+          <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 " aria-labelledby="dropdownSearchButton">
+            for _, category := range searchProductProps.CategoryInfo {
+              <li>
+                <div class="flex items-center p-2 rounded-sm hover:bg-gray-100 ">
+                  <input name="categories[]" id={ category.RowID } type="checkbox" value={ category.RowID } class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500">
+                  <label for={ category.RowID } class="w-full ms-2 text-sm font-medium text-gray-900 rounded-sm">{ category.Name }</label>
+                </div>
+              </li>
+    	    }
+    	  </ul>
+        </div>
+
+    }
+
 }

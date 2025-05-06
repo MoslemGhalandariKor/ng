@@ -119,6 +119,7 @@ func AddProductPage(c *gin.Context) {
 
 	brands, _ := product_management.GetAllBrandsService()
 	addProductPageProps.AddProductPageContentsProps.SearchProductProps.BrandInfo = brands
+	addProductPageProps.AddProductPageContentsProps.SearchProductProps.SearchFlag = true
 
 	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, product.AddProductPage(addProductPageProps))
 	c.Render(http.StatusOK, r)
@@ -129,8 +130,9 @@ func ProductCategorySearch(c *gin.Context) {
 	q := c.Query("input_category_pattern_search")
 	fmt.Println(q)
 	var (
-		categories []product_management.CategoryView
-		err        error
+		searchProductProps productcomponents.SearchProductProps
+		categories         []product_management.CategoryView
+		err                error
 	)
 
 	if len(q) == 0 {
@@ -143,7 +145,15 @@ func ProductCategorySearch(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
 		return
 	}
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductCategories(productcomponents.SearchProductProps{CategoryInfo: categories}))
+	if len(categories) == 0 {
+		searchProductProps.SearchFlag = false
+		searchProductProps.Message = "No results for \"" + q + "\""
+	} else {
+		searchProductProps.CategoryInfo = categories
+		searchProductProps.SearchFlag = true
+	}
+
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductCategories(searchProductProps))
 	c.Render(http.StatusOK, r)
 }
 
@@ -151,8 +161,9 @@ func ProductBrandSearch(c *gin.Context) {
 	q := c.Query("input_brand_pattern_search")
 	fmt.Println(q)
 	var (
-		brands []product_management.BrandView
-		err    error
+		searchProductProps productcomponents.SearchProductProps
+		brands             []product_management.BrandView
+		err                error
 	)
 
 	if len(q) == 0 {
@@ -165,7 +176,15 @@ func ProductBrandSearch(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
 		return
 	}
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductBrands(productcomponents.SearchProductProps{BrandInfo: brands}))
+
+	if len(brands) == 0 {
+		searchProductProps.SearchFlag = false
+		searchProductProps.Message = "No results for " + q
+	} else {
+		searchProductProps.BrandInfo = brands
+		searchProductProps.SearchFlag = true
+	}
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, productcomponents.ProductBrands(searchProductProps))
 	c.Render(http.StatusOK, r)
 }
 
