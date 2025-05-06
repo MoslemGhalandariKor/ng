@@ -82,5 +82,32 @@ type BrandView struct {
 	FullDescription  string
 	ShortDescription string
 	BrandLogo        string
-	DeleteBrandUrl  string
+	DeleteBrandUrl   string
+}
+
+type Warehouse struct {
+	RowID            string    `form:"row_id"`           // VARCHAR2(15)
+	Created          time.Time `form:"created"`          // TIMESTAMP(6)
+	CreatedBy        string    `form:"created_by"`       // VARCHAR2(400)
+	LastUpd          time.Time `form:"last_upd"`         // TIMESTAMP(6)
+	LastUpdBy        string    `form:"last_upd_by"`      // VARCHAR2(400)
+	WarehouseName    string    `form:"warehouse_name"`    // VARCHAR2(400)
+	WarehouseManager string    `form:"warehouse_manager"` // VARCHAR2(400)
+	WarehouseAddress string    `form:"warehouse_address"` // VARCHAR2(4000)
+	NumberWorkers    string    `form:"number_workers"`    // VARCHAR2(4000)
+	NumberProducts   string    `form:"number_products"`   // VARCHAR2(4000)
+	Status           string    `form:"status"`           // VARCHAR2(4000)
+	WarehouseImg     string    `form:"warehouse_img"`     // VARCHAR2(4000)
+}
+
+type WarehouseView struct {
+	RowID              string
+	WarehouseName      string
+	WarehouseManager   string
+	WarehouseAddress   string
+	NumberWorkers      string
+	NumberProducts     string
+	Status             string
+	WarehouseImg       string
+	DeleteWarehouseUrl string
 }

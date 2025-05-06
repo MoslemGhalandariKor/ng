@@ -383,3 +383,95 @@ func DeleteBrandById(brand_id string) (ResponseCode int, ResponseDesc string) {
 
 	return p_response_code, p_response_desc
 }
+
+func AddWarehouse(warehouse Warehouse) (ResponseCode int, ResponseDesc string) {
+	ctx := context.Background()
+
+	var p_response_code int
+	var p_response_desc string
+
+	q := `BEGIN 
+		    PKG_PRODUCT_MANAGEMENT.PRC_ADD_WAREHOUSE(:1, :2, :3, :4, :5, :6, :7, :8, :9); 
+		  END;`
+
+	_, err := ora.OraDB.ExecContext(ctx,
+		q,
+		warehouse.WarehouseName,
+		warehouse.WarehouseManager,
+		warehouse.WarehouseAddress,
+		warehouse.NumberWorkers,
+		warehouse.NumberProducts,
+		warehouse.Status,
+		warehouse.WarehouseImg,
+
+		sql.Out{Dest: &p_response_code},
+		sql.Out{Dest: &p_response_desc},
+	)
+
+	if err != nil {
+		log.Fatalf("Failed to execute procedure: %v", err)
+	}
+	fmt.Printf("Mapped Output P_RESPONSE_CODE: %d\n", p_response_code)
+	fmt.Printf("Mapped Output P_RESPONSE_DESC: %s\n", p_response_desc)
+
+	return p_response_code, p_response_desc
+}
+
+func GetAllWarehouses() (warehouses []WarehouseView, err error) {
+
+	q := `
+SELECT P.ROW_ID,
+       P.WAREHOUSE_NAME,
+       P.WAREHOUSE_MANAGER,
+       P.WAREHOUSE_ADDRESS,
+       P.NUMBER_WORKERS,
+	   P.NUMBER_PRODUCTS,
+	   P.STATUS,
+       P.WAREHOUSE_IMG,
+       U.URL || TO_CHAR(P.ROW_ID) AS DELETE_WAREHOUSE_URL
+  FROM N_PROD_WAREHOUSE P, A_URL_CONFIG U
+ WHERE U.METHODE = 'DELETE_WAREHOUSE_BY_ID'
+   AND U.METHODE_TYPE = 'DELETE'
+`
+
+	rows, err := ora.OraDB.Query(q)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var warehouse WarehouseView
+		if err := rows.Scan(&warehouse.WarehouseName, &warehouse.WarehouseManager, &warehouse.WarehouseAddress, &warehouse.NumberWorkers, &warehouse.NumberProducts, &warehouse.Status, &warehouse.WarehouseImg, &warehouse.DeleteWarehouseUrl); err != nil {
+			log.Fatal(err)
+		}
+		warehouses = append(warehouses, warehouse)
+	}
+	return warehouses, nil
+}
+
+func DeleteWarehouseById(warehouse_id string) (ResponseCode int, ResponseDesc string) {
+	ctx := context.Background()
+
+	var p_response_code int
+	var p_response_desc string
+
+	q := `BEGIN 
+		    PKG_PRODUCT_MANAGEMENT.PRC_DELETE_WAREHOUSE(:1, :2, :3); 
+		  END;`
+
+	_, err := ora.OraDB.ExecContext(ctx,
+		q,
+		warehouse_id,
+		sql.Out{Dest: &p_response_code},
+		sql.Out{Dest: &p_response_desc},
+	)
+
+	if err != nil {
+		log.Fatalf("Failed to execute procedure: %v", err)
+	}
+	fmt.Printf("Mapped Output P_RESPONSE_CODE: %d\n", p_response_code)
+	fmt.Printf("Mapped Output P_RESPONSE_DESC: %s\n", p_response_desc)
+
+	return p_response_code, p_response_desc
+}

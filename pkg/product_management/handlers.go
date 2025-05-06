@@ -100,3 +100,23 @@ func DeleteBrandHandler(c *gin.Context) {
 	c.Redirect(http.StatusFound, "/dashboard/brands")
 }
 
+func AddWarehouseHandler(c *gin.Context) {
+	var warehouse Warehouse
+	c.Bind(&warehouse)
+
+	responseCode, responseDesc := AddWarehouse(warehouse)
+
+	if responseCode != 0 {
+		log.Panic(responseDesc)
+	} else {
+		c.Redirect(http.StatusFound, "/dashboard/warehouses")
+	}
+
+}
+
+func DeleteWarehouseHandler(c *gin.Context) {
+	idParam := c.Param("id")
+
+	_, _ = DeleteWarehouseById(idParam)
+	c.Redirect(http.StatusFound, "/dashboard/warehouses")
+}

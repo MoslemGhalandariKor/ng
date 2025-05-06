@@ -46,3 +46,11 @@ func GetBrandsByPatternService(pattern string) (brands []BrandView, err error) {
 	return brands, err
 
 }
+
+func GetAllWarehousesService() (warehouses []WarehouseView, err error) {
+
+	warehouses, err = GetAllWarehouses()
+
+	return warehouses, err
+
+}

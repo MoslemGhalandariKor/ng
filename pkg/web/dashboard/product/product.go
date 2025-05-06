@@ -9,9 +9,9 @@ import (
 	"nextgen/templates/dashboard/dashboardcomponents"
 	"nextgen/templates/dashboard/pages/product"
 	"nextgen/templates/dashboard/pages/product/productcomponents"
-	"nextgen/templates/dashboard/pages/selling"
 	"sort"
 	"github.com/gin-gonic/gin"
+	"nextgen/templates/dashboard/pages/selling/sellingpagecomponents"
 )
 
 var ProductPageHeaderProps = map[string]*product.ProductPageHeaderProp{
@@ -175,7 +175,7 @@ func GetProductByNameHandler(c *gin.Context) {
 		products []product_management.ProductView
 	)
 	products, _ = product_management.GetProductByNameService(productName)
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, selling.ProductRow(products))
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, sellingpagecomponents.ProductRow(products))
 	c.Render(http.StatusOK, r)
 
 }

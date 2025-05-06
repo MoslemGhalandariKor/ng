@@ -100,6 +100,8 @@ func (r *Routes) dashboardRouter(server *Server) {
 	dashboardRoutes.GET("/warehouses", warehouse.WarehousesPage)
 	dashboardRoutes.GET("/add-warehouse", warehouse.AddWarehousePage)
 	dashboardRoutes.GET("/inventory", warehouse.InventoryPage)
+	dashboardRoutes.POST("/add-warehouse", product_management.AddWarehouseHandler)
+	dashboardRoutes.POST("/delete-warehouse/:id", product_management.DeleteWarehouseHandler)
 
 	// Customers Routes
 	dashboardRoutes.GET("/customers", customer.CustomerPage)
