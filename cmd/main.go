@@ -5,6 +5,7 @@ import (
 	"log"
 	"nextgen/internals/config"
 	"nextgen/internals/db/ora"
+	"nextgen/internals/db/redis"
 	"nextgen/internals/db/pg"
 	"nextgen/pkg/accounts"
 	"nextgen/pkg/auth"
@@ -26,6 +27,16 @@ func init() {
 	if err := ora.Initialize(oraDsn, oraCfg.OracleMaxOpenConns, oraCfg.OracleMaxIdleConns); err != nil {
 		log.Fatalf("Oracle database initialization failed: %v", err)
 	}
+
+	redisCfg, err := config.LoadRedisConfig()
+	if err != nil {
+		log.Fatalf("Failed to load redis configuration: %v", err)
+	}
+      
+
+	// Initialize the Redis connection pool
+	redis.Initialize(*redisCfg)
+
 
 	pgCfg, err := config.LoadPostgresConfig()
 	if err != nil {
