@@ -11,7 +11,6 @@ import (
 	"nextgen/templates/dashboard/pages/product"
 	"nextgen/templates/dashboard/pages/product/productcomponents"
 	"sort"
-	"github.com/gin-gonic/gin"
 	"nextgen/templates/dashboard/pages/selling/sellingpagecomponents"
 )
 

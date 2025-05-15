@@ -44,6 +44,8 @@ func AddProduct(product Product) (ResponseCode int, ResponseDesc string) {
 
 	return p_response_code, p_response_desc
 }
+
+
 func GetProductByName(productName string) (products []ProductView, err error) {
 	ctx := context.Background()
 	q := `
@@ -81,24 +83,25 @@ func GetProductByName(productName string) (products []ProductView, err error) {
 func GetAllProducts() (products []ProductView, err error) {
 
 	q := `
-    SELECT P.ROW_ID,
-           P.NAME,
-           P.DESCRIPTION,
-           P.PROD_SIZE,
-           P.PROD_LENGTH,
-           P.PROD_MATERIAL,
-           P.PROD_COLOR,
-           P.IMAGE_SRC,
-           P.BARCODE,
-           C.NAME,
-           P.BRAND_ID,
-           P.STATUS,
-           P.PRICE,
-           U.URL || TO_CHAR(P.ROW_ID) AS DELETE_PRODUCT_URL
-      FROM N_PROD_PRODUCT P, N_PROD_CATEGORY C, A_URL_CONFIG U
-     WHERE P.CATEGORY_ID = C.ROW_ID
-       AND U.METHODE = 'DELETE_PRODUCT_BY_ID'
-       AND U.METHODE_TYPE = 'DELETE'
+
+SELECT P.ROW_ID,
+	P.NAME,
+	P.DESCRIPTION,
+	P.PROD_SIZE,
+	P.PROD_LENGTH,
+	P.PROD_MATERIAL,
+	P.PROD_COLOR,
+	P.IMAGE_SRC,
+	P.BARCODE,
+	C.NAME,
+	P.BRAND_ID,
+	P.STATUS,
+	P.PRICE,
+	U.URL || TO_CHAR(P.ROW_ID) AS DELETE_PRODUCT_URL
+FROM N_PROD_PRODUCT P
+LEFT JOIN N_PROD_CATEGORY C ON P.CATEGORY_ID = C.ROW_ID
+LEFT JOIN A_URL_CONFIG U ON U.METHODE = 'DELETE_PRODUCT_BY_ID'
+					 AND U.METHODE_TYPE = 'DELETE'
 `
 
 	rows, err := ora.OraDB.Query(q)

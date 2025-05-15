@@ -5,38 +5,39 @@ import (
 )
 
 templ SellingPageProductsList(products []product_management.ProductView){
-
-    <div class="mb-4 border-b-4 border-gray-600 pb-12">
+					<div class="mb-4 border-b-4 border-gray-600 pb-12">
 								<form action="">
 									<div class="grid gap-4 mb-4 sm:grid-cols-2 col-span-2">
 										<div>
 											<label for="product-name" class="block mb-2 text-sm font-medium text-gray-900 ">Product Name</label>
-											<input
-											    hx-get="/dashboard/get-product"
-                                                hx-trigger="keyup changed delay:100ms"
-                                                hx-target="#sell_product"
+											<input 
 												type="text"
+												id="product-name" 
 												name="product-name"
-												id="product-name"
 												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
 												placeholder="Type product name"
 												
 											/>
 										</div>
 										<div>
-											<label for="product-barcode" class="block mb-2 text-sm font-medium text-gray-900 ">Product Barcode</label>
+											<label for="product-barcode" class="block mb-2 text-sm font-medium text-gray-900 ">Amount:</label>
 											<input
-												type="text"
-												name="product-barcode"
-												id="product-barcode"
+												type="number"
+												name="amount"
+												id="amount"
+												min="1"
+        										value="1"
 												class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-												placeholder="Type product barcode"
+												placeholder="Number of product"
 												
 											/>
 										</div>
 										<div>
 											<button
-												type="button"
+												hx-post="/dashboard/sellingpage/add-product"
+        										hx-include="#product-name, #amount"
+        										hx-target="#sell-product-table"
+        										hx-swap="afterbegin"
 
 												class="w-full justify-center sm:w-auto text-white inline-flex items-center bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-100 focus:z-10"
 											>
@@ -91,12 +92,11 @@ templ SellingPageProductsList(products []product_management.ProductView){
 									</table>
 								</div>
 							</div>
-
 }
 
 
 templ ProductRow(products []product_management.ProductView) {
-   <tbody id="sell_product" class="divide-y divide-gray-200 bg-gray-100">
+   <tbody id="sell-product-table" class="divide-y divide-gray-200 bg-gray-100">
    for _, product := range products{
 
 

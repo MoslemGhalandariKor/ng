@@ -95,7 +95,7 @@ func (r *Routes) dashboardRouter(server *Server) {
 
 	// Sell Routes
 	dashboardRoutes.GET("/sellingPage", sell.SellingPage)
-	dashboardRoutes.POST("/sellingpage/add", sell.AddToCart)
+	dashboardRoutes.POST("/sellingpage/add-product", sell.AddToCart)
 	
 
 	// Warehouse Routes

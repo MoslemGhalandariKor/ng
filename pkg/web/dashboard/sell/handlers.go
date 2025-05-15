@@ -8,12 +8,13 @@ import (
 	"nextgen/internals/db/redis"
 	"nextgen/internals/gintemplrenderer"
 	"nextgen/pkg/product_management"
-	"nextgen/templates/dashboard/pages/selling"
+	"nextgen/templates/dashboard/pages/selling/sellingpagecomponents"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 func AddToCart(c *gin.Context) {
+    fmt.Println("Check Point ----------------------------")
     session := sessions.Default(c)
     username := session.Get("Username")
     if username == nil {
@@ -77,12 +78,12 @@ func AddToCart(c *gin.Context) {
 
     }
 
-    sellingPageProps := selling.SellingPageProps{
-        Products: products,
-    }
+    
+    
+    fmt.Println(products)
 
     // Respond with updated cart count for HTMX
-	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, selling.SellingPage(sellingPageProps))
+	r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, sellingpagecomponents.ProductRow(products))
 	c.Render(http.StatusOK, r)
 }
 
